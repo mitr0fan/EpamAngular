@@ -1,0 +1,6 @@
+.course {
+    margin-top: 20px;
+}
+.course > span {
+    display: block;
+}
