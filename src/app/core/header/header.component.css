@@ -4,6 +4,7 @@ header {
     position: fixed;
     background-color: rgb(114, 112, 252);
     z-index: 10;
+    color: white;
 }
 #header {
     position: absolute;
@@ -28,4 +29,5 @@ header {
     background-color: rgb(233, 232, 232);
     padding: 5px;
     margin-left: 20px;
+    color: black;
 }
