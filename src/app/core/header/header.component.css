@@ -1,0 +1,31 @@
+header {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    background-color: rgb(114, 112, 252);
+    z-index: 10;
+}
+#header {
+    position: absolute;
+}
+#logo {
+    font-size: large;
+    font-weight: 600;
+}
+#container {
+    margin: 0 auto;
+    height: 38px;
+    width: 800px;
+    padding-top: 10px;
+}
+#logo {
+    margin-top: 12px;
+}
+    .login {
+    margin-left: 580px;
+}
+.button {
+    background-color: rgb(233, 232, 232);
+    padding: 5px;
+    margin-left: 20px;
+}

@@ -13,6 +13,8 @@ export class CoursesComponent implements OnInit {
 
   courses: Course[] = this.getCourses.data;
 
+  func = Math.floor;
+
   ngOnInit() {
   }
 

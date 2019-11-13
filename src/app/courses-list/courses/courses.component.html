@@ -1,9 +1,19 @@
 <div>
     <div class="course" *ngFor="let course of courses">
-        <span>Video Course {{course.id}} </span>
-        <span>Title: {{course.title}} </span>
-        <span>Description: {{course.description}} </span>
-        <span>Creation date: {{course.date}} </span>
-        <span>Duration: {{course.duration}} min </span>
+        <span class="id">Video Course {{course.id}} </span>
+        <span class="title">{{course.title}} </span>
+        <div class="description">{{course.description}} </div>
+        <span class="date">{{course.date | date}} </span>
+    
+        <span class="duration" *ngIf="course.duration <= 3600">Duration: {{course.duration/60}} min </span>
+        <span class="duration" *ngIf="course.duration > 3600">
+            Duration: {{func(course.duration/3600)}} h {{(course.duration - func(course.duration/3600) * 3600)/60}} min
+        </span>
+    
+        <span class="button edit">Edit</span>
+        <span class="button delete">Delete</span>
+    </div>
+    <div class="loadMore">
+        <span>Load More</span>
     </div>
 </div>

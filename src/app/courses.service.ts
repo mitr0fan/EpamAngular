@@ -7,14 +7,13 @@ import { Course } from './course';
 export class CoursesService {
 
   constructor() {
-    const day = new Date();
-
-    for ( let i = 1; i < 6; i++ ) {
+    for ( let i = 1; i < 5; i++ ) {
       this.data.push({
         id: i,
         title: 'How to do something',
-        date: `${day.getDate()}.${day.getMonth() + 1}.${day.getFullYear()}`,
-        duration: Math.ceil(Math.random() * 60),
+        date: 1573643183134 - Math.random() * 100000000000,
+        // date: `${day.getDate()}.${day.getMonth() + 1}.${day.getFullYear()}`,
+        duration: Math.ceil(Math.random() * 200) * 60, // time in seconds
         description: 'The best course EVER!!!'
     });
     }

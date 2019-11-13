@@ -1,0 +1,20 @@
+.searchContainer {
+    position: relative;
+    margin-top: 10px;
+    background-color: rgb(233, 232, 232);
+    padding: 5px;
+    border-radius: 10px;
+}
+.button {
+    background-color: rgb(114, 112, 252);
+    padding: 5px;
+    color: white;
+}
+input {
+    width: 300px;
+    height: 26px;
+    margin-right: 20px;
+}
+.addCourse {
+    float: right;
+}
