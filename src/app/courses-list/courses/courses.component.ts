@@ -9,11 +9,11 @@ import { Course } from 'src/app/course';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor( private getCourses: CoursesService ) { }
+  constructor( private coursesService: CoursesService ) { }
 
-  courses: Course[] = this.getCourses.data;
+  public courses: Course[] = this.coursesService.getCourses();
 
-  func = Math.floor;
+  mathFloor = Math.floor;
 
   ngOnInit() {
   }
