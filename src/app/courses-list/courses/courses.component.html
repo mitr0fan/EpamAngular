@@ -3,7 +3,7 @@
         <span class="id">Video Course {{course.id}} </span>
         <span class="title">{{course.title}} </span>
         <div class="description">{{course.description}} </div>
-        <span class="date">{{course.date | date}} </span>
+        <span class="date">{{course.date}} </span>
     
         <span class="duration" *ngIf="course.duration <= 3600">Duration: {{course.duration/60}} min </span>
         <span class="duration" *ngIf="course.duration > 3600">
