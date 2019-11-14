@@ -12,7 +12,14 @@ export class CoursesService {
   }
 
   getCourses(): Course[] {
-    return data;
+    const courses: Course[] = [];
+
+    data.forEach((i) => {
+      i.date = format(new Date(i.date), 'dd-MM-yyyy HH:mm:ss');
+      courses.push(i);
+    });
+
+    return courses;
   }
 
 }
