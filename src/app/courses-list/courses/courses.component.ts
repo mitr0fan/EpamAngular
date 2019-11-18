@@ -11,11 +11,12 @@ export class CoursesComponent implements OnInit {
 
   constructor( private coursesService: CoursesService ) { }
 
-  courses: Course[] = this.coursesService.getCourses();
+  public courses: Course[];
 
   public mathFloor = Math.floor;
 
   ngOnInit() {
+    this.courses = this.coursesService.getCourses();
   }
 
   loadMoreCourses() {
