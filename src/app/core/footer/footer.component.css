@@ -1,4 +1,13 @@
 footer {
-    text-align: center;
     font-size: small;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(233, 232, 232);
+    z-index: 100;
+}
+footer > div {
+    margin: 0 auto;
+    width: 800px;
+    text-align: center;
 }

@@ -1,5 +1,5 @@
 <div class="searchContainer">
-    <input #input type="text" placeholder="Name, fragment, or date">
-    <span class="button search" (click)="search(input.value)">Search</span>
+    <input #input type="text" placeholder="Name, fragment, or date" [(ngModel)]="inputValue">
+    <span class="button search" (click)="search()">Search</span>
     <span class="button addCourse">Add course</span>
 </div>

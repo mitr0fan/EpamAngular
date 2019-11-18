@@ -1,7 +1,8 @@
 <app-header></app-header>
+<app-footer></app-footer>
 <div class="container">
     <app-breadcrumbs></app-breadcrumbs>
     <app-search (searchEvent)="search($event)"></app-search>
-    <app-courses [courses]="courses"></app-courses>
-    <app-footer></app-footer>
+    <!-- <app-courses [courses]="courses" (deleteEvent)="delete($event)"></app-courses> -->
+    <router-outlet></router-outlet>
 </div>

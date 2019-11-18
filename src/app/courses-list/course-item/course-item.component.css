@@ -1,0 +1,56 @@
+.course {
+    margin-top: 10px;
+    background-color: white;
+    padding: 10px;
+    position: relative;
+    border-radius: 10px;
+}
+.course > span {
+    display: block;
+}
+.course:hover {
+    /*background-color: rgb(233, 233, 255);*/
+    cursor: pointer;
+    box-shadow: 0 0 8px;
+}
+.title {
+    font-weight: 600;
+    margin-top: 10px;
+}
+.id {
+    font-weight: 600;
+    font-size: large;
+}
+
+.date, .duration {
+    position: absolute;
+    top: 10px;
+}
+.date {
+    left: 400px;
+}
+.button {
+    position: absolute;
+    padding: 5px;
+    background-color: rgb(114, 112, 252);
+    color: white;
+    width: 100px;
+    text-align: center;
+}
+.edit {
+    right: 10px;
+    top: 25px;
+}
+.delete {
+    right: 10px;
+    top: 65px;
+}
+.duration {
+    left: 400px;
+    top: 30px;
+}
+.description {
+    height: 60px;
+    margin-top: 15px;
+    width: 650px;
+}
