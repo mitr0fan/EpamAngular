@@ -10,7 +10,7 @@ header {
     position: absolute;
 }
 #logo {
-    font-size: large;
+    font-size: larger;
     font-weight: 600;
 }
 #container {
@@ -22,12 +22,14 @@ header {
 #logo {
     margin-top: 12px;
 }
-    .login {
-    margin-left: 580px;
+.login {
+    margin-left: 535px;
 }
 .button {
-    background-color: rgb(233, 232, 232);
+    background-color: white;
     padding: 5px;
-    margin-left: 20px;
+    margin-left: 10px;
     color: black;
+    position: absolute;
+    text-align: center;
 }

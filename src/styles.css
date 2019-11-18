@@ -12,4 +12,8 @@
 }
 .button {
     border-radius: 5px;
+    width: 100px;
+}
+body {
+    background-color: rgb(233, 232, 232);
 }
