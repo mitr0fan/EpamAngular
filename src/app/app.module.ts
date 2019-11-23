@@ -7,10 +7,12 @@ import { CoreModule } from './core/core.module';
 import { CoursesListModule } from './courses-list/courses-list.module';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
+import { BorderColorDirective } from './border-color.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    BorderColorDirective,
   ],
   imports: [
     BrowserModule,
