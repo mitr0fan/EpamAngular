@@ -15,7 +15,7 @@ export class CoursesService {
     const courses: Course[] = [];
 
     data.forEach((i) => {
-      i.date = format(new Date(i.date), 'dd-MM-yyyy HH:mm:ss');
+      i.date = format(new Date(i.date), 'dd.MM.yyyy');
       courses.push(i);
     });
 

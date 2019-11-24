@@ -1,5 +1,12 @@
+<app-search (searchEvent)="search($event)"></app-search>
 <div>
-    <app-course-item *ngFor="let course of courses" [course]="course" (deleteEvent)="deleteCourse($event)"></app-course-item>
+    <div *ngIf="courses.length > 0">
+        <app-course-item *ngFor="let course of courses | search:inputSearch" [course]="course"
+        (deleteEvent)="deleteCourse($event)"></app-course-item>
+    </div>
+    <div class="noData" *ngIf="(courses | search:inputSearch).length === 0">
+        <span>No Data, add new course</span>
+    </div>
     <div class="loadMore" (click)="loadMoreCourses()">
         <span>Load More</span>
     </div>

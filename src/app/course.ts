@@ -4,4 +4,5 @@ export interface Course {
     date: number | string;
     duration: number;
     description: string;
+    topRated: boolean;
 }

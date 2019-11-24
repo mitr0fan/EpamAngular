@@ -5,11 +5,7 @@
     position: relative;
     border-radius: 10px;
 }
-.course > span {
-    display: block;
-}
 .course:hover {
-    /*background-color: rgb(233, 233, 255);*/
     cursor: pointer;
     box-shadow: 0 0 8px;
 }
@@ -53,4 +49,21 @@
     height: 60px;
     margin-top: 15px;
     width: 650px;
+}
+.star {
+    font-size: 25px;
+    position: absolute;
+    left: 135px;
+    top: 3px;
+}
+.topRated {
+    margin-top: 10px;
+    background-color: azure;
+    padding: 10px;
+    position: relative;
+    border-radius: 10px;
+}
+.topRated:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px;
 }

@@ -1,12 +1,10 @@
-<div class="course">
+<div appBorderColor [date]="course.date" [ngClass]="course.topRated ? 'topRated' : 'course'">
     <span class="id">{{course.title}} </span>
+    <span class="star" *ngIf="course.topRated">★</span>
     <div class="description">{{course.description}} </div>
-    <span class="date">{{course.date}} </span>
+    <span class="date">Date: {{course.date}} </span>
     
-    <span class="duration" *ngIf="course.duration <= 3600">Duration: {{course.duration/60}} min </span>
-    <span class="duration" *ngIf="course.duration > 3600">
-        Duration: {{mathFloor(course.duration/3600)}} h {{(course.duration - mathFloor(course.duration/3600) * 3600)/60}} min
-    </span>
+    <span class="duration">Duration: {{course.duration | duration}}</span>
     
     <span class="button edit">Edit</span>
     <span class="button delete" (click)="delete(course.id)">Delete</span>

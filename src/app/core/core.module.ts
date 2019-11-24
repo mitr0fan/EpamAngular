@@ -5,6 +5,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
+import { DirectivesPipesModule } from '../directives-pipes/directives-pipes.module';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [HeaderComponent, BreadcrumbsComponent, FooterComponent, SearchComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    DirectivesPipesModule
   ],
   exports: [
     BreadcrumbsComponent,

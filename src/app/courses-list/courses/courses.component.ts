@@ -12,8 +12,7 @@ export class CoursesComponent implements OnInit {
   constructor( private coursesService: CoursesService ) { }
 
   public courses: Course[];
-
-  public mathFloor = Math.floor;
+  public inputSearch = '';
 
   ngOnInit() {
     this.courses = this.coursesService.getCourses();
@@ -25,6 +24,10 @@ export class CoursesComponent implements OnInit {
 
   deleteCourse(id: number) {
     console.log(`Delete course with id: ${id}`);
+  }
+
+  search(value: string) {
+    this.inputSearch = value;
   }
 
 }

@@ -12,8 +12,6 @@ export class CourseItemComponent implements OnInit {
 
   constructor() { }
 
-  public mathFloor = Math.floor;
-
   ngOnInit() {
   }
 

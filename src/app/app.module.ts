@@ -7,19 +7,19 @@ import { CoreModule } from './core/core.module';
 import { CoursesListModule } from './courses-list/courses-list.module';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { BorderColorDirective } from './border-color.directive';
+import { DirectivesPipesModule } from './directives-pipes/directives-pipes.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BorderColorDirective,
   ],
   imports: [
     BrowserModule,
     CoreModule,
     CoursesListModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    DirectivesPipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
