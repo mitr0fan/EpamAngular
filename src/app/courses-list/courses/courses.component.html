@@ -1,7 +1,7 @@
 <app-search (searchEvent)="search($event)"></app-search>
 <div>
     <div *ngIf="courses.length > 0">
-        <app-course-item *ngFor="let course of courses | search:inputSearch" [course]="course"
+        <app-course-item *ngFor="let course of courses | orderBy | search:inputSearch" [course]="course"
         (deleteEvent)="deleteCourse($event)"></app-course-item>
     </div>
     <div class="noData" *ngIf="(courses | search:inputSearch).length === 0">

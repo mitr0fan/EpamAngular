@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SearchPipe } from '../search.pipe';
 import { DurationPipe } from '../duration.pipe';
 import { BorderColorDirective } from '../border-color.directive';
+import { OrderByPipe } from '../order-by.pipe';
 
 
 
@@ -10,7 +11,8 @@ import { BorderColorDirective } from '../border-color.directive';
   declarations: [
     SearchPipe,
     DurationPipe,
-    BorderColorDirective
+    BorderColorDirective,
+    OrderByPipe
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { BorderColorDirective } from '../border-color.directive';
   exports: [
     SearchPipe,
     DurationPipe,
-    BorderColorDirective
+    BorderColorDirective,
+    OrderByPipe
   ],
   providers: [
     SearchPipe
