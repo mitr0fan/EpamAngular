@@ -7,7 +7,7 @@
     <div class="noData" *ngIf="(courses | search:inputSearch).length === 0">
         <span>No Data, add new course</span>
     </div>
-    <div class="loadMore" (click)="loadMoreCourses()">
+    <div class="loadMore" (click)="loadMoreCourses()" *ngIf="(courses | search:inputSearch).length !== 0">
         <span>Load More</span>
     </div>
 </div>
