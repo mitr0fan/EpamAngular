@@ -2,7 +2,7 @@ header {
     height: 50px;
     width: 100%;
     position: fixed;
-    background-color: rgb(114, 112, 252);
+    background-color: #2a5885;
     z-index: 10;
     color: white;
 }

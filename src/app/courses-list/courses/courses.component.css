@@ -1,5 +1,5 @@
 .loadMore {
-    background-color: rgb(114, 112, 252);
+    background-color: #2a5885;
     margin-top: 10px;
     height: 40px;
     position: relative;
@@ -13,7 +13,7 @@
     left: 370px;
 }
 .noData {
-    background-color: rgb(114, 112, 252);
+    background-color: #2a5885;
     margin-top: 10px;
     height: 40px;
     position: relative;

@@ -24,7 +24,7 @@ export class BorderColorDirective implements OnInit {
             this.renderer.setStyle(
                 this.element.nativeElement,
                 'border',
-                '5px solid rgb(114, 112, 252)'
+                '5px solid #2a5885'
             );
         }
     }
