@@ -6,17 +6,8 @@ import { DirectivesPipesModule } from '../directives-pipes/directives-pipes.modu
 import { CoreModule } from '../core/core.module';
 
 @NgModule({
-  declarations: [
-    CoursesComponent,
-    CourseItemComponent,
-  ],
-  imports: [
-    CommonModule,
-    DirectivesPipesModule,
-    CoreModule
-  ],
-  exports: [
-    CoursesComponent,
-  ]
+    declarations: [CoursesComponent, CourseItemComponent],
+    imports: [CommonModule, DirectivesPipesModule, CoreModule],
+    exports: [CoursesComponent],
 })
-export class CoursesListModule { }
+export class CoursesListModule {}

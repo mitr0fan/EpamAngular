@@ -4,22 +4,19 @@ import { data } from '../../common/constants';
 import { format } from 'date-fns';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class CoursesService {
+    constructor() {}
 
-  constructor() {
-  }
+    getCourses(): Course[] {
+        const courses: Course[] = [];
 
-  getCourses(): Course[] {
-    const courses: Course[] = [];
+        data.forEach((i) => {
+            i.date = format(new Date(i.date), 'dd.MM.yyyy');
+            courses.push(i);
+        });
 
-    data.forEach((i) => {
-      i.date = format(new Date(i.date), 'dd.MM.yyyy');
-      courses.push(i);
-    });
-
-    return courses;
-  }
-
+        return courses;
+    }
 }

@@ -10,18 +10,16 @@ import { appRoutes } from './app.routes';
 import { DirectivesPipesModule } from './directives-pipes/directives-pipes.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    CoreModule,
-    CoursesListModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes),
-    DirectivesPipesModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        CoreModule,
+        CoursesListModule,
+        FormsModule,
+        RouterModule.forRoot(appRoutes),
+        DirectivesPipesModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

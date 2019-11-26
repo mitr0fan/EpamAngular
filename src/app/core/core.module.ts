@@ -7,20 +7,9 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { DirectivesPipesModule } from '../directives-pipes/directives-pipes.module';
 
-
-
 @NgModule({
-  declarations: [HeaderComponent, BreadcrumbsComponent, FooterComponent, SearchComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    DirectivesPipesModule
-  ],
-  exports: [
-    BreadcrumbsComponent,
-    FooterComponent,
-    HeaderComponent,
-    SearchComponent
-  ]
+    declarations: [HeaderComponent, BreadcrumbsComponent, FooterComponent, SearchComponent],
+    imports: [CommonModule, FormsModule, DirectivesPipesModule],
+    exports: [BreadcrumbsComponent, FooterComponent, HeaderComponent, SearchComponent],
 })
-export class CoreModule { }
+export class CoreModule {}
