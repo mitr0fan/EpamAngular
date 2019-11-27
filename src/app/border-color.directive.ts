@@ -21,7 +21,8 @@ export class BorderColorDirective implements OnInit {
         const difference = new Date().getTime() - new Date(this.date).getTime();
 
         if (difference > 0 && difference < this.twoWeeks) {
-            this.renderer.setStyle(this.element.nativeElement,
+            this.renderer.setStyle(
+                this.element.nativeElement,
                 'border',
                 this.borderParametersCurrentCourse
             );
