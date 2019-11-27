@@ -9,13 +9,19 @@ const minutes = 200;
 for ( let i = 1; i < 6; i++ ) {
     const randomSign = Math.random();
     let top;
+
+    // number from 0 to 1, allow regulate amount of courses dates in past and in future
+    const randomNumber = 0.3;
+
     if (i % 2 > 0) {
         top = false;
     } else {
         top = true;
     }
 
-    if (randomSign > 0.3) {
+    // if randomSign > randomNumber, course date earlier current date
+    // else - date later current date (in future)
+    if (randomSign > randomNumber) {
         data.push({
             id: i,
             title: `Video course ${i}`,

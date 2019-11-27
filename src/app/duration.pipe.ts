@@ -4,14 +4,15 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'duration',
 })
 export class DurationPipe implements PipeTransform {
-    transform(value: number, ...args: any[]): any {
-        const hour = 1000 * 60 * 60; // кол-во мс в 60 минутах
+    transform(duration: number, ...args: any[]): any {
+        const hour = 1000 * 60 * 60; // ms in 60 minutes
+        const oneMinute = 1000 * 60; // ms in one minute
 
-        if (value <= hour) {
-            return value / 1000 / 60 + 'min';
+        if (duration <= hour) {
+            return duration / oneMinute + 'min';
         } else {
-            const hours = Math.floor(value / hour);
-            const minutes = (value - hours * hour) / 1000 / 60;
+            const hours = Math.floor(duration / hour);
+            const minutes = (duration - hours * hour) / oneMinute;
 
             return `${hours}h ${minutes}min`;
         }
