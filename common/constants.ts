@@ -11,7 +11,7 @@ for ( let i = 1; i < 6; i++ ) {
     let top;
 
     // number from 0 to 1, allow regulate amount of courses dates in past and in future
-    const randomNumber = 0.3;
+    const regulatorDates = 0.3;
 
     if (i % 2 > 0) {
         top = false;
@@ -19,9 +19,7 @@ for ( let i = 1; i < 6; i++ ) {
         top = true;
     }
 
-    // if randomSign > randomNumber, course date earlier current date
-    // else - date later current date (in future)
-    if (randomSign > randomNumber) {
+    if (randomSign > regulatorDates) {
         data.push({
             id: i,
             title: `Video course ${i}`,

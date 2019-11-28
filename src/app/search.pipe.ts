@@ -6,6 +6,7 @@ import { Course } from './course';
 })
 export class SearchPipe implements PipeTransform {
     transform(value: Course[], name: string): Course[] {
+
         return value.filter((course) => {
             if (course.title.toLowerCase().includes(name.toLowerCase())) {
                 return true;

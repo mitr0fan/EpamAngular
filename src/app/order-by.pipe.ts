@@ -10,6 +10,7 @@ export class OrderByPipe implements PipeTransform {
             let date1 = `${a.date.toString().slice(3, 5)}.
             ${a.date.toString().slice(0, 2)}.
             ${a.date.toString().slice(6)}`;
+
             let date2 = `${b.date.toString().slice(3, 5)}.
             ${b.date.toString().slice(0, 2)}.
             ${b.date.toString().slice(6)}`;

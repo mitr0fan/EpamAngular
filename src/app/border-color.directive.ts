@@ -17,7 +17,6 @@ export class BorderColorDirective implements OnInit {
         ${this.date.slice(0, 2)}.
         ${this.date.slice(6)}`;
 
-        // time in ms between current date an course creation date
         const difference = new Date().getTime() - new Date(this.date).getTime();
 
         if (difference > 0 && difference < this.twoWeeks) {
