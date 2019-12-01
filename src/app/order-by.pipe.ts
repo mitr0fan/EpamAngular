@@ -3,6 +3,7 @@ import { Course } from './course';
 
 @Pipe({
     name: 'orderBy',
+    pure: false,
 })
 export class OrderByPipe implements PipeTransform {
     transform(value: Course[], ...args: any[]): Course[] {

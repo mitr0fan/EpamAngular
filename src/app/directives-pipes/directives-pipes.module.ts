@@ -9,6 +9,5 @@ import { OrderByPipe } from '../order-by.pipe';
     declarations: [SearchPipe, DurationPipe, BorderColorDirective, OrderByPipe],
     imports: [CommonModule],
     exports: [SearchPipe, DurationPipe, BorderColorDirective, OrderByPipe],
-    providers: [SearchPipe],
 })
 export class DirectivesPipesModule {}

@@ -6,6 +6,6 @@
     
     <span class="duration">Duration: {{course.duration | duration}}</span>
     
-    <span class="button edit">Edit</span>
+    <span class="button edit" (click)="edit()">Edit</span>
     <span class="button delete" (click)="delete(course.id)">Delete</span>
 </div>

@@ -8,6 +8,9 @@ import { CoursesListModule } from './courses-list/courses-list.module';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { DirectivesPipesModule } from './directives-pipes/directives-pipes.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CoursesService } from './courses.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -18,8 +21,10 @@ import { DirectivesPipesModule } from './directives-pipes/directives-pipes.modul
         FormsModule,
         RouterModule.forRoot(appRoutes),
         DirectivesPipesModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
     ],
-    providers: [],
+    providers: [CoursesService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,26 @@
+.buttonYes, .buttonNo {
+    position: absolute;
+    padding: 5px;
+    background-color: #2a5885;
+    color: white;
+    width: 70px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.buttonNo {
+    left: 175px;
+}
+.buttonYes {
+    left: 85px;
+}
+:host {
+    position: relative;
+}
+.buttonYes:hover, .buttonNo:hover {
+    cursor: pointer;
+}
+p {
+    font-weight: 600;
+    font-size: large;
+}

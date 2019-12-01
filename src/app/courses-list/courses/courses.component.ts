@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from 'src/app/courses.service';
 import { Course } from 'src/app/course';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteCoursePopupComponent } from 'src/app/courses-list/delete-course-popup/delete-course-popup.component';
 
 @Component({
     selector: 'app-courses',
@@ -8,13 +10,13 @@ import { Course } from 'src/app/course';
     styleUrls: ['./courses.component.css'],
 })
 export class CoursesComponent implements OnInit {
-    constructor(private coursesService: CoursesService) {}
+    constructor(private coursesService: CoursesService, private dialog: MatDialog) {}
 
     public courses: Course[];
     public inputSearch = '';
 
     ngOnInit() {
-        this.courses = this.coursesService.getCourses();
+        this.courses = this.coursesService.getList();
     }
 
     loadMoreCourses() {
@@ -22,10 +24,25 @@ export class CoursesComponent implements OnInit {
     }
 
     deleteCourse(id: number) {
-        console.log(`Delete course with id: ${id}`);
+        const dialogRef = this.dialog.open(DeleteCoursePopupComponent, {
+            height: '120px',
+            data: { idCourse: id },
+        });
+
+        const removeCoursePromise: Promise<any> = dialogRef.afterClosed().toPromise();
+        removeCoursePromise.then(() => (this.courses = this.coursesService.getList()));
     }
 
     search(value: string) {
         this.inputSearch = value;
+    }
+
+    createNewCourse() {
+        this.coursesService.createCourse();
+        this.courses = this.coursesService.getList();
+    }
+
+    update() {
+        this.coursesService.updateItem();
     }
 }

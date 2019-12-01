@@ -9,6 +9,7 @@ import { Course } from 'src/app/course';
 export class CourseItemComponent implements OnInit {
     @Input() course: Course;
     @Output() deleteEvent: EventEmitter<number> = new EventEmitter();
+    @Output() editEvent = new EventEmitter();
 
     constructor() {}
 
@@ -16,5 +17,9 @@ export class CourseItemComponent implements OnInit {
 
     delete(id: number) {
         this.deleteEvent.emit(id);
+    }
+
+    edit() {
+        this.editEvent.emit();
     }
 }

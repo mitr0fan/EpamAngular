@@ -9,7 +9,5 @@ import { CoursesService } from './courses.service';
 export class AppComponent implements OnInit {
     constructor(private coursesService: CoursesService) {}
 
-    ngOnInit() {
-        console.log('ngOnInit() was called');
-    }
+    ngOnInit() {}
 }
