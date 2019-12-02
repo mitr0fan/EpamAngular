@@ -1,0 +1,32 @@
+.loginWindow {
+    padding-top: 70px;
+}
+.logContainer {
+    margin: 0 auto;
+    height: 230px;
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+span {
+    display: block;
+}
+.loginField {
+    margin-left: 120px;
+    font-weight: 600;
+    font-size: large;
+}
+.email, .password {
+    margin-left: 60px;
+    margin-top: 10px;
+}
+.logButton {
+    background-color: #2a5885;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 100px;
+    color: white;
+    border: none;
+    font-size: 12pt;
+}

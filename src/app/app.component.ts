@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoursesService } from './courses.service';
+import { AuthorizationService } from './authorization.service';
 
 @Component({
     selector: 'app-root',
@@ -7,7 +7,11 @@ import { CoursesService } from './courses.service';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-    constructor(private coursesService: CoursesService) {}
+    constructor( private authService: AuthorizationService ) {}
+
+    authenticated() {
+        return this.authService.isAuthenticated();
+    }
 
     ngOnInit() {}
 }

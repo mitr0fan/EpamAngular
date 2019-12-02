@@ -1,6 +1,24 @@
 import { Course } from 'src/app/course';
+import { User } from 'src/app/user';
 
 export const data: Course[] = [];
+
+export const fakeUsers: User[] = [
+    {
+        id: 1,
+        firstName: 'Anton',
+        lastName: 'Mitrofanov',
+        email: 'am@epam.com',
+        password: '0000'
+    },
+    {
+        id: 2,
+        firstName: 'Baton',
+        lastName: 'Batonov',
+        email: 'bb@epam.com',
+        password: '1111'
+    }
+];
 
 const time = new Date().getTime();
 const changes = 2000000000;

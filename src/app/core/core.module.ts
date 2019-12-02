@@ -6,10 +6,11 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { DirectivesPipesModule } from '../directives-pipes/directives-pipes.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [HeaderComponent, BreadcrumbsComponent, FooterComponent, SearchComponent],
-    imports: [CommonModule, FormsModule, DirectivesPipesModule],
+    imports: [CommonModule, FormsModule, DirectivesPipesModule, RouterModule],
     exports: [BreadcrumbsComponent, FooterComponent, HeaderComponent, SearchComponent],
 })
 export class CoreModule {}

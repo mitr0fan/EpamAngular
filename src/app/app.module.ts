@@ -11,6 +11,8 @@ import { DirectivesPipesModule } from './directives-pipes/directives-pipes.modul
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CoursesService } from './courses.service';
+import { AuthorizationService } from './authorization.service';
+import { LoginPageModule } from './login-page/login-page.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -23,8 +25,9 @@ import { CoursesService } from './courses.service';
         DirectivesPipesModule,
         BrowserAnimationsModule,
         MatDialogModule,
+        LoginPageModule
     ],
-    providers: [CoursesService],
+    providers: [CoursesService, AuthorizationService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

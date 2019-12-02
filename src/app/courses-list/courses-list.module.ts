@@ -9,7 +9,7 @@ import { DeleteCoursePopupComponent } from './delete-course-popup/delete-course-
 @NgModule({
     declarations: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],
     imports: [CommonModule, DirectivesPipesModule, CoreModule],
-    exports: [],
+    exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],
     entryComponents: [DeleteCoursePopupComponent],
 })
 export class CoursesListModule {}
