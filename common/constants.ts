@@ -6,17 +6,17 @@ export const data: Course[] = [];
 export const fakeUsers: User[] = [
     {
         id: 1,
-        firstName: 'Anton',
-        lastName: 'Mitrofanov',
-        email: 'am@epam.com',
+        firstName: 'Jack',
+        lastName: 'Sparrow',
+        email: 'email1',
         password: '0000'
     },
     {
         id: 2,
-        firstName: 'Baton',
-        lastName: 'Batonov',
-        email: 'bb@epam.com',
-        password: '1111'
+        firstName: 'Luke',
+        lastName: 'Skywalker',
+        email: 'email2',
+        password: '0000'
     }
 ];
 

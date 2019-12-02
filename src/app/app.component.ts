@@ -7,6 +7,7 @@ import { AuthorizationService } from './authorization.service';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+    public user: string;
     constructor( private authService: AuthorizationService ) {}
 
     authenticated() {
@@ -14,4 +15,11 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {}
+
+    showUser() {
+        if (!!this.authService.currentUser) {
+            this.user = this.authService.currentUser.firstName + ' ' +
+            this.authService.currentUser.lastName;
+        }
+    }
 }

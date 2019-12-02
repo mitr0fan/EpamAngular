@@ -2,8 +2,9 @@
     <header>
         <div id="container">
             <span id="logo">Courses</span>
-            <span class="login">{{login}}</span>
-            <span class="button" (click)="logOff()">Log off</span>
+            <span class="login" *ngIf="showLogOffButton() && !!userName">{{userName}}</span>
+            <span class="login" *ngIf="showLogOffButton() && !userName">{{userNameFromToken}}</span>
+            <span class="button" *ngIf="showLogOffButton()" (click)="logOff()">Log off</span>
         </div>
     </header>
 </div>

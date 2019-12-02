@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthorizationService } from 'src/app/authorization.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { AuthorizationService } from 'src/app/authorization.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @Output() loginEvent = new EventEmitter();
   public email: string;
   public password: string;
 
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (!this.authService.isAuthenticated()) {
       this.authService.login(this.email, this.password);
+      this.loginEvent.emit();
     }
   }
 

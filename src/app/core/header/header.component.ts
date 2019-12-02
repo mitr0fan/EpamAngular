@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthorizationService } from 'src/app/authorization.service';
 
 @Component({
@@ -7,16 +7,24 @@ import { AuthorizationService } from 'src/app/authorization.service';
     styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-
-    public login = '';
+    @Input() userName: string;
+    public userNameFromToken: string;
 
     constructor( private authService: AuthorizationService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        if (!!localStorage.getItem('token')) {
+            this.userNameFromToken = localStorage.getItem('token');
+        }
+    }
 
     logOff() {
         if (this.authService.isAuthenticated()) {
             this.authService.logout();
         }
+    }
+
+    showLogOffButton() {
+        return this.authService.isAuthenticated();
     }
 }

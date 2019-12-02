@@ -18,18 +18,20 @@ header {
     height: 38px;
     width: 800px;
     padding-top: 10px;
+    position: relative;
 }
 #logo {
     margin-top: 12px;
 }
 .login {
-    margin-left: 530px;
+    margin-left: 460px;
 }
 .button {
     background-color: white;
     padding: 5px;
-    margin-left: 10px;
+    margin-right: 10px;
     color: black;
     position: absolute;
     text-align: center;
+    right: 0;
 }

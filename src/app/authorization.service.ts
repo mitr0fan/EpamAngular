@@ -8,22 +8,32 @@ import { User } from './user';
 export class AuthorizationService {
 
   private signedIn = false;
+  public currentUser: User;
 
   constructor() { }
 
-  login(email: string, pass: string) {
+  login(email?: string, pass?: string) {
     const user = this.getUserInfo(email);
 
-    if (user !== undefined && user.password === pass) {
+    if (!!user && user.password === pass) {
       this.signedIn = !this.signedIn;
+      this.currentUser = user;
+      console.log('Logged in successfully');
+
+      localStorage.setItem('token', `${user.firstName} ${user.lastName}`);
     }
   }
 
   logout() {
     this.signedIn = !this.signedIn;
+
+    this.deleteToken();
   }
 
   isAuthenticated(): boolean {
+    if (!!localStorage.getItem('token')) {
+      this.signedIn = true;
+    }
     return this.signedIn;
   }
 
@@ -37,5 +47,9 @@ export class AuthorizationService {
     });
 
     return user;
+  }
+
+  deleteToken() {
+    localStorage.removeItem('token');
   }
 }
