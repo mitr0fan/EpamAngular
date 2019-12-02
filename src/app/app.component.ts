@@ -8,7 +8,7 @@ import { AuthorizationService } from './authorization.service';
 })
 export class AppComponent implements OnInit {
     public user: string;
-    constructor( private authService: AuthorizationService ) {}
+    constructor(private authService: AuthorizationService) {}
 
     authenticated() {
         return this.authService.isAuthenticated();
@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
 
     showUser() {
         if (!!this.authService.currentUser) {
-            this.user = this.authService.currentUser.firstName + ' ' +
-            this.authService.currentUser.lastName;
+            this.user = this.authService.currentUser.firstName +
+                ' ' + this.authService.currentUser.lastName;
         }
     }
 }

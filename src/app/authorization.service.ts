@@ -3,53 +3,52 @@ import { fakeUsers } from 'common/constants';
 import { User } from './user';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class AuthorizationService {
+    private signedIn = false;
+    public currentUser: User;
 
-  private signedIn = false;
-  public currentUser: User;
+    constructor() {}
 
-  constructor() { }
+    login(email: string, pass: string) {
+        const user = this.getUserInfo(email);
 
-  login(email?: string, pass?: string) {
-    const user = this.getUserInfo(email);
+        if (!!user && user.password === pass) {
+            this.signedIn = !this.signedIn;
+            this.currentUser = user;
+            console.log('Logged in successfully');
 
-    if (!!user && user.password === pass) {
-      this.signedIn = !this.signedIn;
-      this.currentUser = user;
-      console.log('Logged in successfully');
-
-      localStorage.setItem('token', `${user.firstName} ${user.lastName}`);
+            localStorage.setItem('token', `${user.firstName} ${user.lastName}`);
+        }
     }
-  }
 
-  logout() {
-    this.signedIn = !this.signedIn;
+    logout() {
+        this.signedIn = !this.signedIn;
 
-    this.deleteToken();
-  }
-
-  isAuthenticated(): boolean {
-    if (!!localStorage.getItem('token')) {
-      this.signedIn = true;
+        this.deleteToken();
     }
-    return this.signedIn;
-  }
 
-  getUserInfo(email: string) {
-    let user: User;
+    isAuthenticated(): boolean {
+        if (!!localStorage.getItem('token')) {
+            this.signedIn = true;
+        }
+        return this.signedIn;
+    }
 
-    fakeUsers.forEach((i) => {
-      if (i.email === email) {
-        user = i;
-      }
-    });
+    getUserInfo(email: string) {
+        let user: User;
 
-    return user;
-  }
+        fakeUsers.forEach((i) => {
+            if (i.email === email) {
+                user = i;
+            }
+        });
 
-  deleteToken() {
-    localStorage.removeItem('token');
-  }
+        return user;
+    }
+
+    deleteToken() {
+        localStorage.removeItem('token');
+    }
 }

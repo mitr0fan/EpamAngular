@@ -25,7 +25,7 @@ import { LoginPageModule } from './login-page/login-page.module';
         DirectivesPipesModule,
         BrowserAnimationsModule,
         MatDialogModule,
-        LoginPageModule
+        LoginPageModule,
     ],
     providers: [CoursesService, AuthorizationService],
     bootstrap: [AppComponent],
