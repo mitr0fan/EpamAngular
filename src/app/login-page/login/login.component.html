@@ -1,15 +1,12 @@
-<div class="loginWindow">
-    <div class="logContainer">
-        <div>
-            <span class="loginField">Login</span>
-            <mat-form-field class="email">
-                <input type="text" matInput placeholder="Email" required [(ngModel)]="email">
-            </mat-form-field>
-            <mat-form-field class="password">
-                <input type="password" matInput placeholder="Password" required [(ngModel)]="password">
-            </mat-form-field>
-            <button class="button logButton" (click)="login()">Login</button>
-        </div>
+<div class="field">
+    <div class="login">
+        <span class="login__name">Login</span>
+        <mat-form-field class="login__input">
+            <input type="text" matInput placeholder="Email" required [(ngModel)]="email">
+        </mat-form-field>
+        <mat-form-field class="login__input">
+            <input type="password" matInput placeholder="Password" required [(ngModel)]="password">
+        </mat-form-field>
+        <button class="login__button" (click)="login()">Login</button>
     </div>
 </div>
-    

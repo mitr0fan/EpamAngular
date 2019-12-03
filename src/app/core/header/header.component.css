@@ -1,4 +1,16 @@
-header {
+.header__content {
+    margin: 0 auto;
+    height: 38px;
+    width: 800px;
+    padding-top: 10px;
+    position: relative;
+}
+.header__logo {
+    font-size: larger;
+    font-weight: 600;
+    margin-top: 12px;
+}
+.header {
     height: 50px;
     width: 100%;
     position: fixed;
@@ -6,32 +18,23 @@ header {
     z-index: 10;
     color: white;
 }
-#header {
-    position: absolute;
-}
-#logo {
-    font-size: larger;
-    font-weight: 600;
-}
-#container {
-    margin: 0 auto;
-    height: 38px;
-    width: 800px;
-    padding-top: 10px;
-    position: relative;
-}
-#logo {
-    margin-top: 12px;
-}
-.login {
+.header__login {
     margin-left: 460px;
 }
-.button {
-    background-color: white;
+.header__button {
+    border-radius: 5px;
+    width: 100px;
+    outline: none;
     padding: 5px;
+    text-align: center;
+}
+.header__button_color-white {
+    background-color: white;
     margin-right: 10px;
     color: black;
     position: absolute;
-    text-align: center;
     right: 0;
+}
+.header__button {
+    cursor: pointer;
 }

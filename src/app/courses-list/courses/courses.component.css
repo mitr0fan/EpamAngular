@@ -1,4 +1,4 @@
-.loadMore {
+.courses-list__button {
     background-color: #2a5885;
     margin-top: 10px;
     height: 40px;
@@ -7,12 +7,15 @@
     color: white;
     margin-bottom: 30px;
 }
-.loadMore > span {
+.courses-list__button:hover {
+    cursor: pointer;
+}
+.courses-list__content-button {
     position: absolute;
     top: 8px;
     left: 370px;
 }
-.noData {
+.courses-list__empty-list {
     background-color: #2a5885;
     margin-top: 10px;
     height: 40px;
@@ -21,7 +24,7 @@
     color: white;
     margin-bottom: 30px;
 }
-.noData > span {
+.courses-list__content-empty {
     position: absolute;
     top: 8px;
     left: 320px;

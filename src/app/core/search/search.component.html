@@ -1,5 +1,7 @@
-<div class="searchContainer">
-    <input type="text" placeholder="Name, fragment, or date" [(ngModel)]="inputValue">
-    <span class="button search" (click)="search()">Search</span>
-    <span class="button addCourse" (click)="addCourse()">Add course</span>
+<div class="search-panel">
+    <input type="text" placeholder="Name, fragment, or date" 
+    [(ngModel)]="inputValue" class="search-panel__input"
+    >
+    <span class="search-panel__button" (click)="search()">Search</span>
+    <span class="search-panel__button search-panel__button_right" (click)="addCourse()">Add course</span>
 </div>

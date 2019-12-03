@@ -1,69 +1,70 @@
-.course {
+.course-item {
     margin-top: 10px;
     background-color: white;
     padding: 10px;
     position: relative;
     border-radius: 10px;
 }
-.course:hover {
+.course-item:hover {
     cursor: pointer;
     box-shadow: 0 0 8px;
 }
 .title {
     font-weight: 600;
-    margin-top: 10px;
 }
-.id {
+.course-item__title {
     font-weight: 600;
     font-size: large;
+    margin-top: 10px;
 }
 
-.date, .duration {
+.course-item__date, .course-item__duration {
     position: absolute;
     top: 10px;
 }
-.date {
+.course-item__date {
     left: 400px;
 }
-.button {
+.course-item__button {
     position: absolute;
     padding: 5px;
     background-color: #2a5885;
     color: white;
     width: 100px;
     text-align: center;
+    border-radius: 5px;
 }
-.edit {
+.course-item__button_edit {
     right: 10px;
     top: 25px;
 }
-.delete {
+.course-item__button_delete {
     right: 10px;
     top: 65px;
 }
-.duration {
+.course-item__duration {
     left: 400px;
     top: 30px;
 }
-.description {
+.course-item__description {
     height: 60px;
     margin-top: 15px;
     width: 650px;
 }
-.star {
+.course-item__top {
     font-size: 25px;
     position: absolute;
     left: 135px;
     top: 3px;
 }
-.topRated {
+.course-item-top {
     margin-top: 10px;
     background-color: azure;
     padding: 10px;
     position: relative;
     border-radius: 10px;
 }
-.topRated:hover {
+.course-item-top:hover {
     cursor: pointer;
     box-shadow: 0 0 8px;
 }

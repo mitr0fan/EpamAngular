@@ -1,4 +1,4 @@
-.buttonYes, .buttonNo {
+.popup__button, .popup__button {
     position: absolute;
     padding: 5px;
     background-color: #2a5885;
@@ -8,19 +8,19 @@
     border-radius: 5px;
     margin-top: 20px;
 }
-.buttonNo {
+.popup__button_no {
     left: 175px;
 }
-.buttonYes {
+.popup__button_yes {
     left: 85px;
 }
 :host {
     position: relative;
 }
-.buttonYes:hover, .buttonNo:hover {
+.popup__button_yes:hover, .popup__button_no:hover {
     cursor: pointer;
 }
-p {
+.popup__content {
     font-weight: 600;
     font-size: large;
 }

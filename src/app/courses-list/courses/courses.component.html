@@ -1,16 +1,18 @@
 <app-search (searchEvent)="search($event)" (createCourseEvent)="createNewCourse()"></app-search>
-<div>
+<div class="courses-list">
     <div *ngIf="courses.length > 0">
-        <app-course-item *ngFor="let course of courses | orderBy | search:inputSearch" [course]="course"
-        (deleteEvent)="deleteCourse($event)"
-        (editEvent)="update()"></app-course-item>
+        <app-course-item *ngFor="let course of courses | orderBy | search:inputSearch" 
+        [course]="course" (deleteEvent)="deleteCourse($event)"
+        (editEvent)="update()">
+        </app-course-item>
     </div>
 
-    <div class="noData" *ngIf="(courses | search:inputSearch).length === 0">
-        <span>No Data, add new course</span>
+    <div class="courses-list__empty-list" *ngIf="(courses | search:inputSearch).length === 0">
+        <span class="courses-list__content-empty">No Data, add new course</span>
     </div>
 
-    <div class="loadMore" (click)="loadMoreCourses()" *ngIf="(courses | search:inputSearch).length !== 0">
-        <span>Load More</span>
+    <div class="courses-list__button" (click)="loadMoreCourses()"
+    *ngIf="(courses | search:inputSearch).length !== 0">
+        <span class="courses-list__content-button">Load More</span>
     </div>
 </div>

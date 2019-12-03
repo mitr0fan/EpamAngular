@@ -1,12 +1,12 @@
-footer {
+.footer {
     font-size: small;
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: rgb(233, 232, 232);
-    z-index: 100;
+    z-index: 10;
 }
-footer > div {
+.footer__content {
     margin: 0 auto;
     width: 800px;
     text-align: center;

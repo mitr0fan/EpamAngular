@@ -18,8 +18,10 @@ export class AppComponent implements OnInit {
 
     showUser() {
         if (!!this.authService.currentUser) {
-            this.user = this.authService.currentUser.firstName +
-                ' ' + this.authService.currentUser.lastName;
+            this.user =
+                this.authService.currentUser.firstName +
+                ' ' +
+                this.authService.currentUser.lastName;
         }
     }
 }

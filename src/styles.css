@@ -7,19 +7,8 @@
     width: 800px;
     margin: 0 auto;
 }
-.button:hover, .loadMore:hover {
-    cursor: pointer;
-}
-.button {
-    border-radius: 5px;
-    width: 100px;
-    outline: none;
-}
 body {
     background-color: rgb(233, 232, 232);
-}
-.footer {
-    position: relative;
 }
 
 html, body { height: 100%; }

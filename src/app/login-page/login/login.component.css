@@ -1,7 +1,7 @@
-.loginWindow {
+.field {
     padding-top: 70px;
 }
-.logContainer {
+.login {
     margin: 0 auto;
     height: 230px;
     width: 300px;
@@ -9,19 +9,17 @@
     border-radius: 10px;
     padding: 10px;
 }
-span {
+.login__name {
     display: block;
-}
-.loginField {
     margin-left: 120px;
     font-weight: 600;
     font-size: large;
 }
-.email, .password {
+.login__input {
     margin-left: 60px;
     margin-top: 10px;
 }
-.logButton {
+.login__button {
     background-color: #2a5885;
     padding: 5px;
     margin-top: 10px;
@@ -29,4 +27,9 @@ span {
     color: white;
     border: none;
     font-size: 12pt;
+    width: 100px;
+    border-radius: 5px;
+}
+.login__button:hover {
+    cursor: pointer;
 }

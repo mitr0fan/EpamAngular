@@ -1,10 +1,9 @@
-<div id="header">
-    <header>
-        <div id="container">
-            <span id="logo">Courses</span>
-            <span class="login" *ngIf="showLogOffButton() && !!userName">{{userName}}</span>
-            <span class="login" *ngIf="showLogOffButton() && !userName">{{userNameFromToken}}</span>
-            <span class="button" *ngIf="showLogOffButton()" (click)="logOff()">Log off</span>
-        </div>
+<div class="header">
+    <header class="header__content">
+        <span class="header__logo">Courses</span>
+        <span class="header__login" *ngIf="showLogOffButton() && !!userName">{{userName}}</span>
+        <span class="header__login" *ngIf="showLogOffButton() && !userName">{{userNameFromToken}}</span>
+        <span class="header__button header__button_color-white" *ngIf="showLogOffButton()" (click)="logOff()">Log off</span>
     </header>
 </div>
+
