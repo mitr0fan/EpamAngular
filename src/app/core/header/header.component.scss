@@ -6,8 +6,10 @@
     position: relative;
 }
 .header__logo {
-    font-size: larger;
-    font-weight: 600;
+    font: {
+        size: larger;
+        weight: 600;
+    }
     margin-top: 12px;
 }
 .header {

@@ -1,4 +1,4 @@
-.courses-list__button {
+@mixin styles-button {
     background-color: #2a5885;
     margin-top: 10px;
     height: 40px;
@@ -7,8 +7,11 @@
     color: white;
     margin-bottom: 30px;
 }
-.courses-list__button:hover {
-    cursor: pointer;
+.courses-list__button {
+   @include styles-button();
+    &:hover {
+        cursor: pointer;
+    }
 }
 .courses-list__content-button {
     position: absolute;
@@ -16,13 +19,7 @@
     left: 370px;
 }
 .courses-list__empty-list {
-    background-color: #2a5885;
-    margin-top: 10px;
-    height: 40px;
-    position: relative;
-    border-radius: 10px;
-    color: white;
-    margin-bottom: 30px;
+    @include styles-button();
 }
 .courses-list__content-empty {
     position: absolute;

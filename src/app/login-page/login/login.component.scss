@@ -16,20 +16,24 @@
     font-size: large;
 }
 .login__input {
-    margin-left: 60px;
-    margin-top: 10px;
+    margin: {
+        left: 60px;
+        top: 10px;
+    }
 }
 .login__button {
     background-color: #2a5885;
     padding: 5px;
-    margin-top: 10px;
-    margin-left: 100px;
+    margin: {
+        top: 10px;
+        left: 100px;
+    };
     color: white;
     border: none;
     font-size: 12pt;
     width: 100px;
     border-radius: 5px;
-}
-.login__button:hover {
-    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+    }
 }

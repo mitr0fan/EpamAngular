@@ -7,7 +7,7 @@ import { DeleteCoursePopupComponent } from 'src/app/courses-list/delete-course-p
 @Component({
     selector: 'app-courses',
     templateUrl: './courses.component.html',
-    styleUrls: ['./courses.component.css'],
+    styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
     constructor(private coursesService: CoursesService, private dialog: MatDialog) {}

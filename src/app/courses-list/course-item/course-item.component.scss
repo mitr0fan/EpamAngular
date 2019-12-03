@@ -63,8 +63,8 @@
     padding: 10px;
     position: relative;
     border-radius: 10px;
-}
-.course-item-top:hover {
-    cursor: pointer;
-    box-shadow: 0 0 8px;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 8px;
+    }
 }

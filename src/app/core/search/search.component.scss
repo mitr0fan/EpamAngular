@@ -14,6 +14,9 @@
     display: inline-block;
     text-align: center;
     border-radius: 5px;
+    &:hover {
+        cursor: pointer;
+    }
 }
 .search-panel__input {
     width: 300px;
@@ -25,7 +28,4 @@
 }
 .search-panel__button_right {
     float: right;
-}
-.search-panel__button:hover {
-    cursor: pointer;
 }

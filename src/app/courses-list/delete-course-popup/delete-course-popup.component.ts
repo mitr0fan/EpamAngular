@@ -5,7 +5,7 @@ import { CoursesService } from 'src/app/courses.service';
 @Component({
     selector: 'app-delete-course-popup',
     templateUrl: './delete-course-popup.component.html',
-    styleUrls: ['./delete-course-popup.component.css'],
+    styleUrls: ['./delete-course-popup.component.scss'],
 })
 export class DeleteCoursePopupComponent implements OnInit {
     constructor(
