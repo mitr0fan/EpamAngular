@@ -7,17 +7,7 @@
     border-radius: 10px;
 }
 .search-panel__button {
-    background-color: $main-color-blue;
-    margin-right: 5px;
-    padding: 5px;
-    color: white;
-    width: 100px;
-    display: inline-block;
-    text-align: center;
-    border-radius: 5px;
-    &:hover {
-        cursor: pointer;
-    }
+    @include button();
 }
 .search-panel__input {
     width: 300px;
@@ -29,4 +19,5 @@
 }
 .search-panel__button_right {
     float: right;
+    margin-right: 5px;
 }

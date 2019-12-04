@@ -25,11 +25,7 @@
     margin-left: 460px;
 }
 .header__button {
-    border-radius: 5px;
-    width: 100px;
-    outline: none;
-    padding: 5px;
-    text-align: center;
+    @include button();
 }
 .header__button_color-white {
     background-color: white;

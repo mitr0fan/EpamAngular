@@ -24,13 +24,8 @@
     left: 400px;
 }
 .course-item__button {
+    @include button();
     position: absolute;
-    padding: 5px;
-    background-color: $main-color-blue;
-    color: white;
-    width: 100px;
-    text-align: center;
-    border-radius: 5px;
 }
 .course-item__button_edit {
     right: 10px;

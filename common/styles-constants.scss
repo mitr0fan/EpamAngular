@@ -1,3 +1,19 @@
 $main-color-blue: #2a5885;
 $background-color: rgb(233, 232, 232);
 $back-color-white: white;
+@mixin button {
+    background-color: $main-color-blue;
+    padding: 5px;
+    border: none;
+    width: 100px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    outline: none;
+    display: inline-block;
+    box-sizing: border-box;
+    height: 32px;
+    &:hover {
+        cursor: pointer;
+    }
+}

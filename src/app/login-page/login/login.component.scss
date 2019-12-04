@@ -23,18 +23,10 @@
     }
 }
 .login__button {
-    background-color: $main-color-blue;
-    padding: 5px;
+    @include button();
     margin: {
         top: 10px;
         left: 100px;
     };
-    color: white;
-    border: none;
     font-size: 12pt;
-    width: 100px;
-    border-radius: 5px;
-    &:hover {
-        cursor: pointer;
-    }
 }
