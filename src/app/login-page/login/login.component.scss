@@ -1,3 +1,4 @@
+@import '../../../../common/styles-constants.scss';
 .field {
     padding-top: 70px;
 }
@@ -5,7 +6,7 @@
     margin: 0 auto;
     height: 230px;
     width: 300px;
-    background-color: white;
+    background-color: $back-color-white;
     border-radius: 10px;
     padding: 10px;
 }
@@ -22,7 +23,7 @@
     }
 }
 .login__button {
-    background-color: #2a5885;
+    background-color: $main-color-blue;
     padding: 5px;
     margin: {
         top: 10px;

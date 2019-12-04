@@ -1,5 +1,6 @@
+@import '../../../../common/styles-constants.scss';
 @mixin styles-button {
-    background-color: #2a5885;
+    background-color: $main-color-blue;
     margin-top: 10px;
     height: 40px;
     position: relative;

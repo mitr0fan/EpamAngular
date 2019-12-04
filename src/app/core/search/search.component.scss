@@ -1,12 +1,13 @@
+@import '../../../../common/styles-constants.scss';
 .search-panel {
     position: relative;
     margin-top: 10px;
-    background-color: white;
+    background-color: $back-color-white;
     padding: 5px;
     border-radius: 10px;
 }
 .search-panel__button {
-    background-color: #2a5885;
+    background-color: $main-color-blue;
     margin-right: 5px;
     padding: 5px;
     color: white;
