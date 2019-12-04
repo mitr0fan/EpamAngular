@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DurationPipe implements PipeTransform {
     transform(duration: number, ...args: any[]): any {
-        const hour = 1000 * 60 * 60; // ms in 60 minutes
-        const oneMinute = 1000 * 60; // ms in one minute
+        const hour = 1000 * 60 * 60;
+        const oneMinute = 1000 * 60;
 
         if (duration <= hour) {
             return duration / oneMinute + 'min';

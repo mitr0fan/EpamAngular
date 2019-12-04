@@ -4,13 +4,10 @@
     padding: 10px;
     position: relative;
     border-radius: 10px;
-}
-.course-item:hover {
-    cursor: pointer;
-    box-shadow: 0 0 8px;
-}
-.title {
-    font-weight: 600;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 8px;
+    }
 }
 .course-item__title {
     font-weight: 600;
