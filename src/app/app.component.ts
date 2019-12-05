@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthorizationService } from './authorization.service';
 
 @Component({
@@ -6,15 +6,13 @@ import { AuthorizationService } from './authorization.service';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     public user: string;
     constructor(private authService: AuthorizationService) {}
 
     authenticated() {
         return this.authService.isAuthenticated();
     }
-
-    ngOnInit() {}
 
     showUser() {
         if (!!this.authService.currentUser) {

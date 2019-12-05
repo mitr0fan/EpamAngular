@@ -5,52 +5,54 @@
     padding: 10px;
     position: relative;
     border-radius: 10px;
+    font-size: $font-size-standart;
     &:hover {
         cursor: pointer;
         box-shadow: 0 0 8px;
     }
-}
-.course-item__title {
-    font-weight: 600;
-    font-size: large;
-    margin-top: 10px;
-}
-
-.course-item__date, .course-item__duration {
-    position: absolute;
-    top: 10px;
-}
-.course-item__date {
-    left: 400px;
-}
-.course-item__button {
-    @include button();
-    position: absolute;
-}
-.course-item__button_edit {
-    right: 10px;
-    top: 25px;
-}
-.course-item__button_delete {
-    right: 10px;
-    top: 65px;
-}
-.course-item__duration {
-    left: 400px;
-    top: 30px;
-}
-.course-item__description {
-    height: 60px;
-    margin-top: 15px;
-    width: 650px;
-}
-.course-item__top {
-    font-size: 25px;
-    position: absolute;
-    left: 135px;
-    top: 3px;
+    .course-item__title {
+        font-weight: 600;
+        font-size: $font-size-large;
+        margin-top: 10px;
+    }
+    
+    .course-item__date, .course-item__duration {
+        position: absolute;
+        top: 10px;
+    }
+    .course-item__date {
+        left: 400px;
+    }
+    .course-item__button {
+        @include button();
+        position: absolute;
+    }
+    .course-item__button_edit {
+        right: 10px;
+        top: 25px;
+    }
+    .course-item__button_delete {
+        right: 10px;
+        top: 65px;
+    }
+    .course-item__duration {
+        left: 400px;
+        top: 30px;
+    }
+    .course-item__description {
+        height: 60px;
+        margin-top: 15px;
+        width: 650px;
+    }
+    .course-item__top {
+        font-size: 30px;
+        position: absolute;
+        left: 160px;
+        top: 2px;
+    }
 }
 .course-item-top {
+    @extend .course-item;
     margin-top: 10px;
     background-color: azure;
     padding: 10px;

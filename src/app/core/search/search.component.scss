@@ -5,19 +5,19 @@
     background-color: $back-color-white;
     padding: 5px;
     border-radius: 10px;
-}
-.search-panel__button {
-    @include button();
-}
-.search-panel__input {
-    width: 300px;
-    height: 28px;
-    margin-right: 20px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-}
-.search-panel__button_right {
-    float: right;
-    margin-right: 5px;
+    .search-panel__button {
+        @include button();
+    }
+    .search-panel__input {
+        width: 300px;
+        height: 28px;
+        margin-right: 20px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+    }
+    .search-panel__button_right {
+        float: right;
+        margin-right: 5px;
+    }
 }

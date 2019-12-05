@@ -1,26 +1,19 @@
-.popup__button {
-    position: absolute;
-    padding: 5px;
-    background-color: #2a5885;
-    color: white;
-    width: 70px;
-    text-align: center;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-.popup__button_no {
-    left: 175px;
-}
-.popup__button_yes {
-    left: 85px;
-}
-:host {
+@import '../../../../common/styles-constants.scss';
+.popup {
     position: relative;
-}
-.popup__button_yes:hover, .popup__button_no:hover {
-    cursor: pointer;
-}
-.popup__content {
-    font-weight: 600;
-    font-size: large;
+    .popup__button {
+        @include button();
+        position: absolute;
+        margin-top: 20px;
+    }
+    .popup__button_no {
+        left: 200px;
+    }
+    .popup__button_yes {
+        left: 90px;
+    }
+    .popup__content {
+        font-weight: 600;
+        font-size: $font-size-large;
+    }
 }

@@ -1,6 +1,6 @@
 <app-header [userName]="user"></app-header>
 <app-footer></app-footer>
-<div class="container">
+<div class="courses-content">
     <app-breadcrumbs *ngIf="authenticated()"></app-breadcrumbs>
     <app-login *ngIf="!authenticated()" (loginEvent)="showUser()"></app-login>
     <app-courses *ngIf="authenticated()"></app-courses>

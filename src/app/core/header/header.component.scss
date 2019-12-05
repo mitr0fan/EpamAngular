@@ -1,18 +1,4 @@
 @import '../../../../common/styles-constants.scss';
-.header__content {
-    margin: 0 auto;
-    height: 38px;
-    width: 800px;
-    padding-top: 10px;
-    position: relative;
-}
-.header__logo {
-    font: {
-        size: larger;
-        weight: 600;
-    }
-    margin-top: 12px;
-}
 .header {
     height: 50px;
     width: 100%;
@@ -20,20 +6,35 @@
     background-color: $main-color-blue;
     z-index: 10;
     color: white;
-}
-.header__login {
-    margin-left: 460px;
-}
-.header__button {
-    @include button();
-}
-.header__button_color-white {
-    background-color: white;
-    margin-right: 10px;
-    color: black;
-    position: absolute;
-    right: 0;
-}
-.header__button {
-    cursor: pointer;
+    .header__content {
+        margin: 0 auto;
+        height: 38px;
+        width: 800px;
+        padding-top: 8px;
+        position: relative;
+        font-size: $font-size-standart;
+    }
+    .header__logo {
+        font: {
+            size: $font-size-large;
+            weight: 600;
+        }
+        margin-top: 12px;
+    }
+    .header__login {
+        margin-left: 460px;
+    }
+    .header__button {
+        @include button();
+    }
+    .header__button_color-white {
+        background-color: white;
+        margin-right: 10px;
+        color: black;
+        position: absolute;
+        right: 0;
+    }
+    .header__button {
+        cursor: pointer;
+    }
 }

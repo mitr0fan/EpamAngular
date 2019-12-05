@@ -1,8 +1,15 @@
 $main-color-blue: #2a5885;
 $background-color: rgb(233, 232, 232);
 $back-color-white: white;
+$font-size-standart: 12pt;
+$font-size-large: 16pt;
+$font-size-small: 10pt;
+$font-color-1: white;
+$font-color-2: black;
+
 @mixin button {
     background-color: $main-color-blue;
+    font-size: $font-size-standart;
     padding: 5px;
     border: none;
     width: 100px;

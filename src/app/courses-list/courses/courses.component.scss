@@ -1,29 +1,29 @@
 @import '../../../../common/styles-constants.scss';
-@mixin styles-button {
-    background-color: $main-color-blue;
-    margin-top: 10px;
-    height: 40px;
-    position: relative;
-    border-radius: 10px;
-    color: white;
-    margin-bottom: 30px;
-}
-.courses-list__button {
-   @include styles-button();
-    &:hover {
-        cursor: pointer;
+.courses {
+    .courses-list__button {
+        @extend .courses-list__empty-list;
+        &:hover {
+            cursor: pointer;
+        }
     }
-}
-.courses-list__content-button {
-    position: absolute;
-    top: 8px;
-    left: 370px;
-}
-.courses-list__empty-list {
-    @include styles-button();
-}
-.courses-list__content-empty {
-    position: absolute;
-    top: 8px;
-    left: 320px;
+    .courses-list__content-button {
+        position: absolute;
+        top: 8px;
+        left: 370px;
+    }
+    .courses-list__empty-list {
+        background-color: $main-color-blue;
+        margin-top: 10px;
+        height: 40px;
+        position: relative;
+        border-radius: 10px;
+        color: white;
+        margin-bottom: 30px;
+        
+    }
+    .courses-list__content-empty {
+        position: absolute;
+        top: 8px;
+        left: 320px;
+    }
 }
