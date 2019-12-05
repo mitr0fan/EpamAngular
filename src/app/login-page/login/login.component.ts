@@ -6,14 +6,12 @@ import { AuthorizationService } from 'src/app/authorization.service';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
     @Output() loginEvent = new EventEmitter();
     public email: string;
     public password: string;
 
     constructor(private authService: AuthorizationService) {}
-
-    ngOnInit() {}
 
     login() {
         if (!this.authService.isAuthenticated()) {

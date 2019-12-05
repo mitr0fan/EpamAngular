@@ -7,14 +7,12 @@ import { CoursesService } from 'src/app/courses.service';
     templateUrl: './delete-course-popup.component.html',
     styleUrls: ['./delete-course-popup.component.scss'],
 })
-export class DeleteCoursePopupComponent implements OnInit {
+export class DeleteCoursePopupComponent {
     constructor(
         private reference: MatDialogRef<DeleteCoursePopupComponent>,
         private courseService: CoursesService,
         @Inject(MAT_DIALOG_DATA) private id: any
     ) {}
-
-    ngOnInit() {}
 
     closePopup() {
         this.reference.close();
