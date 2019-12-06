@@ -19,7 +19,7 @@ export class AuthorizationService {
             this.currentUser = user;
             console.log('Logged in successfully');
 
-            localStorage.setItem('token', `${user.firstName} ${user.lastName}`);
+            localStorage.setItem('tokenAuthorization', `${user.firstName} ${user.lastName}`);
         }
     }
 
@@ -30,7 +30,7 @@ export class AuthorizationService {
     }
 
     isAuthenticated(): boolean {
-        if (!!localStorage.getItem('token')) {
+        if (!!localStorage.getItem('tokenAuthorization')) {
             this.signedIn = true;
         }
         return this.signedIn;
