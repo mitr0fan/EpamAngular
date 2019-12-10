@@ -49,6 +49,6 @@ export class AuthorizationService {
     }
 
     deleteToken() {
-        localStorage.removeItem('token');
+        localStorage.removeItem('tokenAuthorization');
     }
 }

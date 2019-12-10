@@ -13,8 +13,8 @@ export class HeaderComponent implements OnInit {
     constructor(private authService: AuthorizationService) {}
 
     ngOnInit() {
-        if (!!localStorage.getItem('token')) {
-            this.userNameFromToken = localStorage.getItem('token');
+        if (!!localStorage.getItem('tokenAuthorization')) {
+            this.userNameFromToken = localStorage.getItem('tokenAuthorization');
         }
     }
 
