@@ -7,8 +7,8 @@ describe('AuthorizationService', () => {
     let service: AuthorizationService;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({providers: [AuthorizationService]}),
-        service = TestBed.get(AuthorizationService);
+        TestBed.configureTestingModule({ providers: [AuthorizationService] }),
+            (service = TestBed.get(AuthorizationService));
         localStorage.clear();
     });
 

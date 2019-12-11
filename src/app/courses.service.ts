@@ -61,6 +61,8 @@ export class CoursesService {
             this.courses = this.courses
                 .slice(0, indexOfCourse)
                 .concat(this.courses.slice(indexOfCourse + 1));
-        } else { return; }
+        } else {
+            return;
+        }
     }
 }

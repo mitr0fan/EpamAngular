@@ -7,16 +7,16 @@ import { CoursesService } from 'src/app/courses.service';
 describe('DeleteCoursePopupComponent', () => {
     let component: DeleteCoursePopupComponent;
     let fixture: ComponentFixture<DeleteCoursePopupComponent>;
-    const matDialogRef = {close: () => {}};
-    const coursesService = {removeItem: () => {}};
+    const matDialogRef = { close: () => {} };
+    const coursesService = { removeItem: () => {} };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [DeleteCoursePopupComponent],
             providers: [
-                {provide: MatDialogRef, useValue: matDialogRef},
-                {provide: CoursesService, useValue: coursesService},
-                {provide: MAT_DIALOG_DATA, useValue: {}},
+                { provide: MatDialogRef, useValue: matDialogRef },
+                { provide: CoursesService, useValue: coursesService },
+                { provide: MAT_DIALOG_DATA, useValue: {} },
             ],
         }).compileComponents();
     }));

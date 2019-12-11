@@ -1,8 +1,10 @@
 import { BorderColorDirective } from './border-color.directive';
 
-/*describe('BorderColorDirective', () => {
+describe('BorderColorDirective', () => {
     it('should create an instance', () => {
-        const directive = new BorderColorDirective();
+        const element = jasmine.createSpyObj('ElementRef', ['nativeElement']);
+        const renderer = jasmine.createSpyObj('Renderer2', ['setStyle']);
+        const directive = new BorderColorDirective(element, renderer);
         expect(directive).toBeTruthy();
     });
-});*/
+});

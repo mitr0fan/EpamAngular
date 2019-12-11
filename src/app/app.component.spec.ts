@@ -5,17 +5,16 @@ import { fakeUsers } from 'common/constants';
 import { AuthorizationService } from './authorization.service';
 
 describe('AppComponent', () => {
-    const authService = {isAuthenticated: () => true, currentUser: fakeUsers[1]};
+    const authService = { isAuthenticated: () => true, currentUser: fakeUsers[1] };
     let fixture: ComponentFixture<AppComponent>;
     let app: DebugElement;
     let component: AppComponent;
-
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [AppComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            providers: [{provide: AuthorizationService, useValue: authService}]
+            providers: [{ provide: AuthorizationService, useValue: authService }],
         }).compileComponents();
     }));
 

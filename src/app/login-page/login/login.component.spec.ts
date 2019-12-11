@@ -9,13 +9,13 @@ import { AuthorizationService } from 'src/app/authorization.service';
 describe('LoginComponent', () => {
     let component: LoginComponent;
     let fixture: ComponentFixture<LoginComponent>;
-    const authService = {isAuthenticated: () => false, login: () => {}};
+    const authService = { isAuthenticated: () => false, login: () => {} };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [LoginComponent],
             imports: [MatInputModule, FormsModule, BrowserAnimationsModule],
-            providers: [{provide: AuthorizationService, useValue: authService}]
+            providers: [{ provide: AuthorizationService, useValue: authService }],
         }).compileComponents();
     }));
 

@@ -4,7 +4,6 @@ import { CourseItemComponent } from './course-item.component';
 import { DirectivesPipesModule } from 'src/app/directives-pipes/directives-pipes.module';
 import { Course } from 'src/app/course';
 
-
 describe('CourseItemComponent', () => {
     let component: CourseItemComponent;
     let fixture: ComponentFixture<CourseItemComponent>;
@@ -16,13 +15,13 @@ describe('CourseItemComponent', () => {
         date: '10.12.19',
         duration: 103,
         description: 'lalala',
-        topRated: false
+        topRated: false,
     };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [CourseItemComponent],
-            imports: [DirectivesPipesModule]
+            imports: [DirectivesPipesModule],
         }).compileComponents();
     }));
 

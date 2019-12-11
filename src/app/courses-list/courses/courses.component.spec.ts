@@ -18,17 +18,19 @@ describe('CoursesComponent', () => {
     let fakeCourses: Course[];
 
     const dialog = jasmine.createSpyObj('MatDialog', ['open']);
-    dialog.open.and.returnValue({afterClosed() {
-        return {
-            toPromise() {
-                return {
-                    then(callback) {
-                        return callback();
-                    }
-                };
-            }
-        };
-    }});
+    dialog.open.and.returnValue({
+        afterClosed() {
+            return {
+                toPromise() {
+                    return {
+                        then(callback) {
+                            return callback();
+                        },
+                    };
+                },
+            };
+        },
+    });
 
     fakeCourses = [
         {
@@ -37,7 +39,7 @@ describe('CoursesComponent', () => {
             date: '10.12.19',
             duration: 103,
             description: 'lalala',
-            topRated: false
+            topRated: false,
         },
         {
             id: 2,
@@ -45,7 +47,7 @@ describe('CoursesComponent', () => {
             date: '11.12.19',
             duration: 120,
             description: 'lalala',
-            topRated: true
+            topRated: true,
         },
     ];
 
@@ -58,7 +60,7 @@ describe('CoursesComponent', () => {
                 date: '01.12.19',
                 duration: 150,
                 description: 'lalala',
-                topRated: false
+                topRated: false,
             });
         },
         updateItem: () => {},
@@ -67,11 +69,23 @@ describe('CoursesComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [CoursesComponent, DeleteCoursePopupComponent],
-            imports: [DirectivesPipesModule, CoreModule, MatDialogModule, BrowserAnimationsModule, BrowserDynamicTestingModule],
+            imports: [
+                DirectivesPipesModule,
+                CoreModule,
+                MatDialogModule,
+                BrowserAnimationsModule,
+                BrowserDynamicTestingModule,
+            ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            providers: [{provide: CoursesService, useValue: coursesService}, {provide: MatDialog, useValue: dialog}],
-        }).overrideModule(BrowserDynamicTestingModule, {set: {entryComponents: [DeleteCoursePopupComponent]}})
-        .compileComponents();
+            providers: [
+                { provide: CoursesService, useValue: coursesService },
+                { provide: MatDialog, useValue: dialog },
+            ],
+        })
+            .overrideModule(BrowserDynamicTestingModule, {
+                set: { entryComponents: [DeleteCoursePopupComponent] },
+            })
+            .compileComponents();
     }));
 
     beforeEach(() => {
