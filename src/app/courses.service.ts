@@ -13,8 +13,10 @@ export class CoursesService {
         const changedCourses: Course[] = [];
 
         data.forEach((i) => {
-            i.date = format(new Date(i.date), 'dd.MM.yyyy');
-            changedCourses.push(i);
+            let newData: Course;
+            newData = Object.assign({}, i);
+            newData.date = format(new Date(i.date), 'dd.MM.yyyy');
+            changedCourses.push(newData);
         });
 
         this.courses = changedCourses;
@@ -55,8 +57,10 @@ export class CoursesService {
     removeItem(id: number) {
         const indexOfCourse = this.getItemById(id);
 
-        this.courses = this.courses
-            .slice(0, indexOfCourse)
-            .concat(this.courses.slice(indexOfCourse + 1));
+        if (indexOfCourse !== -1) {
+            this.courses = this.courses
+                .slice(0, indexOfCourse)
+                .concat(this.courses.slice(indexOfCourse + 1));
+        } else { return; }
     }
 }

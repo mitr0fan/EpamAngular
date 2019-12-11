@@ -1,7 +1,7 @@
-import { Constants } from './constants';
+import { data, fakeUsers } from './constants';
 
 describe('Constants', () => {
   it('should create an instance', () => {
-    expect(new Constants()).toBeTruthy();
+    expect(data).toBeTruthy();
   });
 });
