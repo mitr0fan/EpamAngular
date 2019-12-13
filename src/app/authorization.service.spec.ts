@@ -2,52 +2,65 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthorizationService } from './authorization.service';
 import { fakeUsers } from '../../common/constants';
+import { LocalStorageService } from './change-local-storage.service';
 
 describe('AuthorizationService', () => {
     let service: AuthorizationService;
+    let localStorageService = {
+        getItem: (key: string) => 'Jack Sparrow',
+        addToken: () => {},
+        removeToken: () => {}
+    };
 
     beforeEach(() => {
-        TestBed.configureTestingModule({ providers: [AuthorizationService] }),
-            (service = TestBed.get(AuthorizationService));
-        localStorage.clear();
+        TestBed.configureTestingModule({ providers: [AuthorizationService,
+            {provide: LocalStorageService, useValue: localStorageService}]
+        }),
+        service = TestBed.get(AuthorizationService);
+        localStorageService = TestBed.get(LocalStorageService);
     });
 
     it('should create', () => {
         expect(service).toBeTruthy();
     });
 
-    it('should return authorization status - false', () => {
+    it('email and password are correct should call localStorageService.addToken()', () => {
+        const spy = spyOn(localStorageService, 'addToken');
+        service.login('email1', '0000');
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(service.isAuthenticated()).toBe(true);
+    });
+
+    it('email and password are not correct should not call localStorageService.addToken()', () => {
+        const spy = spyOn(localStorageService, 'addToken');
+        service.login('', '');
+        localStorageService.getItem = (key) => '';
+        expect(spy).toHaveBeenCalledTimes(0);
         expect(service.isAuthenticated()).toBe(false);
+        localStorageService.getItem = (key) => 'Jack Sparrow';
     });
 
     it('should return user object', () => {
         expect(service.getUserInfo('email2')).toEqual(fakeUsers[1]);
     });
 
-    it('email and password are correct set localStorage token', () => {
-        service.login('email1', '0000');
-        expect(localStorage.getItem('tokenAuthorization')).toEqual('Jack Sparrow');
-        expect(service.isAuthenticated()).toBe(true);
-    });
-
-    it('email and password are not correct and localStorage token is false', () => {
-        service.login('email1', '1111');
-        expect(!!localStorage.getItem('tokenAuthorization')).toEqual(false);
-        expect(service.isAuthenticated()).toBe(false);
-    });
-
-    it('logout should change authorization status and remove token', () => {
-        service.login('email1', '0000');
-        expect(service.isAuthenticated()).toBe(true);
+    it('should changed service.signedIn and call service.deleteToken()', () => {
+        const spy = spyOn(service, 'deleteToken');
         service.logout();
-        expect(service.isAuthenticated()).toBe(false);
-        expect(!!localStorage.getItem('tokenAuthorization')).toBe(false);
+        expect(service.isAuthenticated()).toEqual(true);
+        expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it('should remove token from localStorage', () => {
-        service.login('email1', '0000');
-        expect(localStorage.getItem('tokenAuthorization')).toEqual('Jack Sparrow');
+    it('should return service.signedIn', () => {
+        localStorageService.getItem = (key) => '';
+        expect(service.isAuthenticated()).toBe(false);
+        localStorageService.getItem = (key) => 'Jack Sparrow';
+        expect(service.isAuthenticated()).toEqual(true);
+    });
+
+    it('should call localStorageService.removeToken()', () => {
+        const spy = spyOn(localStorageService, 'removeToken');
         service.deleteToken();
-        expect(!!localStorage.getItem('tokenAuthorization')).toEqual(false);
+        expect(spy).toHaveBeenCalledTimes(1);
     });
 });
