@@ -42,4 +42,9 @@ describe('TestHostComponent', () => {
         childComponent.edit();
         expect(spy).toHaveBeenCalledTimes(1);
     });
+
+    it('call HostTest methods', () => {
+        expect(component.editCourse()).toBe(undefined);
+        expect(component.deleteCourse(1)).toBe(1);
+    });
 });
