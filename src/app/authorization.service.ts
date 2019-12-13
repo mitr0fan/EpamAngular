@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fakeUsers } from 'common/constants';
 import { User } from './user';
+import { LocalStorageService } from './change-local-storage.service';
 
 @Injectable({
     providedIn: 'root',
@@ -8,8 +9,9 @@ import { User } from './user';
 export class AuthorizationService {
     private signedIn = false;
     public currentUser: User;
+    public TOKEN_KEY = 'tokenAuthorization';
 
-    constructor() {}
+    constructor(private localStorageService: LocalStorageService) {}
 
     login(email: string, pass: string) {
         const user = this.getUserInfo(email);
@@ -19,7 +21,7 @@ export class AuthorizationService {
             this.currentUser = user;
             console.log('Logged in successfully');
 
-            localStorage.setItem('tokenAuthorization', `${user.firstName} ${user.lastName}`);
+            this.localStorageService.addToken(this.TOKEN_KEY, `${user.firstName} ${user.lastName}`);
         }
     }
 
@@ -30,7 +32,7 @@ export class AuthorizationService {
     }
 
     isAuthenticated(): boolean {
-        if (!!localStorage.getItem('tokenAuthorization')) {
+        if (!!this.localStorageService.getItem(this.TOKEN_KEY)) {
             this.signedIn = true;
         }
         return this.signedIn;
@@ -49,6 +51,6 @@ export class AuthorizationService {
     }
 
     deleteToken() {
-        localStorage.removeItem('tokenAuthorization');
+        this.localStorageService.removeToken(this.TOKEN_KEY);
     }
 }

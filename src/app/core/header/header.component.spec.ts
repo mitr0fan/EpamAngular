@@ -2,11 +2,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
 import { AuthorizationService } from 'src/app/authorization.service';
+import { LocalStorageService } from 'src/app/change-local-storage.service';
 
 describe('HeaderComponent', () => {
     let component: HeaderComponent;
     let fixture: ComponentFixture<HeaderComponent>;
     let authServiceMock: Partial<AuthorizationService>;
+    const localStorageService = jasmine.createSpyObj('LocalStorageService', ['getItem', 'addToken', 'removeToken']);
+    localStorageService.getItem.and.returnValue('Jack Sparrow');
 
     authServiceMock = {
         isAuthenticated: () => true,
@@ -16,7 +19,9 @@ describe('HeaderComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [HeaderComponent],
-            providers: [{ provide: AuthorizationService, useValue: authServiceMock }],
+            providers: [{ provide: AuthorizationService, useValue: authServiceMock },
+                { provide: LocalStorageService, useValue: localStorageService }
+            ],
         }).compileComponents();
     }));
 
@@ -54,5 +59,12 @@ describe('HeaderComponent', () => {
 
     it('should return authorization status', () => {
         expect(component.showLogOffButton()).toBe(true);
+    });
+
+    describe('When ngOnInit is run', () => {
+        it('should receiving userNameFromToken value', () => {
+            component.ngOnInit();
+            expect(component.userNameFromToken).toEqual('Jack Sparrow');
+        });
     });
 });
