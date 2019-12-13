@@ -11,7 +11,7 @@ describe('CoursesService', () => {
         TestBed.configureTestingModule({
             providers: [CoursesService],
         }),
-        service = TestBed.get(CoursesService);
+            (service = TestBed.get(CoursesService));
     });
 
     it('should be created', () => {

@@ -13,9 +13,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CoursesService } from './courses.service';
 import { AuthorizationService } from './authorization.service';
 import { LoginPageModule } from './login-page/login-page.module';
+import { TestHostComponent } from './test-host/test-host.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, TestHostComponent],
     imports: [
         BrowserModule,
         CoreModule,
