@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fakeUsers } from 'common/constants';
 import { User } from './user';
-import { LocalStorageService } from './change-local-storage.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
     providedIn: 'root',

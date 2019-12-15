@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LocalStorageService } from './change-local-storage.service';
+import { LocalStorageService } from './local-storage.service';
 
 describe('ChangeLocalStorageService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
