@@ -3,6 +3,7 @@ import { CoursesService } from 'src/app/courses.service';
 import { Course } from 'src/app/course';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteCoursePopupComponent } from 'src/app/courses-list/delete-course-popup/delete-course-popup.component';
+import { EditCourseComponent } from '../edit-course/edit-course.component';
 
 @Component({
     selector: 'app-courses',
@@ -38,11 +39,28 @@ export class CoursesComponent implements OnInit {
     }
 
     createNewCourse() {
-        this.coursesService.createCourse();
-        this.courses = this.coursesService.getList();
+        // this.coursesService.createCourse();
+        // this.courses = this.coursesService.getList();
+        this.dialog.open(EditCourseComponent, {
+            width: '800px',
+            data: {
+                id: '',
+                title: '',
+                date: 0,
+                duration: 0,
+                description: '',
+                topRated: false,
+            }
+        });
     }
 
-    update() {
-        this.coursesService.updateItem();
+    editCourse(course: Course) {
+        const dialogReference = this.dialog.open(EditCourseComponent, {
+            width: '800px',
+            data: course
+        });
+
+        const editCoursePromise: Promise<any> = dialogReference.afterClosed().toPromise();
+        editCoursePromise.then(() => (this.courses = this.coursesService.getList()));
     }
 }

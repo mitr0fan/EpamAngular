@@ -1,0 +1,44 @@
+<div class="edit-course">
+    <div class="name">
+        <span class="edit-course__name">Add/edit course</span>
+    </div>
+    <div class="edit-course__title">
+        <span>Title:</span>
+        <mat-form-field class="edit-course__input">
+            <input type="text" matInput placeholder="Example: Video course 1" value="{{course.title}}" #title>
+        </mat-form-field>
+    </div>
+    <div class="edit-course__description">
+        <span>Description:</span>
+        <mat-form-field class="edit-course__input">
+            <input type="text" matInput 
+            placeholder="Example: The best course ever!!!" value="{{course.description}}" #desc>
+        </mat-form-field>
+    </div>
+    <div class="edit-course__date">
+        <span>Date:</span>
+        <mat-form-field class="edit-course__input edit-course__input_small">
+            <input type="text" matInput 
+            placeholder="Example: 01.01.2020" value="{{course.date}}" #date>
+        </mat-form-field>
+    </div>
+    <div class="edit-course__duration">
+        <span>Duration:</span>
+        <mat-form-field class="edit-course__input edit-course__input_small">
+            <input type="text" matInput 
+            placeholder="Example: 80min" value="{{course.duration | duration}}" #duration>
+        </mat-form-field>
+    </div>
+    <div class="edit-course__authors">
+        <span>Authors:</span>
+        <mat-form-field class="edit-course__input">
+            <input type="text" matInput 
+            placeholder="Example: Firstname Lastname">
+        </mat-form-field>
+    </div>
+    <div class="buttons">
+        <span class="button edit-course__button_left"
+        (click)="edit(title.value, date.value, duration.value, desc.value)">Save</span>
+        <span class="button edit-course__button_right" (click)="close()">Cancel</span>
+    </div>
+</div>

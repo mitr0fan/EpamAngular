@@ -26,18 +26,20 @@ export class CoursesService {
         return this.courses;
     }
 
-    createCourse() {
-        const newCourse: Course = Object.assign({}, this.courses[0]);
-        let id = 0;
-        this.courses.forEach((i) => {
-            if (i.id > id) {
-                id = i.id;
-            }
-        });
-        newCourse.id = ++id;
-        newCourse.title = newCourse.title.slice(0, -1) + id;
+    createCourse(course: Course) {
+        // const newCourse: Course = Object.assign({}, this.courses[0]);
+        // let id = 0;
+        // this.courses.forEach((i) => {
+        //     if (i.id > id) {
+        //         id = i.id;
+        //     }
+        // });
+        // newCourse.id = ++id;
+        // newCourse.title = newCourse.title.slice(0, -1) + id;
 
-        this.courses.push(newCourse);
+        // this.courses.push(newCourse);
+        this.removeItem(course.id);
+        this.courses.push(course);
     }
 
     getItemById(id: number) {

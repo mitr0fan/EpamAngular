@@ -1,0 +1,40 @@
+@import '../../../../common/styles-constants.scss';
+.button {
+    @include button();
+}
+.edit-course__title {
+    display: grid;
+    font-size: $font-size-standart;
+}
+.edit-course__description {
+    @extend .edit-course__title;
+}
+.edit-course__date {
+    @extend .edit-course__title;
+}
+.edit-course__duration {
+    @extend .edit-course__title;
+}
+.edit-course__authors {
+    @extend .edit-course__title;
+}
+.edit-course__input_small {
+    width: 200px;
+}
+.buttons {
+    display: flex;
+}
+.edit-course__button_left {
+    margin-left: auto;
+    margin-right: 10px;
+}
+.edit-course__button_right {
+    margin-right: auto;
+}
+.name {
+    display: flex;
+}
+.edit-course__name {
+    margin: auto;
+    font-size: $font-size-large;
+}

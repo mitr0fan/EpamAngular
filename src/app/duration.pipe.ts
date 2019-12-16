@@ -17,4 +17,19 @@ export class DurationPipe implements PipeTransform {
             return `${hours}h ${minutes}min`;
         }
     }
+
+    changeDurationFromMinutesToMs(duration: string | number) {
+        const msInMinute = 60 * 1000;
+        const msInHour = 60 * 60 * 1000;
+
+        if (('' + duration).includes('min')) {
+            if (('' + duration).includes('h')) {
+                return duration[0] * msInHour + +(duration[3] + duration[4]) * msInMinute;
+            } else {
+                return +('' + duration).slice(0, -3) * msInMinute;
+            }
+        } else {
+            return +(duration) * msInMinute;
+        }
+    }
 }
