@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { CoursesComponent } from './courses.component';
 import { DirectivesPipesModule } from 'src/app/directives-pipes/directives-pipes.module';
@@ -16,21 +16,7 @@ describe('CoursesComponent', () => {
     let fixture: ComponentFixture<CoursesComponent>;
     let coursesService: Partial<CoursesService>;
     let fakeCourses: Course[];
-
-    const dialog = jasmine.createSpyObj('MatDialog', ['open']);
-    dialog.open.and.returnValue({
-        afterClosed() {
-            return {
-                toPromise() {
-                    return {
-                        then(callback) {
-                            return callback();
-                        },
-                    };
-                },
-            };
-        },
-    });
+    let dialog: jasmine.SpyObj<any>;
 
     fakeCourses = [
         {
@@ -63,10 +49,21 @@ describe('CoursesComponent', () => {
                 topRated: false,
             });
         },
-        updateItem: () => {},
     };
 
     beforeEach(async(() => {
+        dialog = jasmine.createSpyObj('MatDialog', ['open']);
+        dialog.open.and.returnValue({
+            afterClosed() {
+                return {
+                    toPromise: () => {
+                        const promise = new Promise((res) => res(''));
+                        return promise;
+                    }
+                };
+            }
+        });
+
         TestBed.configureTestingModule({
             declarations: [CoursesComponent, DeleteCoursePopupComponent],
             imports: [
@@ -106,24 +103,17 @@ describe('CoursesComponent', () => {
 
     it('should create new course', () => {
         component.createNewCourse();
-        fixture.detectChanges();
-        const coursesElements = fixture.nativeElement.querySelectorAll('app-course-item');
-        expect(coursesElements.length).toBe(3);
+        expect(dialog.open).toHaveBeenCalledTimes(1);
     });
 
-    it('createNewCourse() should call CoursesService.createCourse()', () => {
-        const coursesServiceInstance = TestBed.get(CoursesService);
-        const spy = spyOn(coursesServiceInstance, 'createCourse');
-        component.createNewCourse();
-        expect(spy).toHaveBeenCalled();
-    });
-
-    it('update() should call CoursesService.updateItem()', () => {
-        const coursesServiceInstance = TestBed.get(CoursesService);
-        const spy = spyOn(coursesServiceInstance, 'updateItem');
-        component.update();
-        expect(spy).toHaveBeenCalled();
-    });
+    it('editCourse() should call coursesService.getList()', fakeAsync(() => {
+        const service = TestBed.get(CoursesService);
+        const spy = spyOn(service, 'getList');
+        component.editCourse(fakeCourses[0]);
+        tick();
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(dialog.open).toHaveBeenCalledTimes(1);
+    }));
 
     it('search() should change inputSearch value', () => {
         const testValue = 'Hello world';
@@ -131,9 +121,12 @@ describe('CoursesComponent', () => {
         expect(component.inputSearch).toBe(testValue);
     });
 
-    it('deleteCourse()', () => {
-        const service = TestBed.get(MatDialog);
+    it('deleteCourse() should call coursesService.getList()', fakeAsync(() => {
+        const service = TestBed.get(CoursesService);
+        const spy = spyOn(service, 'getList');
         component.deleteCourse(1);
-        expect(service.open).toHaveBeenCalledTimes(1);
-    });
+        tick();
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(dialog.open).toHaveBeenCalledTimes(1);
+    }));
 });

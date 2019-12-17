@@ -37,7 +37,14 @@ describe('CoursesService', () => {
 
     it('should create new course', () => {
         expect(service.getList().length).toEqual(5);
-        service.createCourse();
+        service.createCourse({
+            id: 100,
+            title: '',
+            date: 10000000,
+            duration: 100,
+            description: '',
+            topRated: false
+        });
         expect(service.getList().length).toEqual(6);
     });
 
