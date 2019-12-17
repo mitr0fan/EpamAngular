@@ -6,6 +6,7 @@
     position: relative;
     border-radius: 10px;
     font-size: $font-size-standart;
+    height: 102px;
     &:hover {
         cursor: pointer;
         box-shadow: 0 0 8px;
@@ -13,7 +14,7 @@
     .course-item__title {
         font-weight: 600;
         font-size: $font-size-large;
-        margin-top: 10px;
+        display: inline-block;
     }
     
     .course-item__date, .course-item__duration {
@@ -43,11 +44,15 @@
         height: 60px;
         margin-top: 15px;
         width: 650px;
+        word-break: break-all;
+        overflow: overlay;
+        padding-right: 20px;
     }
     .course-item__top {
-        font-size: 30px;
+        font-size: 22pt;
+        margin-left: 10px;
+        display: inline-block;
         position: absolute;
-        left: 160px;
         top: 2px;
     }
 }

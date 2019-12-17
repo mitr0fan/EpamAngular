@@ -1,7 +1,7 @@
 <div appBorderColor [date]="course.date" 
 [ngClass]="course.topRated ? 'course-item-top' : 'course-item'">
     <span class="course-item__title">{{course.title}} </span>
-    <span class="course-item__top" *ngIf="course.topRated">★</span>
+    <div class="course-item__top" *ngIf="course.topRated">★</div>
     <div class="course-item__description">{{course.description}} </div>
     <span class="course-item__date">Date: {{course.date}} </span>
     

@@ -27,17 +27,16 @@ export class CoursesService {
     }
 
     createCourse(course: Course) {
-        // const newCourse: Course = Object.assign({}, this.courses[0]);
-        // let id = 0;
-        // this.courses.forEach((i) => {
-        //     if (i.id > id) {
-        //         id = i.id;
-        //     }
-        // });
-        // newCourse.id = ++id;
-        // newCourse.title = newCourse.title.slice(0, -1) + id;
+        if (!course.id) {
+            let id = 0;
+            this.courses.forEach((i) => {
+            if (i.id > id) {
+                id = i.id;
+            }
+            });
+            course.id = ++id;
+        }
 
-        // this.courses.push(newCourse);
         this.removeItem(course.id);
         this.courses.push(course);
     }

@@ -24,7 +24,7 @@ export class DurationPipe implements PipeTransform {
 
         if (('' + duration).includes('min')) {
             if (('' + duration).includes('h')) {
-                return duration[0] * msInHour + +(duration[3] + duration[4]) * msInMinute;
+                return duration[0] * msInHour + +('' + duration).slice(3, -3) * msInMinute;
             } else {
                 return +('' + duration).slice(0, -3) * msInMinute;
             }

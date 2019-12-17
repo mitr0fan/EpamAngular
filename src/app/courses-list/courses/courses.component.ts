@@ -39,8 +39,6 @@ export class CoursesComponent implements OnInit {
     }
 
     createNewCourse() {
-        // this.coursesService.createCourse();
-        // this.courses = this.coursesService.getList();
         this.dialog.open(EditCourseComponent, {
             width: '800px',
             data: {

@@ -23,8 +23,6 @@ export class EditCourseComponent {
   }
 
   edit(titleContent: string, dateContent: string, durationContent: any, descriptionContent: string) {
-    this.reference.close();
-
     const newCourse: Course = {
       id: this.course.id,
       title: titleContent,
@@ -34,5 +32,7 @@ export class EditCourseComponent {
       topRated: this.course.topRated,
     };
     this.coursesService.createCourse(newCourse);
+
+    this.reference.close();
   }
 }
