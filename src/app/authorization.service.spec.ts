@@ -9,14 +9,17 @@ describe('AuthorizationService', () => {
     let localStorageService = {
         getItem: (key: string) => 'Jack Sparrow',
         addToken: () => {},
-        removeToken: () => {}
+        removeToken: () => {},
     };
 
     beforeEach(() => {
-        TestBed.configureTestingModule({ providers: [AuthorizationService,
-            {provide: LocalStorageService, useValue: localStorageService}]
+        TestBed.configureTestingModule({
+            providers: [
+                AuthorizationService,
+                { provide: LocalStorageService, useValue: localStorageService },
+            ],
         }),
-        service = TestBed.get(AuthorizationService);
+            (service = TestBed.get(AuthorizationService));
         localStorageService = TestBed.get(LocalStorageService);
     });
 

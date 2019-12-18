@@ -43,7 +43,7 @@ describe('CoursesService', () => {
             date: 10000000,
             duration: 100,
             description: '',
-            topRated: false
+            topRated: false,
         });
         expect(service.getList().length).toEqual(6);
     });

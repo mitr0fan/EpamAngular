@@ -8,7 +8,11 @@ describe('HeaderComponent', () => {
     let component: HeaderComponent;
     let fixture: ComponentFixture<HeaderComponent>;
     let authServiceMock: Partial<AuthorizationService>;
-    const localStorageService = jasmine.createSpyObj('LocalStorageService', ['getItem', 'addToken', 'removeToken']);
+    const localStorageService = jasmine.createSpyObj('LocalStorageService', [
+        'getItem',
+        'addToken',
+        'removeToken',
+    ]);
     localStorageService.getItem.and.returnValue('Jack Sparrow');
 
     authServiceMock = {
@@ -19,8 +23,9 @@ describe('HeaderComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [HeaderComponent],
-            providers: [{ provide: AuthorizationService, useValue: authServiceMock },
-                { provide: LocalStorageService, useValue: localStorageService }
+            providers: [
+                { provide: AuthorizationService, useValue: authServiceMock },
+                { provide: LocalStorageService, useValue: localStorageService },
             ],
         }).compileComponents();
     }));

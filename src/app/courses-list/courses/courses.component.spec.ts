@@ -59,9 +59,9 @@ describe('CoursesComponent', () => {
                     toPromise: () => {
                         const promise = new Promise((res) => res(''));
                         return promise;
-                    }
+                    },
                 };
-            }
+            },
         });
 
         TestBed.configureTestingModule({

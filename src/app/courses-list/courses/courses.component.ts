@@ -48,14 +48,14 @@ export class CoursesComponent implements OnInit {
                 duration: 0,
                 description: '',
                 topRated: false,
-            }
+            },
         });
     }
 
     editCourse(course: Course) {
         const dialogReference = this.dialog.open(EditCourseComponent, {
             width: '800px',
-            data: course
+            data: course,
         });
 
         const editCoursePromise: Promise<any> = dialogReference.afterClosed().toPromise();

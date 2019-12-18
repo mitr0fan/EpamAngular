@@ -10,10 +10,15 @@ import { MatInputModule } from '@angular/material/input';
 import { DurationPipe } from '../duration.pipe';
 
 @NgModule({
-    declarations: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent, EditCourseComponent],
+    declarations: [
+        CoursesComponent,
+        CourseItemComponent,
+        DeleteCoursePopupComponent,
+        EditCourseComponent,
+    ],
     imports: [CommonModule, DirectivesPipesModule, CoreModule, MatInputModule],
     exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],
     entryComponents: [DeleteCoursePopupComponent, EditCourseComponent],
-    providers: [DurationPipe]
+    providers: [DurationPipe],
 })
 export class CoursesListModule {}

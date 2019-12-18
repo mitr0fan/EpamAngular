@@ -29,7 +29,7 @@ export class DurationPipe implements PipeTransform {
                 return +('' + duration).slice(0, -3) * msInMinute;
             }
         } else {
-            return +(duration) * msInMinute;
+            return +duration * msInMinute;
         }
     }
 }

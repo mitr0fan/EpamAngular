@@ -30,9 +30,9 @@ export class CoursesService {
         if (!course.id) {
             let id = 0;
             this.courses.forEach((i) => {
-            if (i.id > id) {
-                id = i.id;
-            }
+                if (i.id > id) {
+                    id = i.id;
+                }
             });
             course.id = ++id;
         }
