@@ -1,11 +1,11 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
-import { fakeUsers } from 'common/constants';
+import { DATA } from 'common/constants';
 import { AuthorizationService } from './authorization.service';
 
 describe('AppComponent', () => {
-    const authService = { isAuthenticated: () => true, currentUser: fakeUsers[1] };
+    const authService = { isAuthenticated: () => true, currentUser: DATA.FAKE_USERS[1] };
     let fixture: ComponentFixture<AppComponent>;
     let app: DebugElement;
     let component: AppComponent;

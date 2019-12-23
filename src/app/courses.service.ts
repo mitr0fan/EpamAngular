@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Course } from './course';
-import { data } from '../../common/constants';
+import { DATA } from '../../common/constants';
 import { format } from 'date-fns';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class CoursesService {
     constructor() {
         const changedCourses: Course[] = [];
 
-        data.forEach((i) => {
+        DATA.COURSES.forEach((i) => {
             let newData: Course;
             newData = Object.assign({}, i);
             newData.date = format(new Date(i.date), 'dd.MM.yyyy');

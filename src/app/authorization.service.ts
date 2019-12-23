@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { fakeUsers } from 'common/constants';
+import { DATA } from 'common/constants';
 import { User } from './user';
 import { LocalStorageService } from './local-storage.service';
 
@@ -43,7 +43,7 @@ export class AuthorizationService {
     getUserInfo(email: string) {
         let user: User;
 
-        fakeUsers.forEach((i) => {
+        DATA.FAKE_USERS.forEach((i) => {
             if (i.email === email) {
                 user = i;
             }
