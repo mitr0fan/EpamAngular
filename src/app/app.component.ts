@@ -16,7 +16,11 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
-                this.path = event.url.slice(1);
+                if (event.url.includes('courses')) {
+                    this.path = event.url.slice(1);
+                } else {
+                    this.path = '';
+                }
             }
         });
     }
