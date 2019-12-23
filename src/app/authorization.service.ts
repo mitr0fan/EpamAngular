@@ -19,9 +19,8 @@ export class AuthorizationService {
         if (!!user && user.password === pass) {
             this.signedIn = !this.signedIn;
             this.currentUser = user;
-            console.log('Logged in successfully');
 
-            this.localStorageService.addToken(this.TOKEN_KEY, `${user.firstName} ${user.lastName}`);
+            this.localStorageService.addToken(this.TOKEN_KEY, email);
         }
     }
 
@@ -34,6 +33,9 @@ export class AuthorizationService {
     isAuthenticated(): boolean {
         if (!!this.localStorageService.getItem(this.TOKEN_KEY)) {
             this.signedIn = true;
+
+            const emailFromLocalStorage = this.localStorageService.getItem(this.TOKEN_KEY);
+            this.currentUser = this.getUserInfo(emailFromLocalStorage);
         }
         return this.signedIn;
     }

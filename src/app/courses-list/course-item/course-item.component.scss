@@ -56,15 +56,3 @@
         top: 2px;
     }
 }
-.course-item-top {
-    @extend .course-item;
-    margin-top: 10px;
-    background-color: azure;
-    padding: 10px;
-    position: relative;
-    border-radius: 10px;
-    &:hover {
-        cursor: pointer;
-        box-shadow: 0 0 8px;
-    }
-}

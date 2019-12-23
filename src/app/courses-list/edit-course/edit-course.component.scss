@@ -2,6 +2,12 @@
 .button {
     @include button();
 }
+.edit-course {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
 .edit-course__title {
     display: grid;
     font-size: $font-size-standart;

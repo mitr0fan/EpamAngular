@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthorizationService } from 'src/app/authorization.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -7,16 +8,12 @@ import { AuthorizationService } from 'src/app/authorization.service';
     styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-    @Output() loginEvent = new EventEmitter();
-    public email: string;
-    public password: string;
+    constructor(private authService: AuthorizationService, private router: Router) {}
 
-    constructor(private authService: AuthorizationService) {}
-
-    login() {
+    login(email: string, pass: string) {
         if (!this.authService.isAuthenticated()) {
-            this.authService.login(this.email, this.password);
-            this.loginEvent.emit();
+            this.authService.login(email, pass);
+            this.router.navigate(['/courses']);
         }
     }
 }

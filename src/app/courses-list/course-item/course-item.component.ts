@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+    Component,
+    Input,
+    Output,
+    EventEmitter,
+    ChangeDetectionStrategy,
+    OnInit,
+} from '@angular/core';
 import { Course } from 'src/app/course';
 
 @Component({
@@ -18,7 +25,7 @@ export class CourseItemComponent {
         this.deleteEvent.emit(id);
     }
 
-    edit() {
-        this.editEvent.emit(this.course);
+    edit(id: number) {
+        this.editEvent.emit(id);
     }
 }

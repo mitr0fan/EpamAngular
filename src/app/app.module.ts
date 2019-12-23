@@ -14,9 +14,11 @@ import { CoursesService } from './courses.service';
 import { AuthorizationService } from './authorization.service';
 import { LoginPageModule } from './login-page/login-page.module';
 import { TestHostComponent } from './test-host/test-host.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-    declarations: [AppComponent, TestHostComponent],
+    declarations: [AppComponent, TestHostComponent, PageNotFoundComponent],
     imports: [
         BrowserModule,
         CoreModule,
@@ -27,6 +29,7 @@ import { TestHostComponent } from './test-host/test-host.component';
         BrowserAnimationsModule,
         MatDialogModule,
         LoginPageModule,
+        MatInputModule,
     ],
     providers: [CoursesService, AuthorizationService],
     bootstrap: [AppComponent],

@@ -1,30 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthorizationService } from 'src/app/authorization.service';
 import { LocalStorageService } from 'src/app/local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-    @Input() userName: string;
-    public userNameFromToken: string;
-
-    constructor(
-        private authService: AuthorizationService,
-        private localStorageService: LocalStorageService
-    ) {}
-
-    ngOnInit() {
-        if (!!this.localStorageService.getItem(this.authService.TOKEN_KEY)) {
-            this.userNameFromToken = this.localStorageService.getItem(this.authService.TOKEN_KEY);
-        }
-    }
+export class HeaderComponent {
+    constructor(public authService: AuthorizationService, private router: Router) {}
 
     logOff() {
         if (this.authService.isAuthenticated()) {
             this.authService.logout();
+            this.router.navigate(['/login']);
         }
     }
 

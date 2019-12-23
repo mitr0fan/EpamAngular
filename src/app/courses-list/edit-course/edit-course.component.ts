@@ -1,24 +1,50 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/course';
 import { CoursesService } from 'src/app/courses.service';
 import { DurationPipe } from 'src/app/duration.pipe';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-edit-course',
     templateUrl: './edit-course.component.html',
     styleUrls: ['./edit-course.component.scss'],
 })
-export class EditCourseComponent {
+export class EditCourseComponent implements OnInit {
+    public course: Course;
+    private emptyCourse: Course = {
+        id: 0,
+        title: '',
+        date: '',
+        duration: 0,
+        description: '',
+        topRated: false,
+    };
+
     constructor(
-        private reference: MatDialogRef<EditCourseComponent>,
-        @Inject(MAT_DIALOG_DATA) public course: Course,
         private coursesService: CoursesService,
-        private durationPipe: DurationPipe
+        private durationPipe: DurationPipe,
+        private route: ActivatedRoute,
+        private router: Router
     ) {}
 
+    ngOnInit() {
+        this.route.params.subscribe((data) => {
+            if (data.id) {
+                const index = +this.coursesService.getItemById(+data.id);
+                if (index !== -1) {
+                    this.course = this.coursesService.getList()[index];
+                } else {
+                    this.course = this.emptyCourse;
+                    this.router.navigate(['/error']);
+                }
+            } else {
+                this.course = this.emptyCourse;
+            }
+        });
+    }
+
     close() {
-        this.reference.close();
+        this.router.navigate(['/courses']);
     }
 
     edit(
@@ -37,6 +63,6 @@ export class EditCourseComponent {
         };
         this.coursesService.createCourse(newCourse);
 
-        this.reference.close();
+        this.router.navigate(['/courses']);
     }
 }

@@ -1,5 +1,4 @@
-<div appBorderColor [date]="course.date" 
-[ngClass]="course.topRated ? 'course-item-top' : 'course-item'">
+<div appBorderColor [date]="course.date" class="course-item">
     <span class="course-item__title">{{course.title}} </span>
     <div class="course-item__top" *ngIf="course.topRated">★</div>
     <div class="course-item__description">{{course.description}} </div>
@@ -7,7 +6,7 @@
     
     <span class="course-item__duration">Duration: {{course.duration | duration}}</span>
     
-    <span class="course-item__button course-item__button_edit" (click)="edit()">Edit</span>
+    <span class="course-item__button course-item__button_edit" (click)="edit(course.id)">Edit</span>
     <span class="course-item__button course-item__button_delete"
     (click)="delete(course.id)">Delete</span>
 </div>
