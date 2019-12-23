@@ -1,18 +1,18 @@
 import { Course } from 'src/app/course';
 import { User } from 'src/app/user';
 
-export let DATA: Data;
 interface Data {
     COURSES: Course[];
     FAKE_USERS: User[];
     ROUTES: any;
 }
+
 const today = new Date().getTime();
 const differenceDateMs = 1000000000;
 const durationMs = 3600000;
 const differenceDurationMs = 1500000;
 
-DATA = {
+export let DATA: Data = {
     COURSES: [
         {
             id: 1,
@@ -80,3 +80,4 @@ DATA = {
         errorRoute: '**',
     },
 };
+
