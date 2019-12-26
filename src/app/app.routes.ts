@@ -10,7 +10,7 @@ import { DATA } from 'common/constants';
 const routes = DATA.ROUTES;
 
 export const appRoutes: Routes = [
-    { path: routes.emptyRoute, redirectTo: '/login', pathMatch: 'full' },
+    { path: routes.emptyRoute, redirectTo: routes.redirectToLogin, pathMatch: 'full' },
     { path: routes.loginRoute, component: LoginComponent, canActivate: [LoginGuardService] },
     { path: routes.coursesRoute, component: CoursesComponent, canActivate: [CanActivateGuardService] },
     { path: routes.createNewCourseRoute, component: EditCourseComponent, canActivate: [CanActivateGuardService] },

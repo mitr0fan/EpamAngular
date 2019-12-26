@@ -77,6 +77,7 @@ export let DATA: Data = {
         coursesRoute: 'courses',
         createNewCourseRoute: 'courses/new',
         editCourseRoute: 'courses/:id',
+        redirectToLogin: '/login',
         errorRoute: '**',
     },
 };
