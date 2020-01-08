@@ -19,7 +19,7 @@ export class DeleteCoursePopupComponent {
     }
 
     removeCourse() {
-        this.courseService.removeItem(this.id.idCourse);
-        this.reference.close();
+        this.courseService.removeItem(this.id.idCourse)
+        .subscribe(() => this.reference.close());
     }
 }

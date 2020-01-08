@@ -13,11 +13,7 @@ export class BorderColorDirective implements OnInit {
     constructor(private element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
-        this.date = `${this.date.slice(3, 5)}.
-        ${this.date.slice(0, 2)}.
-        ${this.date.slice(6)}`;
-
-        const difference = new Date().getTime() - new Date(this.date).getTime();
+        const difference = new Date().getTime() - +this.date;
 
         if (difference > 0 && difference < this.twoWeeks) {
             this.renderer.setStyle(

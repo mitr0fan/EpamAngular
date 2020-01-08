@@ -10,15 +10,15 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./edit-course.component.scss'],
 })
 export class EditCourseComponent implements OnInit {
-    public course: Course;
     private emptyCourse: Course = {
-        id: 0,
+        id: undefined,
         title: '',
         date: '',
         duration: 0,
         description: '',
         topRated: false,
     };
+    public course: Course = this.emptyCourse;
 
     constructor(
         private coursesService: CoursesService,
@@ -30,13 +30,8 @@ export class EditCourseComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe((data) => {
             if (data.id) {
-                const index = +this.coursesService.getItemById(+data.id);
-                if (index !== -1) {
-                    this.course = this.coursesService.getList()[index];
-                } else {
-                    this.course = this.emptyCourse;
-                    this.router.navigate(['/error']);
-                }
+                this.coursesService.getItemById(data.id)
+                .subscribe(course => this.course = course[0]);
             } else {
                 this.course = this.emptyCourse;
             }
@@ -56,13 +51,27 @@ export class EditCourseComponent implements OnInit {
         const newCourse: Course = {
             id: this.course.id,
             title: titleContent,
-            date: dateContent,
+            date: (() => {
+                if (+dateContent) {
+                    return dateContent;
+                } else {
+                    return new Date(`
+                    ${dateContent.slice(3, 5)}.
+                    ${dateContent.slice(0, 2)}.
+                    ${dateContent.slice(6, )}
+                    `).getTime();
+                }
+            })(),
             duration: this.durationPipe.changeDurationFromMinutesToMs(durationContent),
             description: descriptionContent,
             topRated: this.course.topRated,
         };
-        this.coursesService.createCourse(newCourse);
 
-        this.router.navigate(['/courses']);
+        this.coursesService.createCourse(newCourse)
+        .subscribe(() => {
+            setTimeout(() => {
+                this.router.navigate(['/courses']);
+            }, 100);
+        });
     }
 }

@@ -17,15 +17,21 @@ export class CoursesComponent implements OnInit {
         private router: Router
     ) {}
 
-    public courses: Course[];
+    public courses: Course[] = [];
     public inputSearch = '';
+    private amountCourses = 2;
 
     ngOnInit() {
-        this.courses = this.coursesService.getList();
+        this.coursesService.getList(this.amountCourses, 1)
+        .subscribe(courses => {
+            this.courses = courses;
+        });
     }
 
     loadMoreCourses() {
-        console.log('Handler for "Load More" button');
+        this.amountCourses += 2;
+        this.coursesService.getList(this.amountCourses, 1)
+        .subscribe(courses => this.courses = courses);
     }
 
     deleteCourse(id: number) {
@@ -34,8 +40,11 @@ export class CoursesComponent implements OnInit {
             data: { idCourse: id },
         });
 
-        const removeCoursePromise: Promise<any> = dialogRef.afterClosed().toPromise();
-        removeCoursePromise.then(() => (this.courses = this.coursesService.getList()));
+        dialogRef.afterClosed()
+        .subscribe(() =>
+            this.coursesService.getList(this.amountCourses, 1)
+            .subscribe(courses => this.courses = courses)
+        );
     }
 
     search(value: string) {

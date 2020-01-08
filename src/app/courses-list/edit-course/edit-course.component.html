@@ -19,7 +19,7 @@
         <span>Date:</span>
         <mat-form-field class="edit-course__input edit-course__input_small">
             <input type="text" matInput 
-            placeholder="Example: 01.01.2020" value="{{course.date}}" #date>
+            placeholder="Example: 01.01.2020" value="{{course.date | date:'dd.MM.yyyy'}}" #date>
         </mat-form-field>
     </div>
     <div class="edit-course__duration">

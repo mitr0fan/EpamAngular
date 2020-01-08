@@ -1,54 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Course } from './course';
-import { DATA } from '../../common/constants';
-import { format } from 'date-fns';
+import { HttpClient } from '@angular/common/http';
+import { DATA } from 'common/constants';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CoursesService {
-    private courses: Course[];
+    private coursesUrl = DATA.COURSES_SERVER;
 
-    constructor() {
-        const changedCourses: Course[] = [];
+    constructor(private http: HttpClient) {}
 
-        DATA.COURSES.forEach((i) => {
-            let newData: Course;
-            newData = Object.assign({}, i);
-            newData.date = format(new Date(i.date), 'dd.MM.yyyy');
-            changedCourses.push(newData);
-        });
-
-        this.courses = changedCourses;
-    }
-
-    getList(): Course[] {
-        return this.courses;
+    getList(amountCourses?: number, page?: number) {
+        if (amountCourses && page) {
+            const addedUrl = `?_limit=${amountCourses}&_page=${page}`;
+            return this.http.get<Course[]>(this.coursesUrl + addedUrl);
+        } else {
+            return this.http.get<Course[]>(this.coursesUrl);
+        }
     }
 
     createCourse(course: Course) {
-        if (!course.id) {
-            let id = 0;
-            this.courses.forEach((i) => {
-                if (i.id > id) {
-                    id = i.id;
-                }
-            });
-            course.id = ++id;
+        if (!!course.id) {
+            this.removeItem(course.id)
+            .subscribe(error => console.log('This course was not deleted because it does not exist'));
         }
+        delete course.id;
 
-        this.removeItem(course.id);
-        this.courses.push(course);
+        return this.http.post(this.coursesUrl, course);
     }
 
     getItemById(id: number) {
-        return this.courses.findIndex((course) => {
-            if (course.id === id) {
-                return true;
-            } else {
-                return false;
-            }
-        });
+        const addedUrl = `?id=${id}`;
+        return this.http.get<Course[]>(this.coursesUrl + addedUrl);
     }
 
     updateItem() {
@@ -56,14 +40,7 @@ export class CoursesService {
     }
 
     removeItem(id: number) {
-        const indexOfCourse = this.getItemById(id);
-
-        if (indexOfCourse !== -1) {
-            this.courses = this.courses
-                .slice(0, indexOfCourse)
-                .concat(this.courses.slice(indexOfCourse + 1));
-        } else {
-            return;
-        }
+        const deleteUrl = `${this.coursesUrl}/${id}`;
+        return this.http.delete(deleteUrl);
     }
 }

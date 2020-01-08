@@ -1,0 +1,68 @@
+{
+  "courses": [
+    {
+      "id": 2,
+      "title": "Video Course 2",
+      "date": 1577420507822,
+      "duration": 2100000,
+      "description": "The best course ever!!!!!",
+      "topRated": true
+    },
+    {
+      "id": 3,
+      "title": "Video Course 3",
+      "date": 1580420507822,
+      "duration": 5100000,
+      "description": "The best course ever!!!!!",
+      "topRated": false
+    },
+    {
+      "id": 4,
+      "title": "Video Course 4",
+      "date": 1575420507822,
+      "duration": 8100000,
+      "description": "The best course ever!!!!!",
+      "topRated": true
+    },
+    {
+      "title": "Video course 1",
+      "date": 1577822400000,
+      "duration": 3840000,
+      "description": "The best course ever!!!",
+      "topRated": false,
+      "id": 6
+    },
+    {
+      "title": "Hello",
+      "date": 1607976000000,
+      "duration": 9960000,
+      "description": "World",
+      "topRated": false,
+      "id": 7
+    },
+    {
+      "title": "new course",
+      "date": 1570651200000,
+      "duration": 3300000,
+      "description": "lalala ohohoh",
+      "topRated": false,
+      "id": 8
+    },
+    {
+      "title": "Video Course 5",
+      "date": 1574107200000,
+      "duration": 3300000,
+      "description": "The best course ever!!!!!",
+      "topRated": false,
+      "id": 10
+    },
+    {
+      "title": "Just course",
+      "date": 1578340800000,
+      "duration": 2700000,
+      "description": "There should be a description",
+      "topRated": false,
+      "id": 11
+    }
+  ]
+}

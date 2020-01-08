@@ -5,6 +5,7 @@ interface Data {
     COURSES: Course[];
     FAKE_USERS: User[];
     ROUTES: any;
+    COURSES_SERVER: string;
 }
 
 const today = new Date().getTime();
@@ -12,7 +13,7 @@ const differenceDateMs = 1000000000;
 const durationMs = 3600000;
 const differenceDurationMs = 1500000;
 
-export let DATA: Data = {
+export const DATA: Data = {
     COURSES: [
         {
             id: 1,
@@ -80,5 +81,6 @@ export let DATA: Data = {
         redirectToLogin: '/login',
         errorRoute: '**',
     },
+    COURSES_SERVER: 'http://localhost:3000/courses',
 };
 
