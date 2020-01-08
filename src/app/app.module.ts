@@ -31,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
         MatDialogModule,
         LoginPageModule,
         MatInputModule,
-        HttpClientModule
+        HttpClientModule,
     ],
     providers: [CoursesService, AuthorizationService],
     bootstrap: [AppComponent],

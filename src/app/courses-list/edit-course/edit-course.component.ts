@@ -30,8 +30,9 @@ export class EditCourseComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe((data) => {
             if (data.id) {
-                this.coursesService.getItemById(data.id)
-                .subscribe(course => this.course = course[0]);
+                this.coursesService
+                    .getItemById(data.id)
+                    .subscribe((course) => (this.course = course[0]));
             } else {
                 this.course = this.emptyCourse;
             }
@@ -58,7 +59,7 @@ export class EditCourseComponent implements OnInit {
                     return new Date(`
                     ${dateContent.slice(3, 5)}.
                     ${dateContent.slice(0, 2)}.
-                    ${dateContent.slice(6, )}
+                    ${dateContent.slice(6)}
                     `).getTime();
                 }
             })(),
@@ -67,8 +68,7 @@ export class EditCourseComponent implements OnInit {
             topRated: this.course.topRated,
         };
 
-        this.coursesService.createCourse(newCourse)
-        .subscribe(() => {
+        this.coursesService.createCourse(newCourse).subscribe(() => {
             setTimeout(() => {
                 this.router.navigate(['/courses']);
             }, 100);

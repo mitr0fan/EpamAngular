@@ -22,8 +22,9 @@ export class CoursesService {
 
     createCourse(course: Course) {
         if (!!course.id) {
-            this.removeItem(course.id)
-            .subscribe(error => console.log('This course was not deleted because it does not exist'));
+            this.removeItem(course.id).subscribe((error) =>
+                console.log('This course was not deleted because it does not exist')
+            );
         }
         delete course.id;
 

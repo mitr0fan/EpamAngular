@@ -2,11 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Course } from './course';
 
 @Pipe({
-    name: 'orderBy'
+    name: 'orderBy',
 })
 export class OrderByPipe implements PipeTransform {
     transform(value: Course[], ...args: any[]): Course[] {
-        console.log(value);
         return value.sort((a, b) => {
             if (a.date > b.date) {
                 return 1;

@@ -22,16 +22,16 @@ export class CoursesComponent implements OnInit {
     private amountCourses = 2;
 
     ngOnInit() {
-        this.coursesService.getList(this.amountCourses, 1)
-        .subscribe(courses => {
+        this.coursesService.getList(this.amountCourses, 1).subscribe((courses) => {
             this.courses = courses;
         });
     }
 
     loadMoreCourses() {
         this.amountCourses += 2;
-        this.coursesService.getList(this.amountCourses, 1)
-        .subscribe(courses => this.courses = courses);
+        this.coursesService
+            .getList(this.amountCourses, 1)
+            .subscribe((courses) => (this.courses = courses));
     }
 
     deleteCourse(id: number) {
@@ -40,11 +40,13 @@ export class CoursesComponent implements OnInit {
             data: { idCourse: id },
         });
 
-        dialogRef.afterClosed()
-        .subscribe(() =>
-            this.coursesService.getList(this.amountCourses, 1)
-            .subscribe(courses => this.courses = courses)
-        );
+        dialogRef
+            .afterClosed()
+            .subscribe(() =>
+                this.coursesService
+                    .getList(this.amountCourses, 1)
+                    .subscribe((courses) => (this.courses = courses))
+            );
     }
 
     search(value: string) {
