@@ -13,8 +13,8 @@ export class CoursesService {
 
     getList(amountCourses?: number, page?: number) {
         if (amountCourses && page) {
-            const addedUrl = `?_limit=${amountCourses}&_page=${page}`;
-            return this.http.get<Course[]>(this.coursesUrl + addedUrl);
+            const url = `${this.coursesUrl}?_limit=${amountCourses}&_page=${page}`;
+            return this.http.get<Course[]>(url);
         } else {
             return this.http.get<Course[]>(this.coursesUrl);
         }
@@ -31,8 +31,8 @@ export class CoursesService {
     }
 
     getItemById(id: number) {
-        const addedUrl = `?id=${id}`;
-        return this.http.get<Course[]>(this.coursesUrl + addedUrl);
+        const url = `${this.coursesUrl}?id=${id}`;
+        return this.http.get<Course[]>(url);
     }
 
     updateItem() {
@@ -42,5 +42,17 @@ export class CoursesService {
     removeItem(id: number) {
         const deleteUrl = `${this.coursesUrl}/${id}`;
         return this.http.delete(deleteUrl);
+    }
+
+    searchCoursesByTitle(value: string) {
+        const searchByTitleUrl = `${this.coursesUrl}?title_like=${value}`;
+
+        return this.http.get<Course[]>(searchByTitleUrl);
+    }
+
+    searchCoursesByDescription(value: string) {
+        const searchByDescriptionUrl = `${this.coursesUrl}?description_like=${value}`;
+
+        return this.http.get<Course[]>(searchByDescriptionUrl);
     }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DATA } from 'common/constants';
 import { User } from './user';
 import { LocalStorageService } from './local-storage.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
@@ -9,19 +10,20 @@ import { LocalStorageService } from './local-storage.service';
 export class AuthorizationService {
     private signedIn = false;
     public currentUser: User;
-    public TOKEN_KEY = 'tokenAuthorization';
+    private tokenFromServer: string;
 
-    constructor(private localStorageService: LocalStorageService) {}
+    constructor(private localStorageService: LocalStorageService, private http: HttpClient) {}
 
     login(email: string, pass: string) {
-        const user = this.getUserInfo(email);
+        this.getUserInfo(email)
+        .subscribe(user => {
+            const userFromServer = user[0];
 
-        if (!!user && user.password === pass) {
-            this.signedIn = !this.signedIn;
-            this.currentUser = user;
-
-            this.localStorageService.addToken(this.TOKEN_KEY, email);
-        }
+            if (!!userFromServer && userFromServer.password === pass) {
+                this.signedIn = !this.signedIn;
+                this.localStorageService.addToken(this.tokenGenerator(), email);
+            }
+        });
     }
 
     logout() {
@@ -31,28 +33,27 @@ export class AuthorizationService {
     }
 
     isAuthenticated(): boolean {
-        if (!!this.localStorageService.getItem(this.TOKEN_KEY)) {
+        if (!!this.localStorageService.getItem(this.tokenFromServer)) {
             this.signedIn = true;
 
-            const emailFromLocalStorage = this.localStorageService.getItem(this.TOKEN_KEY);
+            const emailFromLocalStorage = this.localStorageService.getItem(this.tokenFromServer);
             this.currentUser = this.getUserInfo(emailFromLocalStorage);
         }
         return this.signedIn;
     }
 
     getUserInfo(email: string) {
-        let user: User;
+        const url = `${DATA.USERS_SERVER}?email=${email}`;
 
-        DATA.FAKE_USERS.forEach((i) => {
-            if (i.email === email) {
-                user = i;
-            }
-        });
-
-        return user;
+        return this.http.get<User[]>(url);
     }
 
     deleteToken() {
-        this.localStorageService.removeToken(this.TOKEN_KEY);
+        this.localStorageService.removeToken(this.tokenFromServer);
+    }
+
+    tokenGenerator() {
+        let token = Math.ceil(Math.random()*1000) + 'AuthToken' + Math.ceil(Math.random()*1000);
+        return token;
     }
 }

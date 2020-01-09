@@ -18,7 +18,6 @@ export class CoursesComponent implements OnInit {
     ) {}
 
     public courses: Course[] = [];
-    public inputSearch = '';
     private amountCourses = 2;
 
     ngOnInit() {
@@ -48,7 +47,17 @@ export class CoursesComponent implements OnInit {
     }
 
     search(value: string) {
-        this.inputSearch = value;
+        this.coursesService.searchCoursesByTitle(value)
+        .subscribe(courses => {
+            if (courses.length > 0) {
+                this.courses = courses;
+                this.coursesService.searchCoursesByDescription(value)
+                .subscribe(courses => this.courses.concat(courses));
+            } else {
+                this.coursesService.searchCoursesByDescription(value)
+                .subscribe(courses => this.courses = courses);
+            }
+        });
     }
 
     createNewCourse() {

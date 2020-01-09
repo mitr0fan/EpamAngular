@@ -30,7 +30,7 @@
       "duration": 3840000,
       "description": "The best course ever!!!",
       "topRated": false,
-      "id": 6
+      "id": 1
     },
     {
       "title": "Hello",
@@ -38,15 +38,7 @@
       "duration": 9960000,
       "description": "World",
       "topRated": false,
-      "id": 7
-    },
-    {
-      "title": "new course",
-      "date": 1570651200000,
-      "duration": 3300000,
-      "description": "lalala ohohoh",
-      "topRated": false,
-      "id": 8
+      "id": 6
     },
     {
       "title": "Video Course 5",
@@ -54,15 +46,39 @@
       "duration": 3300000,
       "description": "The best course ever!!!!!",
       "topRated": false,
-      "id": 10
+      "id": 7
     },
     {
-      "title": "Just course",
-      "date": 1578340800000,
-      "duration": 2700000,
-      "description": "There should be a description",
+      "title": "How to make a courses page",
+      "date": 1573416000000,
+      "duration": 12000000,
+      "description": "This course describes how to make a courses page",
       "topRated": false,
-      "id": 11
+      "id": 8
+    },
+    {
+      "title": "new course",
+      "date": 1570651200000,
+      "duration": 3300000,
+      "description": "lalala ohohoh",
+      "topRated": false,
+      "id": 9
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Jack",
+      "lastName": "Sparrow",
+      "email": "email1",
+      "password": "0000"
+    },
+    {
+      "id": 2,
+      "firstName": "Luke",
+      "lastName": "Skywalker",
+      "email": "email2",
+      "password": "0000"
     }
   ]
 }

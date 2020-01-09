@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier": "prettier --config .prettierrc.json --write src/**/*.ts"
+    "prettier": "prettier --config .prettierrc.json --write src/**/*.ts",
+    "server": "json-server common\\server.json"
   },
   "private": true,
   "dependencies": {
