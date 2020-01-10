@@ -16,7 +16,8 @@ import { LoginPageModule } from './login-page/login-page.module';
 import { TestHostComponent } from './test-host/test-host.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatInputModule } from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './auth-interceptor.service';
 
 @NgModule({
     declarations: [AppComponent, TestHostComponent, PageNotFoundComponent],
@@ -33,7 +34,13 @@ import { HttpClientModule } from '@angular/common/http';
         MatInputModule,
         HttpClientModule,
     ],
-    providers: [CoursesService, AuthorizationService],
+    providers: [
+        /*{
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptorService,
+            multi: true,
+        }*/
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

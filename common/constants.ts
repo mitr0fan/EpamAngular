@@ -6,6 +6,8 @@ interface Data {
     FAKE_USERS: User[];
     ROUTES: any;
     COURSES_SERVER: string;
+    USERS_SERVER: string;
+    SERVER: string;
 }
 
 const today = new Date().getTime();
@@ -82,5 +84,7 @@ export const DATA: Data = {
         errorRoute: '**',
     },
     COURSES_SERVER: 'http://localhost:3000/courses',
+    USERS_SERVER: 'http://localhost:3000/users',
+    SERVER: 'http://localhost:3000',
 };
 

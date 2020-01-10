@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier": "prettier --config .prettierrc.json --write src/**/*.ts"
+    "prettier": "prettier --config .prettierrc.json --write src/**/*.ts",
+    "server": "json-server common\\server.json -m ./node_modules/json-server-auth"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +43,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "json-server-auth": "^1.2.1",
     "karma": "~4.1.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
