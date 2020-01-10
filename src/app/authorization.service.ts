@@ -14,15 +14,18 @@ export class AuthorizationService {
 
     constructor(private localStorageService: LocalStorageService, private http: HttpClient) {}
 
-    login(email: string, pass: string) {
-        this.getUserInfo(email)
-        .subscribe(user => {
-            const userFromServer = user[0];
+    login(emailProperty: string, pass: string) {
+        const url = `${DATA.SERVER}/login`;
+        const bodyRequest = {
+            email: emailProperty,
+            password: pass
+        };
 
-            if (!!userFromServer && userFromServer.password === pass) {
-                this.signedIn = !this.signedIn;
-                this.localStorageService.addToken(this.tokenGenerator(), email);
-            }
+        this.http.post<{accessToken:string}>(url, bodyRequest)
+        .subscribe(response => {
+            this.tokenFromServer = response.accessToken;
+            this.signedIn = !this.signedIn;
+            this.localStorageService.addToken('authToken', this.tokenFromServer);
         });
     }
 
@@ -32,14 +35,8 @@ export class AuthorizationService {
         this.deleteToken();
     }
 
-    isAuthenticated(): boolean {
-        if (!!this.localStorageService.getItem(this.tokenFromServer)) {
-            this.signedIn = true;
-
-            const emailFromLocalStorage = this.localStorageService.getItem(this.tokenFromServer);
-            this.currentUser = this.getUserInfo(emailFromLocalStorage);
-        }
-        return this.signedIn;
+    isAuthenticated(id: number) {
+        const url = `${DATA.SERVER}/600/users/`;
     }
 
     getUserInfo(email: string) {
@@ -50,10 +47,5 @@ export class AuthorizationService {
 
     deleteToken() {
         this.localStorageService.removeToken(this.tokenFromServer);
-    }
-
-    tokenGenerator() {
-        let token = Math.ceil(Math.random()*1000) + 'AuthToken' + Math.ceil(Math.random()*1000);
-        return token;
     }
 }
