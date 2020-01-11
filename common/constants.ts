@@ -8,6 +8,10 @@ interface Data {
     COURSES_SERVER: string;
     USERS_SERVER: string;
     SERVER: string;
+    LOCAL_STORAGE: {
+        userInfo: string;
+        authToken: string;
+    };
 }
 
 const today = new Date().getTime();
@@ -86,5 +90,9 @@ export const DATA: Data = {
     COURSES_SERVER: 'http://localhost:3000/courses',
     USERS_SERVER: 'http://localhost:3000/users',
     SERVER: 'http://localhost:3000',
+    LOCAL_STORAGE: {
+        userInfo: 'userInfo',
+        authToken: 'authToken',
+    },
 };
 

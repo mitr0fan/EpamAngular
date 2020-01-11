@@ -3,15 +3,12 @@ import { DATA } from 'common/constants';
 import { User } from './user';
 import { LocalStorageService } from './local-storage.service';
 import { HttpClient } from '@angular/common/http';
+import { of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthorizationService {
-    private signedIn = false;
-    public currentUser: User;
-    private tokenFromServer: string;
-
     constructor(private localStorageService: LocalStorageService, private http: HttpClient) {}
 
     login(emailProperty: string, pass: string) {
@@ -21,31 +18,36 @@ export class AuthorizationService {
             password: pass
         };
 
-        this.http.post<{accessToken:string}>(url, bodyRequest)
+        this.http.post<{accessToken: string}>(url, bodyRequest)
         .subscribe(response => {
-            this.tokenFromServer = response.accessToken;
-            this.signedIn = !this.signedIn;
-            this.localStorageService.addToken('authToken', this.tokenFromServer);
+            this.http.get<User[]>(`${DATA.USERS_SERVER}?email=${emailProperty}`)
+            .subscribe(user => {
+                this.localStorageService.addToken(
+                    DATA.LOCAL_STORAGE.userInfo,
+                    JSON.stringify(user[0])
+                );
+                const tokenFromServer = response.accessToken;
+                this.localStorageService.addToken(DATA.LOCAL_STORAGE.authToken, tokenFromServer);
+            });
         });
     }
 
     logout() {
-        this.signedIn = !this.signedIn;
-
         this.deleteToken();
     }
 
-    isAuthenticated(id: number) {
-        const url = `${DATA.SERVER}/600/users/`;
-    }
-
-    getUserInfo(email: string) {
-        const url = `${DATA.USERS_SERVER}?email=${email}`;
-
-        return this.http.get<User[]>(url);
+    getUserInfo() {
+        if (this.localStorageService.getItem(DATA.LOCAL_STORAGE.userInfo)) {
+            const user: User = JSON.parse(this.localStorageService.getItem(DATA.LOCAL_STORAGE.userInfo));
+            const url = `${DATA.SERVER}/600/users/${user.id}`;
+            return this.http.get(url);
+        } else {
+            return of(false);
+        }
     }
 
     deleteToken() {
-        this.localStorageService.removeToken(this.tokenFromServer);
+        this.localStorageService.removeToken(DATA.LOCAL_STORAGE.authToken);
+        this.localStorageService.removeToken(DATA.LOCAL_STORAGE.userInfo);
     }
 }

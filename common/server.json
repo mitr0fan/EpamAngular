@@ -69,16 +69,22 @@
     {
       "email": "q@email.com",
       "password": "$2a$10$kS3VRaOkONOsTZhSLSlY0efpOQgeFPTAb3SR/qDV7hlF/.9ZrDszq",
+      "firstName": "Крокодил",
+      "lastName": "Гена",
       "id": 1
     },
     {
       "email": "w@email.com",
       "password": "$2a$10$XoElz0BYdZL/jRms0rnltOnp5Y73nuanQ0/Fa1aySzARG4M1FupDC",
+      "firstName": "Кот",
+      "lastName": "Леопольд",
       "id": 2
     },
     {
       "email": "e@email.com",
       "password": "$2a$10$ILqqLIriRWV2LWom5J0j1uCPNKbmTnQtC7qLpn1f6fJCkXVIrSCT6",
+      "firstName": "Лев",
+      "lastName": "Симба",
       "id": 3
     }
   ]

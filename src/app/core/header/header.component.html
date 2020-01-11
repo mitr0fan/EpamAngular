@@ -2,8 +2,8 @@
     <header class="header__content">
         <span class="header__logo">Courses</span>
         <span class="header__login" *ngIf="showLogOffButton()">
-            {{authService.currentUser.firstName + ' ' + authService.currentUser.lastName}}</span>
-        <span class="header__button header__button_color-white" *ngIf="showLogOffButton()" (click)="logOff()">Log off</span>
+            </span>
+        <span class="header__button header__button_color-white" *ngIf="show" (click)="logOff()">Log off</span>
     </header>
 </div>
 

@@ -26,6 +26,6 @@ export class AppComponent implements OnInit {
     }
 
     authenticated() {
-        return this.authService.isAuthenticated();
+        return false;
     }
 }

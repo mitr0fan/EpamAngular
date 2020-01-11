@@ -9,7 +9,7 @@ export class LoginGuardService implements CanActivate {
     constructor(private authService: AuthorizationService, private router: Router) {}
 
     canActivate(): boolean {
-        if (this.authService.isAuthenticated()) {
+        if (false) {
             this.router.navigate(['/courses']);
             return false;
         } else {

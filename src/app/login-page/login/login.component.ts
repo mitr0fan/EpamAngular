@@ -11,7 +11,7 @@ export class LoginComponent {
     constructor(private authService: AuthorizationService, private router: Router) {}
 
     login(email: string, pass: string) {
-        if (!this.authService.isAuthenticated()) {
+        if (true) {
             this.authService.login(email, pass);
             this.router.navigate(['/courses']);
         }

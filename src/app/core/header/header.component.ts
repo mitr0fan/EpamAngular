@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from 'src/app/authorization.service';
 import { LocalStorageService } from 'src/app/local-storage.service';
 import { Router } from '@angular/router';
@@ -9,16 +9,17 @@ import { Router } from '@angular/router';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+    public show;
     constructor(public authService: AuthorizationService, private router: Router) {}
 
     logOff() {
-        if (this.authService.isAuthenticated()) {
+        if (false) {
             this.authService.logout();
             this.router.navigate(['/login']);
         }
     }
 
     showLogOffButton() {
-        return this.authService.isAuthenticated();
+        return false;
     }
 }
