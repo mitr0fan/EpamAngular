@@ -1,9 +1,10 @@
 <div class="header">
     <header class="header__content">
         <span class="header__logo">Courses</span>
-        <span class="header__login" *ngIf="showLogOffButton()">
-            </span>
-        <span class="header__button header__button_color-white" *ngIf="show" (click)="logOff()">Log off</span>
+        <span class="header__login" *ngIf="showUser">{{showUser}}</span>
+        <span class="header__button header__button_color-white"
+        *ngIf="showUser" (click)="logOff()">
+            Log off
+        </span>
     </header>
 </div>
-

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from './authorization.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { LocalStorageService } from './local-storage.service';
+import { DATA } from 'common/constants';
 
 @Component({
     selector: 'app-root',
@@ -8,10 +10,10 @@ import { Router, NavigationEnd } from '@angular/router';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    public user: string;
     public path;
+    public userFromLocalStorage;
 
-    constructor(private authService: AuthorizationService, private router: Router) {}
+    constructor(private router: Router, private localStorage: LocalStorageService) {}
 
     ngOnInit() {
         this.router.events.subscribe((event) => {
@@ -21,11 +23,19 @@ export class AppComponent implements OnInit {
                 } else {
                     this.path = '';
                 }
+                if (event.url !== '/login') {
+                    this.userFromLocalStorage =
+                        JSON.parse(
+                            this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)
+                            ).firstName +
+                        ' ' +
+                        JSON.parse(
+                            this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)
+                            ).lastName;
+                } else {
+                    this.userFromLocalStorage = '';
+                }
             }
         });
-    }
-
-    authenticated() {
-        return false;
     }
 }

@@ -1,6 +1,6 @@
-<app-header></app-header>
+<app-header [showUser]="userFromLocalStorage"></app-header>
 <app-footer></app-footer>
 <div class="courses-content">
-    <app-breadcrumbs *ngIf="authenticated()" [path]="path"></app-breadcrumbs>
+    <app-breadcrumbs *ngIf="path" [path]="path"></app-breadcrumbs>
     <router-outlet></router-outlet>
 </div>

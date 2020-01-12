@@ -9,11 +9,12 @@ export class LoginGuardService implements CanActivate {
     constructor(private authService: AuthorizationService, private router: Router) {}
 
     canActivate(): boolean {
-        if (false) {
-            this.router.navigate(['/courses']);
-            return false;
-        } else {
-            return true;
-        }
+        this.authService.getUserInfo()
+        .subscribe(data => {
+            if (data) {
+                this.router.navigate(['/courses']);
+            }
+        });
+        return true;
     }
 }

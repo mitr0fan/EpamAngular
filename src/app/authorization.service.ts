@@ -18,18 +18,7 @@ export class AuthorizationService {
             password: pass
         };
 
-        this.http.post<{accessToken: string}>(url, bodyRequest)
-        .subscribe(response => {
-            this.http.get<User[]>(`${DATA.USERS_SERVER}?email=${emailProperty}`)
-            .subscribe(user => {
-                this.localStorageService.addToken(
-                    DATA.LOCAL_STORAGE.userInfo,
-                    JSON.stringify(user[0])
-                );
-                const tokenFromServer = response.accessToken;
-                this.localStorageService.addToken(DATA.LOCAL_STORAGE.authToken, tokenFromServer);
-            });
-        });
+        return this.http.post<{accessToken: string}>(url, bodyRequest);
     }
 
     logout() {
@@ -49,5 +38,18 @@ export class AuthorizationService {
     deleteToken() {
         this.localStorageService.removeToken(DATA.LOCAL_STORAGE.authToken);
         this.localStorageService.removeToken(DATA.LOCAL_STORAGE.userInfo);
+    }
+
+    getUserFromServer(emailProperty: string) {
+        return this.http.get<User[]>(`${DATA.USERS_SERVER}?email=${emailProperty}`);
+    }
+
+    addDataToLocalStorage(user, response) {
+        this.localStorageService.addToken(
+            DATA.LOCAL_STORAGE.userInfo,
+            JSON.stringify(user[0])
+        );
+        const tokenFromServer = response.accessToken;
+        this.localStorageService.addToken(DATA.LOCAL_STORAGE.authToken, tokenFromServer);
     }
 }
