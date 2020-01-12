@@ -25,7 +25,7 @@ export class EditCourseComponent implements OnInit {
         private coursesService: CoursesService,
         private durationPipe: DurationPipe,
         private route: ActivatedRoute,
-        private router: Router,
+        private router: Router
     ) {}
 
     ngOnInit() {

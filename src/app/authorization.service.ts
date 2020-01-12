@@ -15,10 +15,10 @@ export class AuthorizationService {
         const url = `${DATA.SERVER}/login`;
         const bodyRequest = {
             email: emailProperty,
-            password: pass
+            password: pass,
         };
 
-        return this.http.post<{accessToken: string}>(url, bodyRequest);
+        return this.http.post<{ accessToken: string }>(url, bodyRequest);
     }
 
     logout() {
@@ -27,7 +27,9 @@ export class AuthorizationService {
 
     getUserInfo() {
         if (this.localStorageService.getItem(DATA.LOCAL_STORAGE.userInfo)) {
-            const user: User = JSON.parse(this.localStorageService.getItem(DATA.LOCAL_STORAGE.userInfo));
+            const user: User = JSON.parse(
+                this.localStorageService.getItem(DATA.LOCAL_STORAGE.userInfo)
+            );
             const url = `${DATA.SERVER}/600/users/${user.id}`;
             return this.http.get(url);
         } else {
@@ -45,10 +47,7 @@ export class AuthorizationService {
     }
 
     addDataToLocalStorage(user, response) {
-        this.localStorageService.addToken(
-            DATA.LOCAL_STORAGE.userInfo,
-            JSON.stringify(user[0])
-        );
+        this.localStorageService.addToken(DATA.LOCAL_STORAGE.userInfo, JSON.stringify(user[0]));
         const tokenFromServer = response.accessToken;
         this.localStorageService.addToken(DATA.LOCAL_STORAGE.authToken, tokenFromServer);
     }

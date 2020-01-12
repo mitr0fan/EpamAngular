@@ -49,15 +49,16 @@ export class CoursesComponent implements OnInit {
     }
 
     search(value: string) {
-        this.coursesService.searchCoursesByTitle(value)
-        .subscribe(courses => {
+        this.coursesService.searchCoursesByTitle(value).subscribe((courses) => {
             if (courses.length > 0) {
                 this.courses = courses;
-                this.coursesService.searchCoursesByDescription(value)
-                .subscribe(courses => this.courses.concat(courses));
+                this.coursesService
+                    .searchCoursesByDescription(value)
+                    .subscribe((courses) => this.courses.concat(courses));
             } else {
-                this.coursesService.searchCoursesByDescription(value)
-                .subscribe(courses => this.courses = courses);
+                this.coursesService
+                    .searchCoursesByDescription(value)
+                    .subscribe((courses) => (this.courses = courses));
             }
         });
     }
