@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
                 } else {
                     this.path = '';
                 }
-                if (event.url !== '/login') {
+                if (event.url !== '/login' && event.url !== '/') {
                     this.userFromLocalStorage =
                         JSON.parse(this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo))
                             .firstName +
