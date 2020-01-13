@@ -16,16 +16,19 @@ export const appRoutes: Routes = [
         path: routes.coursesRoute,
         component: CoursesComponent,
         canActivate: [CanActivateGuardService],
+        data: {animation: 'CoursesPage'}
     },
     {
         path: routes.createNewCourseRoute,
         component: EditCourseComponent,
         canActivate: [CanActivateGuardService],
+        data: {animation: 'EditPage'}
     },
     {
         path: routes.editCourseRoute,
         component: EditCourseComponent,
         canActivate: [CanActivateGuardService],
+        data: {animation: 'EditPage'}
     },
     { path: routes.errorRoute, component: PageNotFoundComponent },
 ];

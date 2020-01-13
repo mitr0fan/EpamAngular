@@ -10,8 +10,6 @@ import { appRoutes } from './app.routes';
 import { DirectivesPipesModule } from './directives-pipes/directives-pipes.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { CoursesService } from './courses.service';
-import { AuthorizationService } from './authorization.service';
 import { LoginPageModule } from './login-page/login-page.module';
 import { TestHostComponent } from './test-host/test-host.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
