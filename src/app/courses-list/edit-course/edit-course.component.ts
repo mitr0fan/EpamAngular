@@ -61,10 +61,18 @@ export class EditCourseComponent implements OnInit {
             topRated: this.course.topRated,
         };
 
-        this.coursesService.createCourse(newCourse).subscribe(() => {
-            setTimeout(() => {
-                this.router.navigate(['/courses']);
-            }, 100);
-        });
+        if (!this.course.id) {
+            this.coursesService.createCourse(newCourse).subscribe(() => {
+                setTimeout(() => {
+                    this.router.navigate(['/courses']);
+                }, 100);
+            });
+        } else {
+            this.coursesService.updateItem(newCourse).subscribe(() => {
+                setTimeout(() => {
+                    this.router.navigate(['/courses']);
+                }, 100);
+            });
+        }
     }
 }

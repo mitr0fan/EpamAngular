@@ -23,13 +23,6 @@ export class CoursesService {
     }
 
     createCourse(course: Course) {
-        if (!!course.id) {
-            this.removeItem(course.id).subscribe((error) =>
-                console.log('This course was not deleted because it does not exist')
-            );
-        }
-        delete course.id;
-
         return this.http.post(this.coursesUrl, course);
     }
 
@@ -38,8 +31,9 @@ export class CoursesService {
         return this.http.get<Course[]>(url);
     }
 
-    updateItem() {
-        console.log('Update Item');
+    updateItem(course: Course) {
+        const url = `${this.coursesUrl}/${course.id}`;
+        return this.http.put(url, course);
     }
 
     removeItem(id: number) {

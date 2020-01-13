@@ -3,7 +3,7 @@
     {
       "id": 3,
       "title": "Video Course 3",
-      "date": 1580420507822,
+      "date": 1580414400000,
       "duration": 5100000,
       "description": "The best course ever!!!!!",
       "topRated": false
@@ -11,7 +11,7 @@
     {
       "id": 4,
       "title": "Video Course 4",
-      "date": 1575420507822,
+      "date": 1575403200000,
       "duration": 8100000,
       "description": "The best course ever!!!!!",
       "topRated": true
@@ -30,7 +30,7 @@
       "duration": 3300000,
       "description": "The best course ever!!!!!",
       "topRated": false,
-      "id": 7
+      "id": 5
     },
     {
       "title": "How to make a courses page",
@@ -38,7 +38,7 @@
       "duration": 12000000,
       "description": "This course describes how to make a courses page",
       "topRated": false,
-      "id": 8
+      "id": 7
     },
     {
       "title": "Video course 1",
@@ -46,7 +46,7 @@
       "duration": 3840000,
       "description": "The best course ever!!!",
       "topRated": false,
-      "id": 10
+      "id": 1
     },
     {
       "title": "Video Course 2",
@@ -54,7 +54,7 @@
       "duration": 2100000,
       "description": "The best course ever!!!!!",
       "topRated": true,
-      "id": 11
+      "id": 2
     },
     {
       "title": "new course",
@@ -62,7 +62,7 @@
       "duration": 3300000,
       "description": "lalala ohohoh",
       "topRated": false,
-      "id": 12
+      "id": 8
     },
     {
       "title": "World",
@@ -70,7 +70,15 @@
       "duration": 3300000,
       "description": "Hello",
       "topRated": false,
-      "id": 13
+      "id": 9
+    },
+    {
+      "title": "Angular",
+      "date": 1577822400000,
+      "duration": 5820000,
+      "description": "How to make an app ",
+      "topRated": false,
+      "id": 10
     }
   ],
   "users": [
