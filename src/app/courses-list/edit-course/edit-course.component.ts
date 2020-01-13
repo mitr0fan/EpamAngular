@@ -33,11 +33,17 @@ export class EditCourseComponent implements OnInit {
             if (data.id) {
                 this.coursesService
                     .getItemById(data.id)
-                    .subscribe((course) => (this.course = course[0]));
-            } else {
-                this.course = this.emptyCourse;
+                    .subscribe((course) => {
+                        if (course[0]) {
+                            this.course = course[0];
+                        } else {
+                            this.router.navigate(['/error']);
+                        }
+                    },
+                    );
             }
         });
+
     }
 
     close() {
@@ -53,17 +59,7 @@ export class EditCourseComponent implements OnInit {
         const newCourse: Course = {
             id: this.course.id,
             title: titleContent,
-            date: (() => {
-                if (+dateContent) {
-                    return dateContent;
-                } else {
-                    return new Date(`
-                    ${dateContent.slice(3, 5)}.
-                    ${dateContent.slice(0, 2)}.
-                    ${dateContent.slice(6)}
-                    `).getTime();
-                }
-            })(),
+            date: this.coursesService.dateFromStringToMs(dateContent),
             duration: this.durationPipe.changeDurationFromMinutesToMs(durationContent),
             description: descriptionContent,
             topRated: this.course.topRated,

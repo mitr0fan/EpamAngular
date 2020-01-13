@@ -56,4 +56,16 @@ export class CoursesService {
 
         return this.http.get<Course[]>(searchByDescriptionUrl);
     }
+
+    dateFromStringToMs(dateContent: string) {
+        if (+dateContent) {
+            return dateContent;
+        } else {
+            return new Date(`
+            ${dateContent.slice(3, 5)}.
+            ${dateContent.slice(0, 2)}.
+            ${dateContent.slice(6)}
+            `).getTime();
+        }
+    }
 }
