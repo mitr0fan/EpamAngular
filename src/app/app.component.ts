@@ -9,7 +9,7 @@ import {
     transition,
     query,
     animateChild,
-    group
+    group,
 } from '@angular/animations';
 
 @Component({
@@ -21,29 +21,23 @@ import {
             transition('CoursesPage <=> EditPage', [
                 style({ position: 'relative' }),
                 query(':enter, :leave', [
-                  style({
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%'
-                  })
+                    style({
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                    }),
                 ]),
-                query(':enter', [
-                  style({ left: '-100%'})
-                ]),
+                query(':enter', [style({ left: '-100%' })]),
                 query(':leave', animateChild()),
                 group([
-                  query(':leave', [
-                    animate('300ms ease-out', style({ left: '100%'}))
-                  ]),
-                  query(':enter', [
-                    animate('300ms ease-out', style({ left: '0%'}))
-                  ])
+                    query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
+                    query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
                 ]),
                 query(':enter', animateChild()),
-            ])
-        ])
-    ]
+            ]),
+        ]),
+    ],
 })
 export class AppComponent implements OnInit {
     public path;
@@ -61,13 +55,10 @@ export class AppComponent implements OnInit {
                 }
                 if (event.url !== '/login') {
                     this.userFromLocalStorage =
-                        JSON.parse(
-                            this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)
-                            ).firstName +
+                        JSON.parse(this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo))
+                            .firstName +
                         ' ' +
-                        JSON.parse(
-                            this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)
-                            ).lastName;
+                        JSON.parse(this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)).lastName;
                 } else {
                     this.userFromLocalStorage = '';
                 }

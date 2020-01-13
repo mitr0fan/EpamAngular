@@ -10,7 +10,11 @@ import { Router } from '@angular/router';
     providedIn: 'root',
 })
 export class AuthorizationService {
-    constructor(private localStorageService: LocalStorageService, private http: HttpClient, private router: Router) {}
+    constructor(
+        private localStorageService: LocalStorageService,
+        private http: HttpClient,
+        private router: Router
+    ) {}
 
     login(emailProperty: string, pass: string) {
         const url = `${DATA.SERVER}/login`;
@@ -48,7 +52,7 @@ export class AuthorizationService {
         return this.http.get<User[]>(`${DATA.USERS_SERVER}?email=${emailProperty}`);
     }
 
-    addDataToLocalStorage(user: User, response: {accessToken: string}) {
+    addDataToLocalStorage(user: User, response: { accessToken: string }) {
         user.password = '';
         this.localStorageService.addToken(DATA.LOCAL_STORAGE.userInfo, JSON.stringify(user));
         const tokenFromServer = response.accessToken;

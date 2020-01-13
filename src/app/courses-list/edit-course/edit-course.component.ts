@@ -31,19 +31,15 @@ export class EditCourseComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe((data) => {
             if (data.id) {
-                this.coursesService
-                    .getItemById(data.id)
-                    .subscribe((course) => {
-                        if (course[0]) {
-                            this.course = course[0];
-                        } else {
-                            this.router.navigate(['/error']);
-                        }
-                    },
-                    );
+                this.coursesService.getItemById(data.id).subscribe((course) => {
+                    if (course[0]) {
+                        this.course = course[0];
+                    } else {
+                        this.router.navigate(['/error']);
+                    }
+                });
             }
         });
-
     }
 
     close() {

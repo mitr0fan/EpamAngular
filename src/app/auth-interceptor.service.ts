@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
+import {
+    HttpInterceptor,
+    HttpRequest,
+    HttpHandler,
+    HttpEvent,
+    HttpResponse,
+} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { DATA } from 'common/constants';
@@ -17,9 +23,9 @@ export class AuthInterceptorService implements HttpInterceptor {
         const authReq = req.clone({
             headers: req.headers.set('Authorization', `Bearer ${tokenFromLocalStorage}`),
         });
-    
+
         return next.handle(authReq).pipe(
-            tap(event => {
+            tap((event) => {
                 if (event instanceof HttpResponse) {
                     if (event.status === 401) {
                         this.auth.logout();
