@@ -4,7 +4,6 @@ import {
     HttpRequest,
     HttpHandler,
     HttpEvent,
-    HttpResponse,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
@@ -25,12 +24,11 @@ export class AuthInterceptorService implements HttpInterceptor {
         });
 
         return next.handle(authReq).pipe(
-            tap((event) => {
-                if (event instanceof HttpResponse) {
-                    if (event.status === 401) {
-                        this.auth.logout();
-                    }
-                }
+            tap(() => {},
+            (error) => {
+                this.auth.logout();
+                console.log(error);
+                alert('Ошибка ' + error.status + ': ' + error.statusText);
             })
         );
     }

@@ -36,7 +36,7 @@ export class AuthorizationService {
             const user: User = JSON.parse(
                 this.localStorageService.getItem(DATA.LOCAL_STORAGE.userInfo)
             );
-            const url = `${DATA.SERVER}/600/users/${user.id}`;
+            const url = `${DATA.SERVER}/660/users/${user.id}`;
             return this.http.get(url);
         } else {
             return of(false);

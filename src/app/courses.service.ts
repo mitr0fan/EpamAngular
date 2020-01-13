@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Course } from './course';
 import { HttpClient } from '@angular/common/http';
 import { DATA } from 'common/constants';
+import { AuthorizationService } from './authorization.service';
 
 @Injectable({
     providedIn: 'root',
@@ -9,10 +10,11 @@ import { DATA } from 'common/constants';
 export class CoursesService {
     private coursesUrl = DATA.COURSES_SERVER;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private authService: AuthorizationService) {}
 
     getList(amountCourses?: number, page?: number) {
         if (amountCourses && page) {
+            this.authService.getUserInfo().subscribe();
             const url = `${this.coursesUrl}?_limit=${amountCourses}&_page=${page}`;
             return this.http.get<Course[]>(url);
         } else {
@@ -46,12 +48,14 @@ export class CoursesService {
     }
 
     searchCoursesByTitle(value: string) {
+        this.authService.getUserInfo().subscribe();
         const searchByTitleUrl = `${this.coursesUrl}?title_like=${value}`;
 
         return this.http.get<Course[]>(searchByTitleUrl);
     }
 
     searchCoursesByDescription(value: string) {
+        this.authService.getUserInfo().subscribe();
         const searchByDescriptionUrl = `${this.coursesUrl}?description_like=${value}`;
 
         return this.http.get<Course[]>(searchByDescriptionUrl);
