@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     login(email: string, pass: string) {
         this.authService.login(email, pass).subscribe((response) => {
                 this.authService.getUserFromServer(email).subscribe((user) => {
-                    this.authService.addDataToLocalStorage(user, response);
+                    this.authService.addDataToLocalStorage(user[0], response);
                     this.router.navigate(['/courses']);
                 });
             },

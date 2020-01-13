@@ -48,8 +48,9 @@ export class AuthorizationService {
         return this.http.get<User[]>(`${DATA.USERS_SERVER}?email=${emailProperty}`);
     }
 
-    addDataToLocalStorage(user, response) {
-        this.localStorageService.addToken(DATA.LOCAL_STORAGE.userInfo, JSON.stringify(user[0]));
+    addDataToLocalStorage(user: User, response: {accessToken: string}) {
+        user.password = '';
+        this.localStorageService.addToken(DATA.LOCAL_STORAGE.userInfo, JSON.stringify(user));
         const tokenFromServer = response.accessToken;
         this.localStorageService.addToken(DATA.LOCAL_STORAGE.authToken, tokenFromServer);
     }
