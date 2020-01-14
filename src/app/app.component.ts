@@ -11,6 +11,7 @@ import {
     animateChild,
     group,
 } from '@angular/animations';
+import { AuthorizationService } from './authorization.service';
 
 @Component({
     selector: 'app-root',
@@ -42,7 +43,7 @@ export class AppComponent implements OnInit {
     public path;
     public userFromLocalStorage;
 
-    constructor(private router: Router, private localStorage: LocalStorageService) {}
+    constructor(private router: Router, private localStorage: LocalStorageService, private authService: AuthorizationService) {}
 
     ngOnInit() {
         this.router.events.subscribe((event) => {
@@ -58,6 +59,13 @@ export class AppComponent implements OnInit {
                 } else {
                     this.userFromLocalStorage = '';
                 }
+            }
+        });
+
+        this.authService.getUserInfo().subscribe((data) => {
+            if (data) {
+                this.authService.signedIn = true;
+                this.router.navigate(['/courses']);
             }
         });
     }

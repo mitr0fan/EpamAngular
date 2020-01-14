@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
     providedIn: 'root',
 })
 export class AuthorizationService {
+    public signedIn = false;
     constructor(
         private localStorageService: LocalStorageService,
         private http: HttpClient,
@@ -27,6 +28,7 @@ export class AuthorizationService {
     }
 
     logout() {
+        this.signedIn = false;
         this.router.navigate(['/login']);
         this.deleteToken();
     }
@@ -59,5 +61,9 @@ export class AuthorizationService {
             id: user.id,
         };
         this.localStorageService.addToken(DATA.LOCAL_STORAGE.userInfo, JSON.stringify(changedUser));
+    }
+
+    getAuthStatus() {
+        return this.signedIn;
     }
 }

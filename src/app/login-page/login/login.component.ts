@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
             (response) => {
                 this.authService.getUserFromServer(email, response.accessToken).subscribe((user) => {
                     this.authService.addDataToLocalStorage(user[0]);
+                    this.authService.signedIn = true;
                     this.router.navigate(['/courses']);
                 });
             },
