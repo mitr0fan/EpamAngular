@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
         });
 
         this.authService.getUserInfo().subscribe((data) => {
-            if (data) {
+            if (data && (this.router.url === '/' || this.router.url === '/courses' || this.router.url === '/login')) {
                 this.authService.signedIn = true;
                 this.router.navigate(['/courses']);
             }
