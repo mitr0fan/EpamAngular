@@ -54,10 +54,7 @@ export class AppComponent implements OnInit {
                 }
                 if (event.url !== '/login' && event.url !== '/') {
                     this.userFromLocalStorage =
-                        JSON.parse(this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo))
-                            .firstName +
-                        ' ' +
-                        JSON.parse(this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)).lastName;
+                        JSON.parse(this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)).userName;
                 } else {
                     this.userFromLocalStorage = '';
                 }

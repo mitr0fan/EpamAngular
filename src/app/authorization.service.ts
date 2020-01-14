@@ -48,14 +48,16 @@ export class AuthorizationService {
         this.localStorageService.removeToken(DATA.LOCAL_STORAGE.userInfo);
     }
 
-    getUserFromServer(emailProperty: string) {
+    getUserFromServer(emailProperty: string, token: string) {
+        this.localStorageService.addToken(DATA.LOCAL_STORAGE.authToken, token);
         return this.http.get<User[]>(`${DATA.USERS_SERVER}?email=${emailProperty}`);
     }
 
-    addDataToLocalStorage(user: User, response: { accessToken: string }) {
-        user.password = '';
-        this.localStorageService.addToken(DATA.LOCAL_STORAGE.userInfo, JSON.stringify(user));
-        const tokenFromServer = response.accessToken;
-        this.localStorageService.addToken(DATA.LOCAL_STORAGE.authToken, tokenFromServer);
+    addDataToLocalStorage(user: User) {
+        const changedUser = {
+            userName: `${user.firstName} ${user.lastName}`,
+            id: user.id,
+        };
+        this.localStorageService.addToken(DATA.LOCAL_STORAGE.userInfo, JSON.stringify(changedUser));
     }
 }

@@ -88,7 +88,7 @@ export const DATA: Data = {
         errorRoute: '**',
     },
     COURSES_SERVER: 'http://localhost:3000/660/courses',
-    USERS_SERVER: 'http://localhost:3000/users',
+    USERS_SERVER: 'http://localhost:3000/660/users',
     SERVER: 'http://localhost:3000',
     LOCAL_STORAGE: {
         userInfo: 'userInfo',
