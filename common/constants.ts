@@ -87,7 +87,7 @@ export const DATA: Data = {
         redirectToLogin: '/login',
         errorRoute: '**',
     },
-    COURSES_SERVER: 'http://localhost:3000/courses',
+    COURSES_SERVER: 'http://localhost:3000/660/courses',
     USERS_SERVER: 'http://localhost:3000/users',
     SERVER: 'http://localhost:3000',
     LOCAL_STORAGE: {
