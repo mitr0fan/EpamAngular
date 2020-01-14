@@ -9,6 +9,11 @@ export class CanActivateGuardService implements CanActivate {
     constructor(private authService: AuthorizationService, private router: Router) {}
 
     canActivate(): boolean {
-        return this.authService.signedIn;
+        this.authService.getUserInfo().subscribe(data => {
+            if (!data) {
+                this.router.navigate(['/login']);
+            }
+        });
+        return true;
     }
 }
