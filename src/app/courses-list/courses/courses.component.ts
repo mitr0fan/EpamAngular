@@ -49,21 +49,12 @@ export class CoursesComponent implements OnInit {
     }
 
     search(value: string) {
-        let idOfCourses = [];
         this.coursesService.searchCoursesByTitle(value).subscribe((coursesTitle) => {
             if (coursesTitle.length > 0) {
                 this.coursesService
                     .searchCoursesByDescription(value)
                     .subscribe((coursesDescription) => {
-                        this.courses = coursesTitle;
-                        coursesTitle.forEach(i => {
-                            idOfCourses.push(i.id);
-                        });
-                        coursesDescription.forEach(course => {
-                            if (!idOfCourses.includes(course.id)) {
-                                this.courses.push(course);
-                            }
-                        })
+                        this.courses = this.coursesService.deleteSameCourses(coursesTitle, coursesDescription);
                     });
             } else {
                 this.coursesService

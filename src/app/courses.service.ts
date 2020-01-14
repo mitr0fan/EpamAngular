@@ -66,4 +66,21 @@ export class CoursesService {
             `).getTime();
         }
     }
+
+    deleteSameCourses(arr1: Course[], arr2: Course[]) {
+        let idOfarr1: number[];
+        let courses: Course[];
+
+        courses = arr1;
+        idOfarr1 = arr1.map(course => {
+            return course.id;
+        });
+        arr2.forEach(course => {
+            if (!idOfarr1.includes(course.id)) {
+                courses.push(course);
+            }
+        });
+
+        return courses;
+    }
 }
