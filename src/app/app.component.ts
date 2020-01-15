@@ -18,9 +18,9 @@ import {
     styleUrls: ['./app.component.scss'],
     animations: [
         trigger('routeAnimations', [
-            transition('CoursesPage <=> EditPage', [
+            transition('CoursesPage <=> EditPage, LoginPage <=> CoursesPage', [
                 style({ position: 'relative' }),
-                query(':enter, :leave', [
+                query(':enter', [
                     style({
                         position: 'absolute',
                         top: 0,
@@ -28,10 +28,8 @@ import {
                         width: '100%',
                     }),
                 ]),
-                query(':enter', [style({ left: '-100%' })]),
-                query(':leave', [style({ display: 'none' })]),
-                group([query(':enter', [animate('300ms ease-out', style({ left: '0%' }))])]),
-                query(':enter', animateChild()),
+                query(':enter', [style({ top: '-500px' })]),
+                query(':enter', [animate('300ms ease-out', style({ top: '0px' }))]),
             ]),
         ]),
     ],
@@ -62,6 +60,6 @@ export class AppComponent implements OnInit {
     }
 
     prepareRoute(outlet: RouterOutlet) {
-        return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+        return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
     }
 }

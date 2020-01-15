@@ -11,7 +11,12 @@ const routes = DATA.ROUTES;
 
 export const appRoutes: Routes = [
     { path: routes.emptyRoute, redirectTo: routes.redirectToLogin, pathMatch: 'full' },
-    { path: routes.loginRoute, component: LoginComponent, canActivate: [LoginGuardService] },
+    {
+        path: routes.loginRoute,
+        component: LoginComponent,
+        canActivate: [LoginGuardService],
+        data: { animation: 'LoginPage'}
+    },
     {
         path: routes.coursesRoute,
         component: CoursesComponent,
