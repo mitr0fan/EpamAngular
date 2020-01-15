@@ -3,7 +3,6 @@ import { Course } from 'src/app/course';
 import { CoursesService } from 'src/app/courses.service';
 import { DurationPipe } from 'src/app/duration.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthorizationService } from 'src/app/authorization.service';
 
 @Component({
     selector: 'app-edit-course',

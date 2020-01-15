@@ -54,7 +54,10 @@ export class CoursesComponent implements OnInit {
                 this.coursesService
                     .searchCoursesByDescription(value)
                     .subscribe((coursesDescription) => {
-                        this.courses = this.coursesService.deleteSameCourses(coursesTitle, coursesDescription);
+                        this.courses = this.coursesService.deleteSameCourses(
+                            coursesTitle,
+                            coursesDescription
+                        );
                     });
             } else {
                 this.coursesService

@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-    HttpInterceptor,
-    HttpRequest,
-    HttpHandler,
-    HttpEvent,
-} from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { DATA } from 'common/constants';
@@ -24,12 +19,14 @@ export class AuthInterceptorService implements HttpInterceptor {
         });
 
         return next.handle(authReq).pipe(
-            tap(() => {},
-            (error) => {
-                this.auth.logout();
-                console.log(error);
-                alert('Ошибка ' + error.status + ': ' + error.statusText);
-            })
+            tap(
+                () => {},
+                (error) => {
+                    this.auth.logout();
+                    console.log(error);
+                    alert('Ошибка ' + error.status + ': ' + error.statusText);
+                }
+            )
         );
     }
 }

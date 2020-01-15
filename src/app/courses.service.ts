@@ -68,10 +68,10 @@ export class CoursesService {
         let courses: Course[];
 
         courses = arr1;
-        idOfarr1 = arr1.map(course => {
+        idOfarr1 = arr1.map((course) => {
             return course.id;
         });
-        arr2.forEach(course => {
+        arr2.forEach((course) => {
             if (!idOfarr1.includes(course.id)) {
                 courses.push(course);
             }

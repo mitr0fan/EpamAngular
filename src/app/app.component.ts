@@ -30,9 +30,7 @@ import {
                 ]),
                 query(':enter', [style({ left: '-100%' })]),
                 query(':leave', [style({ display: 'none' })]),
-                group([
-                    query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
-                ]),
+                group([query(':enter', [animate('300ms ease-out', style({ left: '0%' }))])]),
                 query(':enter', animateChild()),
             ]),
         ]),
@@ -53,8 +51,9 @@ export class AppComponent implements OnInit {
                     this.path = '';
                 }
                 if (event.url !== '/login' && event.url !== '/') {
-                    this.userFromLocalStorage =
-                        JSON.parse(this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)).userName;
+                    this.userFromLocalStorage = JSON.parse(
+                        this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)
+                    ).userName;
                 } else {
                     this.userFromLocalStorage = '';
                 }
