@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [AppComponent, TestHostComponent, PageNotFoundComponent],
@@ -31,6 +32,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
         LoginPageModule,
         MatInputModule,
         HttpClientModule,
+        MatSnackBarModule
     ],
     providers: [
         {
