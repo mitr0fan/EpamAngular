@@ -26,6 +26,9 @@
     }
     .header__button {
         @include button();
+        &:hover {
+            background-color: $background-color;
+        }
     }
     .header__button_color-white {
         background-color: white;
@@ -33,8 +36,5 @@
         color: black;
         position: absolute;
         right: 0;
-    }
-    .header__button {
-        cursor: pointer;
     }
 }

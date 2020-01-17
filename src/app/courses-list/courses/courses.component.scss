@@ -4,6 +4,7 @@
         @extend .courses-list__empty-list;
         &:hover {
             cursor: pointer;
+            background-color: #23486d;
         }
     }
     .courses-list__content-button {

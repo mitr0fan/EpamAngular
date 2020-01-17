@@ -8,7 +8,6 @@
     font-size: $font-size-standart;
     height: 102px;
     &:hover {
-        cursor: pointer;
         box-shadow: 0 0 8px;
     }
     .course-item__title {
@@ -22,7 +21,13 @@
         top: 10px;
     }
     .course-item__date {
-        left: 400px;
+        right: 120px;
+        top: 25px;
+        background-color: $background-color;
+        border-radius: 5px;
+        padding: 5px;
+        text-align: center;
+        width: 140px;
     }
     .course-item__button {
         @include button();
@@ -37,16 +42,15 @@
         top: 65px;
     }
     .course-item__duration {
-        left: 400px;
-        top: 30px;
+        @extend .course-item__date;
+        top: 65px;
     }
     .course-item__description {
         height: 60px;
         margin-top: 15px;
-        width: 650px;
+        width: 500px;
         word-break: normal;
         overflow: overlay;
-        padding-right: 20px;
     }
     .course-item__top {
         font-size: 22pt;
