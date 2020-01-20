@@ -1,4 +1,5 @@
-<app-header [showUser]="userFromLocalStorage"></app-header>
+<app-loading-page *ngIf="loadingStatus"></app-loading-page>
+<app-header></app-header>
 <app-footer></app-footer>
 <div class="courses-content">
     <app-breadcrumbs *ngIf="path" [path]="path"></app-breadcrumbs>

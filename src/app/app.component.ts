@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
-import { LocalStorageService } from './local-storage.service';
-import { DATA } from 'common/constants';
 import {
     trigger,
     style,
     animate,
     transition,
     query,
-    animateChild,
-    group,
 } from '@angular/animations';
+import { LoadingService } from './loading.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
     selector: 'app-root',
@@ -34,11 +32,14 @@ import {
         ]),
     ],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
     public path;
-    public userFromLocalStorage;
+    public loadingStatus: boolean;
 
-    constructor(private router: Router, private localStorage: LocalStorageService) {}
+    constructor(
+        private router: Router,
+        public loadingService: LoadingService
+    ) {}
 
     ngOnInit() {
         this.router.events.subscribe((event) => {
@@ -48,15 +49,18 @@ export class AppComponent implements OnInit {
                 } else {
                     this.path = '';
                 }
-                if (event.url !== '/login' && event.url !== '/') {
-                    this.userFromLocalStorage = JSON.parse(
-                        this.localStorage.getItem(DATA.LOCAL_STORAGE.userInfo)
-                    ).userName;
-                } else {
-                    this.userFromLocalStorage = '';
-                }
             }
         });
+
+        this.loadingService.showLoading.pipe(
+            debounceTime(50)
+        ).subscribe(value => {
+            this.loadingStatus = value;
+        });
+    }
+
+    ngOnDestroy() {
+        this.loadingService.showLoading.unsubscribe();
     }
 
     prepareRoute(outlet: RouterOutlet) {

@@ -1,0 +1,12 @@
+.loading__container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-color: #000000c9;
+    z-index: 1000;
+}
+.spinner {
+    margin: 0 auto;
+    align-self: center;
+}

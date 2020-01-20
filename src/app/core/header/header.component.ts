@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthorizationService } from 'src/app/authorization.service';
-import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/local-storage.service';
 
 @Component({
     selector: 'app-header',
@@ -9,10 +9,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
     @Input() showUser: string;
-    constructor(public authService: AuthorizationService, private router: Router) {}
+    constructor(public authService: AuthorizationService) {}
 
     logOff() {
         this.authService.logout();
-        this.router.navigate(['/login']);
     }
 }

@@ -13,8 +13,6 @@ export class CoursesService {
 
     getList(amountCourses?: number, page?: number) {
         if (amountCourses && page) {
-            // const url = `${this.coursesUrl}?_limit=${amountCourses}&_page=${page}`;
-            // return this.http.get<Course[]>(url);
             return this.http.get<Course[]>(this.coursesUrl, {
                 params: {
                     _limit: String(amountCourses),

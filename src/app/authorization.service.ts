@@ -3,14 +3,16 @@ import { DATA } from 'common/constants';
 import { User } from './user';
 import { LocalStorageService } from './local-storage.service';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
+import { of, Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { tap, map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthorizationService {
-    public signedIn = false;
+    public userName = new Subject<string>();
+
     constructor(
         private localStorageService: LocalStorageService,
         private http: HttpClient,
@@ -28,8 +30,8 @@ export class AuthorizationService {
     }
 
     logout() {
-        this.signedIn = false;
         this.router.navigate(['/login']);
+        this.userName.next('');
         this.deleteToken();
     }
 
@@ -61,9 +63,5 @@ export class AuthorizationService {
             id: user.id,
         };
         this.localStorageService.addToken(DATA.LOCAL_STORAGE.userInfo, JSON.stringify(changedUser));
-    }
-
-    getAuthStatus() {
-        return this.signedIn;
     }
 }

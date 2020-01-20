@@ -62,15 +62,11 @@ export class EditCourseComponent implements OnInit {
 
         if (!this.course.id) {
             this.coursesService.createCourse(newCourse).subscribe(() => {
-                setTimeout(() => {
-                    this.router.navigate(['/courses']);
-                }, 100);
+                this.router.navigate(['/courses']);
             });
         } else {
             this.coursesService.updateItem(newCourse).subscribe(() => {
-                setTimeout(() => {
-                    this.router.navigate(['/courses']);
-                }, 100);
+                this.router.navigate(['/courses']);
             });
         }
     }

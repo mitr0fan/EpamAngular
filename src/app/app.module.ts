@@ -32,7 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         LoginPageModule,
         MatInputModule,
         HttpClientModule,
-        MatSnackBarModule
+        MatSnackBarModule,
     ],
     providers: [
         {

@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
 
     ngOnInit() {
         this.searchValue.pipe(
-            debounceTime(300),
+            debounceTime(500),
             filter(value => {
                 return value.length > 2;
             }),
