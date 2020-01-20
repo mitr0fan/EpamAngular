@@ -4,6 +4,7 @@ import { Course } from 'src/app/course';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteCoursePopupComponent } from '../delete-course-popup/delete-course-popup.component';
 import { Router } from '@angular/router';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-courses',
@@ -41,30 +42,34 @@ export class CoursesComponent implements OnInit {
 
         dialogRef
             .afterClosed()
-            .subscribe(() =>
-                this.coursesService
-                    .getList(this.amountCourses, 1)
-                    .subscribe((courses) => (this.courses = courses))
-            );
+            .pipe(
+                switchMap(
+                    () => this.coursesService.getList(this.amountCourses, 1),
+                ),
+                tap((courses) => (this.courses = courses)),
+            )
+            .subscribe();
     }
 
     search(value: string) {
-        this.coursesService.searchCoursesByTitle(value).subscribe((coursesTitle) => {
-            if (coursesTitle.length > 0) {
-                this.coursesService
-                    .searchCoursesByDescription(value)
-                    .subscribe((coursesDescription) => {
-                        this.courses = this.coursesService.deleteSameCourses(
-                            coursesTitle,
-                            coursesDescription
+        this.coursesService.searchCoursesByTitle(value)
+            .pipe(
+                switchMap(coursesTitle => {
+                    return this.coursesService
+                        .searchCoursesByDescription(value)
+                        .pipe(
+                            tap(courses => {
+                                this.courses = coursesTitle.length 
+                                    ? this.coursesService.deleteSameCourses(
+                                        coursesTitle,
+                                        courses,
+                                    )
+                                    : courses;
+                            }),
                         );
-                    });
-            } else {
-                this.coursesService
-                    .searchCoursesByDescription(value)
-                    .subscribe((courses) => (this.courses = courses));
-            }
-        });
+                })
+            )
+            .subscribe();
     }
 
     createNewCourse() {

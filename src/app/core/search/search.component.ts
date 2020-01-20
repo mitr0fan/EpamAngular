@@ -1,23 +1,36 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { filter, debounceTime, first } from 'rxjs/operators';
 
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {
-    @Output() searchEvent: EventEmitter<string> = new EventEmitter();
+export class SearchComponent implements OnInit {
     @Output() createCourseEvent = new EventEmitter();
-
-    public inputValue: string;
+    @Output() searchEvent = new EventEmitter();
+    public searchValue: Subject<string> = new Subject();
 
     constructor() {}
 
-    search() {
-        this.searchEvent.emit(this.inputValue);
+    ngOnInit() {
+        this.searchValue.pipe(
+            debounceTime(300),
+            filter(value => {
+                return value.length > 3;
+            }),
+        )
+        .subscribe(value => {
+            this.searchEvent.emit(value);
+        });
     }
 
     addCourse() {
         this.createCourseEvent.emit();
+    }
+
+    search(value: string) {
+        this.searchValue.next(value);
     }
 }
