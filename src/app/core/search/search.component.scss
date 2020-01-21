@@ -4,7 +4,7 @@
     margin-top: 10px;
     background-color: $back-color-white;
     padding: 5px;
-    padding-bottom: 7px;
+    padding-bottom: 6px;
     border-radius: 10px;
     .search-panel__button {
         @include button();
@@ -16,6 +16,7 @@
         border: none;
         border-radius: 5px;
         outline: none;
+        border-bottom: solid 1px $main-color-blue;
     }
     .search-panel__button_right {
         float: right;
