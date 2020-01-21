@@ -1,12 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
-import {
-    trigger,
-    style,
-    animate,
-    transition,
-    query,
-} from '@angular/animations';
+import { trigger, style, animate, transition, query } from '@angular/animations';
 import { LoadingService } from './loading.service';
 import { debounceTime } from 'rxjs/operators';
 
@@ -36,10 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public path;
     public loadingStatus: boolean;
 
-    constructor(
-        private router: Router,
-        public loadingService: LoadingService
-    ) {}
+    constructor(private router: Router, public loadingService: LoadingService) {}
 
     ngOnInit() {
         this.router.events.subscribe((event) => {
@@ -52,9 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
             }
         });
 
-        this.loadingService.showLoading.pipe(
-            debounceTime(50)
-        ).subscribe(value => {
+        this.loadingService.showLoading.pipe(debounceTime(50)).subscribe((value) => {
             this.loadingStatus = value;
         });
     }

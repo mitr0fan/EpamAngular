@@ -11,8 +11,26 @@ import { LoadingPageComponent } from './loading-page/loading-page.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-    declarations: [HeaderComponent, BreadcrumbsComponent, FooterComponent, SearchComponent, LoadingPageComponent],
-    imports: [CommonModule, FormsModule, DirectivesPipesModule, RouterModule, MatProgressSpinnerModule],
-    exports: [BreadcrumbsComponent, FooterComponent, HeaderComponent, SearchComponent, LoadingPageComponent],
+    declarations: [
+        HeaderComponent,
+        BreadcrumbsComponent,
+        FooterComponent,
+        SearchComponent,
+        LoadingPageComponent,
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        DirectivesPipesModule,
+        RouterModule,
+        MatProgressSpinnerModule,
+    ],
+    exports: [
+        BreadcrumbsComponent,
+        FooterComponent,
+        HeaderComponent,
+        SearchComponent,
+        LoadingPageComponent,
+    ],
 })
 export class CoreModule {}

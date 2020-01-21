@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
+import {
+    HttpInterceptor,
+    HttpRequest,
+    HttpHandler,
+    HttpEvent,
+    HttpResponse,
+} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { DATA } from 'common/constants';
@@ -44,13 +50,9 @@ export class AuthInterceptorService implements HttpInterceptor {
                         this.auth.logout();
                         errorMessage = `Ошибка: ${error.statusText}.`;
                     }
-                    this.snackBar.open(
-                        errorMessage,
-                        'Закрыть',
-                        {
-                            duration: 0
-                        }
-                    );
+                    this.snackBar.open(errorMessage, 'Закрыть', {
+                        duration: 0,
+                    });
                 },
                 () => {
                     this.loadingService.showLoading.next(false);

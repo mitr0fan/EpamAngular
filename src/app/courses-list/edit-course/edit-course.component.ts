@@ -3,6 +3,7 @@ import { Course } from 'src/app/course';
 import { CoursesService } from 'src/app/courses.service';
 import { DurationPipe } from 'src/app/duration.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-edit-course',
@@ -28,17 +29,25 @@ export class EditCourseComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.route.params.subscribe((data) => {
-            if (data.id) {
-                this.coursesService.getItemById(data.id).subscribe((course) => {
-                    if (course[0]) {
-                        this.course = course[0];
+        this.route.params
+            .pipe(
+                switchMap((data) => {
+                    if (data.id) {
+                        return this.coursesService.getItemById(data.id).pipe(
+                            tap((course) => {
+                                if (course[0]) {
+                                    this.course = course[0];
+                                } else {
+                                    this.router.navigate(['/error']);
+                                }
+                            })
+                        );
                     } else {
-                        this.router.navigate(['/error']);
+                        return [];
                     }
-                });
-            }
-        });
+                })
+            )
+            .subscribe();
     }
 
     close() {

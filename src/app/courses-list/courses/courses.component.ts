@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CoursesService } from 'src/app/courses.service';
 import { Course } from 'src/app/course';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import { switchMap, tap } from 'rxjs/operators';
     templateUrl: './courses.component.html',
     styleUrls: ['./courses.component.scss'],
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit, OnDestroy {
     constructor(
         private coursesService: CoursesService,
         private dialog: MatDialog,
@@ -25,6 +25,10 @@ export class CoursesComponent implements OnInit {
         this.coursesService.getList(this.amountCourses, 1).subscribe((courses) => {
             this.courses = courses;
         });
+    }
+
+    ngOnDestroy() {
+        this.dialog.ngOnDestroy();
     }
 
     loadMoreCourses() {
@@ -43,30 +47,24 @@ export class CoursesComponent implements OnInit {
         dialogRef
             .afterClosed()
             .pipe(
-                switchMap(
-                    () => this.coursesService.getList(this.amountCourses, 1),
-                ),
-                tap((courses) => (this.courses = courses)),
+                switchMap(() => this.coursesService.getList(this.amountCourses, 1)),
+                tap((courses) => (this.courses = courses))
             )
             .subscribe();
     }
 
     search(value: string) {
-        this.coursesService.searchCoursesByTitle(value)
+        this.coursesService
+            .searchCoursesByTitle(value)
             .pipe(
-                switchMap(coursesTitle => {
-                    return this.coursesService
-                        .searchCoursesByDescription(value)
-                        .pipe(
-                            tap(courses => {
-                                this.courses = coursesTitle.length 
-                                    ? this.coursesService.deleteSameCourses(
-                                        coursesTitle,
-                                        courses,
-                                    )
-                                    : courses;
-                            }),
-                        );
+                switchMap((coursesTitle) => {
+                    return this.coursesService.searchCoursesByDescription(value).pipe(
+                        tap((courses) => {
+                            this.courses = coursesTitle.length
+                                ? this.coursesService.deleteSameCourses(coursesTitle, courses)
+                                : courses;
+                        })
+                    );
                 })
             )
             .subscribe();

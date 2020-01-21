@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthorizationService } from 'src/app/authorization.service';
-import { LocalStorageService } from 'src/app/local-storage.service';
 
 @Component({
     selector: 'app-header',

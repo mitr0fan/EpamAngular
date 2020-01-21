@@ -15,7 +15,7 @@ export const appRoutes: Routes = [
         path: routes.loginRoute,
         component: LoginComponent,
         canActivate: [LoginGuardService],
-        data: { animation: 'LoginPage'}
+        data: { animation: 'LoginPage' },
     },
     {
         path: routes.coursesRoute,
