@@ -3,6 +3,7 @@ import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { trigger, style, animate, transition, query } from '@angular/animations';
 import { LoadingService } from './loading.service';
 import { debounceTime } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -29,11 +30,12 @@ import { debounceTime } from 'rxjs/operators';
 export class AppComponent implements OnInit, OnDestroy {
     public path;
     public loadingStatus: boolean;
+    private subscribtion: Subscription = new Subscription();
 
     constructor(private router: Router, public loadingService: LoadingService) {}
 
     ngOnInit() {
-        this.router.events.subscribe((event) => {
+        const sub1 = this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 if (event.url.includes('courses')) {
                     this.path = event.url.slice(1);
@@ -43,13 +45,16 @@ export class AppComponent implements OnInit, OnDestroy {
             }
         });
 
-        this.loadingService.showLoading.pipe(debounceTime(50)).subscribe((value) => {
+        const sub2 = this.loadingService.showLoading.pipe(debounceTime(50)).subscribe((value) => {
             this.loadingStatus = value;
         });
+
+        this.subscribtion.add(sub1);
+        this.subscribtion.add(sub2);
     }
 
     ngOnDestroy() {
-        this.loadingService.showLoading.unsubscribe();
+        this.subscribtion.unsubscribe();
     }
 
     prepareRoute(outlet: RouterOutlet) {

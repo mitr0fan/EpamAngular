@@ -1,6 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoursesService } from 'src/app/courses.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-delete-course-popup',

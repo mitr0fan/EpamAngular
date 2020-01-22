@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
-import { filter, debounceTime } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { SearchService } from 'src/app/search.service';
 
 @Component({
     selector: 'app-search',
@@ -10,24 +10,18 @@ import { filter, debounceTime } from 'rxjs/operators';
 export class SearchComponent implements OnInit, OnDestroy {
     @Output() createCourseEvent = new EventEmitter();
     @Output() searchEvent = new EventEmitter();
-    public searchValue: Subject<string> = new Subject();
 
-    constructor() {}
+    private subscription: Subscription;
+
+    constructor(private searchService: SearchService) {}
 
     ngOnInit() {
-        this.searchValue
-            .pipe(
-                debounceTime(500),
-                filter((value) => {
-                    return value.length > 2;
-                })
-            )
-            .subscribe((value) => {
-                this.searchEvent.emit(value);
-            });
+        this.subscription = this.searchService.getSearchValue().subscribe((value) => {
+            this.searchEvent.emit(value);
+        });
     }
     ngOnDestroy() {
-        this.searchValue.unsubscribe();
+        this.subscription.unsubscribe();
     }
 
     addCourse() {
@@ -35,6 +29,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     search(value: string) {
-        this.searchValue.next(value);
+        this.searchService.searchValue$.next(value);
     }
 }

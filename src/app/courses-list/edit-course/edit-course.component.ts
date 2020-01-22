@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Course } from 'src/app/course';
 import { CoursesService } from 'src/app/courses.service';
 import { DurationPipe } from 'src/app/duration.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-edit-course',
     templateUrl: './edit-course.component.html',
     styleUrls: ['./edit-course.component.scss'],
 })
-export class EditCourseComponent implements OnInit {
+export class EditCourseComponent implements OnInit, OnDestroy {
     private emptyCourse: Course = {
         id: undefined,
         title: '',
@@ -20,6 +21,7 @@ export class EditCourseComponent implements OnInit {
         topRated: false,
     };
     public course: Course = this.emptyCourse;
+    private subscription: Subscription;
 
     constructor(
         private coursesService: CoursesService,
@@ -29,7 +31,7 @@ export class EditCourseComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.route.params
+        this.subscription = this.route.params
             .pipe(
                 switchMap((data) => {
                     if (data.id) {
@@ -48,6 +50,10 @@ export class EditCourseComponent implements OnInit {
                 })
             )
             .subscribe();
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 
     close() {
