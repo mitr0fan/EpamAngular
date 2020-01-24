@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthorizationService } from 'src/app/authorization.service';
 
 @Component({
@@ -7,7 +7,6 @@ import { AuthorizationService } from 'src/app/authorization.service';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-    @Input() showUser: string;
     constructor(public authService: AuthorizationService) {}
 
     logOff() {

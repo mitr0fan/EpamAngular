@@ -16,7 +16,7 @@ export class CanActivateGuardService implements CanActivate {
             map((data: User) => {
                 if (data) {
                     const userName = `${data.firstName} ${data.lastName}`;
-                    this.authService.userName.next(userName);
+                    this.authService.userName$.next(userName);
                     return true;
                 } else {
                     this.router.navigate(['/login']);
