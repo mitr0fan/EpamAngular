@@ -8,21 +8,25 @@
     color: white;
     .header__content {
         margin: 0 auto;
-        height: 38px;
+        height: 100%;
         width: 800px;
-        padding-top: 8px;
         position: relative;
         font-size: $font-size-standart;
+        display: flex;
+
     }
     .header__logo {
+        align-self: center;
         font: {
             size: $font-size-large;
             weight: 600;
         }
-        margin-top: 12px;
     }
     .header__login {
-        margin-left: 460px;
+        align-self: center;
+        flex-grow: 1;
+        text-align: end;
+        padding-right: 50px;
     }
     .header__button {
         @include button();
@@ -34,7 +38,6 @@
         background-color: white;
         margin-right: 10px;
         color: black;
-        position: absolute;
-        right: 0;
+        align-self: center;
     }
 }

@@ -9,17 +9,18 @@ $font-color-2: black;
 
 @mixin button {
     background-color: $main-color-blue;
-    font-size: $font-size-standart;
+    font-size: 12pt;
     padding: 5px;
     border: none;
-    width: 100px;
+    width: 90px;
     border-radius: 5px;
     color: white;
     text-align: center;
     outline: none;
-    display: inline-block;
-    box-sizing: border-box;
-    height: 32px;
+    display: flex;
+    height: 21px;
+    justify-content: center;
+    align-items: center;
     &:hover {
         cursor: pointer;
         background-color: #23486d;

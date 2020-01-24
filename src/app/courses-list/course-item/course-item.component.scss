@@ -17,17 +17,21 @@
     }
     
     .course-item__date, .course-item__duration {
+        @include button();
         position: absolute;
         top: 10px;
+        height: 21px;
+        width: 140px;
+        background-color: $background-color;
+        color: black;
+        &:hover {
+            background-color: $background-color;
+            cursor: text;
+        }
     }
     .course-item__date {
         right: 120px;
         top: 25px;
-        background-color: $background-color;
-        border-radius: 5px;
-        padding: 5px;
-        text-align: center;
-        width: 140px;
     }
     .course-item__button {
         @include button();
