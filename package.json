@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prettier": "prettier --config .prettierrc.json --write src/**/*.ts",
-    "server": "json-server common\\server.json -m ./node_modules/json-server-auth"
+    "server": "json-server common/server.json -m ./node_modules/json-server-auth"
   },
   "private": true,
   "dependencies": {
