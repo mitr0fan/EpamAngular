@@ -8,6 +8,7 @@ import { DeleteCoursePopupComponent } from './delete-course-popup/delete-course-
 import { EditCourseComponent } from './edit-course/edit-course.component';
 import { MatInputModule } from '@angular/material/input';
 import { DurationPipe } from '../duration.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,7 @@ import { DurationPipe } from '../duration.pipe';
         DeleteCoursePopupComponent,
         EditCourseComponent,
     ],
-    imports: [CommonModule, DirectivesPipesModule, CoreModule, MatInputModule],
+    imports: [CommonModule, DirectivesPipesModule, CoreModule, MatInputModule, ReactiveFormsModule],
     exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],
     entryComponents: [DeleteCoursePopupComponent, EditCourseComponent],
     providers: [DurationPipe],

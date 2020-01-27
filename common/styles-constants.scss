@@ -17,10 +17,6 @@ $font-color-2: black;
     color: white;
     text-align: center;
     outline: none;
-    display: flex;
-    height: 21px;
-    justify-content: center;
-    align-items: center;
     &:hover {
         cursor: pointer;
         background-color: #23486d;

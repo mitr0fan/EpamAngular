@@ -14,15 +14,19 @@
 }
 .edit-course__description {
     @extend .edit-course__title;
+    margin-top: 10px;
 }
 .edit-course__date {
     @extend .edit-course__title;
+    margin-top: 10px;
 }
 .edit-course__duration {
     @extend .edit-course__title;
+    margin-top: 10px;
 }
 .edit-course__authors {
     @extend .edit-course__title;
+    margin-top: 10px;
 }
 .edit-course__input_small {
     width: 200px;

@@ -1,44 +1,57 @@
-<div class="edit-course">
+<div class="edit-course" [formGroup]="courseForm">
     <div class="name">
         <span class="edit-course__name">Add/edit course</span>
     </div>
     <div class="edit-course__title">
-        <span>Title:</span>
         <mat-form-field class="edit-course__input">
-            <input type="text" matInput placeholder="Example: Video course 1" value="{{course.title}}" #title>
+            <input type="text" matInput placeholder="Title" formControlName="title">
+            <mat-error *ngIf="courseForm.get('title').hasError('required')">Title is <strong>required</strong></mat-error>
+            <mat-error *ngIf="courseForm.get('title').hasError('maxlength')">Max length is <strong>40 signes</strong></mat-error>
         </mat-form-field>
     </div>
     <div class="edit-course__description">
-        <span>Description:</span>
         <mat-form-field class="edit-course__input">
-            <input type="text" matInput 
-            placeholder="Example: The best course ever!!!" value="{{course.description}}" #desc>
+            <textarea type="text" matInput 
+            placeholder="Description"
+            formControlName="description"
+            rows="7"
+            >
+            </textarea>
+            <mat-error *ngIf="courseForm.get('description').hasError('required')">Description is <strong>required</strong></mat-error>
+            <mat-error *ngIf="courseForm.get('description').hasError('maxlength')">Max length is <strong>500 signes</strong></mat-error>
         </mat-form-field>
     </div>
     <div class="edit-course__date">
-        <span>Date:</span>
         <mat-form-field class="edit-course__input edit-course__input_small">
             <input type="text" matInput 
-            placeholder="Example: 01.01.2020" value="{{course.date | date:'dd.MM.yyyy'}}" #date>
+            placeholder="Date, dd/MM/yyyy"
+            formControlName="date"
+            >
+            <mat-error *ngIf="courseForm.get('date').hasError('required')">Date is <strong>required</strong></mat-error>
         </mat-form-field>
     </div>
     <div class="edit-course__duration">
-        <span>Duration:</span>
         <mat-form-field class="edit-course__input edit-course__input_small">
             <input type="text" matInput 
-            placeholder="Example: 80min" value="{{course.duration | duration}}" #duration>
+            placeholder="Duration, min"
+            formControlName="duration"
+            >
+            <mat-error *ngIf="courseForm.get('duration').hasError('required')">Duration is <strong>required</strong></mat-error>
         </mat-form-field>
     </div>
     <div class="edit-course__authors">
-        <span>Authors:</span>
         <mat-form-field class="edit-course__input">
             <input type="text" matInput 
-            placeholder="Example: Firstname Lastname">
+            placeholder="Authors"
+            formControlName="authors"
+            >
+            <mat-error *ngIf="courseForm.get('authors').hasError('required')">Authors is <strong>required</strong></mat-error>
         </mat-form-field>
     </div>
     <div class="buttons">
-        <span class="button edit-course__button_left"
-        (click)="edit(title.value, date.value, duration.value, desc.value)">Save</span>
-        <span class="button edit-course__button_right" (click)="close()">Cancel</span>
+        <button class="button edit-course__button_left"
+        (click)="edit()"
+        >Save</button>
+        <button class="button edit-course__button_right" (click)="close()">Cancel</button>
     </div>
 </div>

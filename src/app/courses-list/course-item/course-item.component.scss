@@ -6,7 +6,7 @@
     position: relative;
     border-radius: 10px;
     font-size: $font-size-standart;
-    height: 102px;
+    min-height: 102px;
     &:hover {
         box-shadow: 0 0 8px;
     }
@@ -50,11 +50,8 @@
         top: 65px;
     }
     .course-item__description {
-        height: 60px;
         margin-top: 15px;
         width: 500px;
-        word-break: normal;
-        overflow: overlay;
     }
     .course-item__top {
         font-size: 22pt;
