@@ -1,12 +1,10 @@
-<div class="field">
-    <div class="login">
-        <span class="login__name">Login</span>
-        <mat-form-field class="login__input">
-            <input type="text" matInput placeholder="Email" required #email>
-        </mat-form-field>
-        <mat-form-field class="login__input">
-            <input type="password" matInput placeholder="Password" required #pass>
-        </mat-form-field>
-        <span class="login__button" (click)="login(email.value, pass.value)">Login</span>
-    </div>
+<div class="login">
+    <span class="login__name">Login</span>
+    <mat-form-field class="login__input">
+        <input type="text" matInput placeholder="Email" required #email>
+    </mat-form-field>
+    <mat-form-field class="login__input">
+        <input type="password" matInput placeholder="Password" required #pass>
+    </mat-form-field>
+    <button class="login__button" (click)="login(email.value, pass.value)">Login</button>
 </div>

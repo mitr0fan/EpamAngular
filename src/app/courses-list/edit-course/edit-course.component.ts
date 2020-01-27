@@ -13,15 +13,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     styleUrls: ['./edit-course.component.scss'],
 })
 export class EditCourseComponent implements OnInit, OnDestroy {
-    private emptyCourse: Course = {
-        id: undefined,
-        title: '',
-        date: '',
-        duration: 0,
-        description: '',
-        topRated: false,
-    };
-    public course: Course = this.emptyCourse;
     private subscription: Subscription;
 
     public courseForm = new FormGroup({
