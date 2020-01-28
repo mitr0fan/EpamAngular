@@ -9,6 +9,7 @@ import { EditCourseComponent } from './edit-course/edit-course.component';
 import { MatInputModule } from '@angular/material/input';
 import { DurationPipe } from '../duration.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomInputDateComponent } from './custom-input-date/custom-input-date.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         CourseItemComponent,
         DeleteCoursePopupComponent,
         EditCourseComponent,
+        CustomInputDateComponent,
     ],
     imports: [CommonModule, DirectivesPipesModule, CoreModule, MatInputModule, ReactiveFormsModule],
     exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],

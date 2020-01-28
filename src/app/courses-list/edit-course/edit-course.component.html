@@ -22,13 +22,7 @@
         </mat-form-field>
     </div>
     <div class="edit-course__date">
-        <mat-form-field class="edit-course__input edit-course__input_small">
-            <input type="text" matInput 
-            placeholder="Date, dd/MM/yyyy"
-            formControlName="date"
-            >
-            <mat-error *ngIf="courseForm.get('date').hasError('required')">Date is <strong>required</strong></mat-error>
-        </mat-form-field>
+        <app-custom-input-date [formControl]="courseForm.get('date')"></app-custom-input-date>
     </div>
     <div class="edit-course__duration">
         <mat-form-field class="edit-course__input edit-course__input_small">
