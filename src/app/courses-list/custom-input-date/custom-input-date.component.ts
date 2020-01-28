@@ -1,5 +1,6 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { CoursesService } from 'src/app/courses.service';
 
 @Component({
   selector: 'app-custom-input-date',
@@ -14,21 +15,31 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   ]
 })
 export class CustomInputDateComponent implements ControlValueAccessor {
+  private dateValue;
 
-  private onChange = () => {};
-  private onTouched = () => {};
+  @Input() set date(value) {
+    if (value.length === 10) {
+      this.dateValue = this.coursesService.dateFromStringToMs(value);
+    }
+    this.onChange(this.dateValue);
+  }
 
-  constructor() { }
+  get dateFromClass() {
+    return this.dateValue;
+  }
 
-  writeValue(value) {
+  private onChange = (_: any) => {};
+
+  constructor(private coursesService: CoursesService) { }
+
+  writeValue(date) {
+    this.dateValue = date;
   }
 
   registerOnChange(fn) {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn) {
-    this.onTouched = fn;
-  }
+  registerOnTouched(fn) {}
 
 }

@@ -57,10 +57,6 @@ export class EditCourseComponent implements OnInit, OnDestroy {
                 })
             )
             .subscribe();
-
-            this.courseForm.valueChanges.subscribe(v => {
-                console.log(v);
-            })
     }
 
     ngOnDestroy() {

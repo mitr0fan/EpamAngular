@@ -1,6 +1,8 @@
 <mat-form-field class="edit-course__input edit-course__input_small">
     <input type="text" matInput 
-    placeholder="Date, dd/MM/yyyy"
+    placeholder="Date, dd.MM.yyyy"
+    value="{{dateFromClass | date:'dd.MM.yyyy'}}"
+    [(ngModel)]="date"
     >
     <!-- <mat-error *ngIf="courseForm.get('date').hasError('required')">Date is <strong>required</strong></mat-error> -->
 </mat-form-field>
