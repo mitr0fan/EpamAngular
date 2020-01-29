@@ -1,25 +1,23 @@
 @import '../../../../common/styles-constants.scss';
 .search-panel {
-    position: relative;
     margin-top: 10px;
     background-color: $back-color-white;
     padding: 5px;
-    padding-bottom: 6px;
     border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
     .search-panel__button {
         @include button();
     }
     .search-panel__input {
         width: 300px;
         height: 28px;
-        margin-right: 20px;
         border: none;
         border-radius: 5px;
         outline: none;
         border-bottom: solid 1px $main-color-blue;
     }
     .search-panel__button_right {
-        float: right;
         margin-right: 5px;
     }
 }

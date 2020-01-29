@@ -6,11 +6,6 @@
             cursor: pointer;
             background-color: #23486d;
         }
-        display: flex;
-        justify-content: center;
-    }
-    .courses-list__content-button {
-        align-self: center;
     }
     .courses-list__empty-list {
         background-color: $main-color-blue;
@@ -19,12 +14,8 @@
         position: relative;
         border-radius: 10px;
         color: white;
-        margin-bottom: 30px;
-        
-    }
-    .courses-list__content-empty {
-        position: absolute;
-        top: 8px;
-        left: 320px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
