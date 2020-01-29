@@ -7,7 +7,7 @@ import { CoreModule } from '../core/core.module';
 import { DeleteCoursePopupComponent } from './delete-course-popup/delete-course-popup.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
 import { MatInputModule } from '@angular/material/input';
-import { DurationPipe } from '../duration.pipe';
+import { DurationPipe } from '../directives-pipes/duration.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomInputDateComponent } from './custom-input-date/custom-input-date.component';
 
@@ -19,7 +19,14 @@ import { CustomInputDateComponent } from './custom-input-date/custom-input-date.
         EditCourseComponent,
         CustomInputDateComponent,
     ],
-    imports: [CommonModule, DirectivesPipesModule, CoreModule, MatInputModule, ReactiveFormsModule, FormsModule],
+    imports: [
+        CommonModule,
+        DirectivesPipesModule,
+        CoreModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FormsModule,
+    ],
     exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],
     entryComponents: [DeleteCoursePopupComponent, EditCourseComponent],
     providers: [DurationPipe],

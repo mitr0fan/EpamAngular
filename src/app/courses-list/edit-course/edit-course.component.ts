@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Course } from 'src/app/course';
 import { CoursesService } from 'src/app/courses.service';
-import { DurationPipe } from 'src/app/duration.pipe';
+import { DurationPipe } from 'src/app/directives-pipes/duration.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';

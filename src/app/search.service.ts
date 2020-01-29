@@ -3,20 +3,19 @@ import { Subject } from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class SearchService {
-  public searchValue$ = new Subject<string>();
+    public searchValue$ = new Subject<string>();
 
-  constructor() { }
+    constructor() {}
 
-  getSearchValue() {
-    return this.searchValue$
-      .pipe(
-        debounceTime(500),
-        filter((value) => {
-          return value.length > 2;
-        })
-      );
-  }
+    getSearchValue() {
+        return this.searchValue$.pipe(
+            debounceTime(500),
+            filter((value) => {
+                return value.length > 2;
+            })
+        );
+    }
 }
