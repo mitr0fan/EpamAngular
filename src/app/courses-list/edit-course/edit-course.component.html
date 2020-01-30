@@ -25,13 +25,7 @@
         <app-custom-input-date formControlName="date"></app-custom-input-date>
     </div>
     <div class="edit-course__duration">
-        <mat-form-field class="edit-course__input edit-course__input_small">
-            <input type="text" matInput 
-            placeholder="Duration, min"
-            formControlName="duration"
-            >
-            <mat-error *ngIf="courseForm.get('duration').hasError('required')">Duration is <strong>required</strong></mat-error>
-        </mat-form-field>
+        <app-custom-input-duration formControlName="duration"></app-custom-input-duration>
     </div>
     <div class="edit-course__authors">
         <mat-form-field class="edit-course__input">

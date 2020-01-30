@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, FormControl, ValidationErrors } from '@angular/forms';
 import { DateValidatorService } from 'src/app/date-validator.service';
 
@@ -19,19 +19,16 @@ import { DateValidatorService } from 'src/app/date-validator.service';
         },
     ],
 })
-export class CustomInputDateComponent implements ControlValueAccessor{
+export class CustomInputDateComponent implements ControlValueAccessor {
     private dateValue;
     public control: FormControl;
-    public matcher: {isErrorState: () => {}, control:any} = {
-        isErrorState() {
-            const controlState: FormControl = this.control();
-            console.log(controlState);
-            return !controlState.pristine
-        },
-        control: () => {return this.control},
-    }
+    public matcher = {
+        isErrorState: () => {
+            return this.control.hasError('invalidDate') && this.control.touched;
+        }
+    };
 
-    @Input() set date(value) {
+    set date(value) {
         this.dateValue = value;
         this.onChange(this.dateValue);
     }
@@ -41,6 +38,7 @@ export class CustomInputDateComponent implements ControlValueAccessor{
     }
 
     private onChange = (_: any) => {};
+    private onTouched = (_: any) => {};
 
     constructor(private dateValidator: DateValidatorService) {}
 
@@ -52,12 +50,18 @@ export class CustomInputDateComponent implements ControlValueAccessor{
         this.onChange = fn;
     }
 
-    registerOnTouched(fn) {}
+    registerOnTouched(fn) {
+        this.onTouched = fn;
+    }
 
     validate(control: FormControl): ValidationErrors | null {
         const value = control.value;
         this.control = control;
 
         return this.dateValidator.validator(value);
+    }
+
+    onClick() {
+        this.onTouched(null);
     }
 }

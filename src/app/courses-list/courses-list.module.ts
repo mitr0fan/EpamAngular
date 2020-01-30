@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DurationPipe } from '../directives-pipes/duration.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomInputDateComponent } from './custom-input-date/custom-input-date.component';
+import { CustomInputDurationComponent } from './custom-input-duration/custom-input-duration.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { CustomInputDateComponent } from './custom-input-date/custom-input-date.
         DeleteCoursePopupComponent,
         EditCourseComponent,
         CustomInputDateComponent,
+        CustomInputDurationComponent,
     ],
     imports: [
         CommonModule,

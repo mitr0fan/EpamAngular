@@ -4,6 +4,7 @@
     value="{{dateFromClass}}"
     [(ngModel)]="date"
     required
+    (click)="onClick()"
     [errorStateMatcher]="matcher"
     >
     <mat-error *ngIf="control.hasError('required')">Date is <strong>required</strong></mat-error>
