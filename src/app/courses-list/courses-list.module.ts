@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseItemComponent } from './course-item/course-item.component';
 import { DirectivesPipesModule } from '../directives-pipes/directives-pipes.module';
@@ -29,6 +29,6 @@ import { CustomInputDateComponent } from './custom-input-date/custom-input-date.
     ],
     exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],
     entryComponents: [DeleteCoursePopupComponent, EditCourseComponent],
-    providers: [DurationPipe],
+    providers: [DurationPipe, DatePipe],
 })
 export class CoursesListModule {}

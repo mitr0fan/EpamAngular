@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-edit-course',
@@ -27,7 +28,8 @@ export class EditCourseComponent implements OnInit, OnDestroy {
         private coursesService: CoursesService,
         private durationPipe: DurationPipe,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private datePipe: DatePipe
     ) {}
 
     ngOnInit() {
@@ -42,7 +44,7 @@ export class EditCourseComponent implements OnInit, OnDestroy {
                                     this.courseForm.setValue({
                                         title: fetchedCourse.title,
                                         description: fetchedCourse.description,
-                                        date: fetchedCourse.date,
+                                        date: this.datePipe.transform(fetchedCourse.date, 'dd.MM.yyyy'),
                                         duration: fetchedCourse.duration,
                                         authors: '',
                                     });
