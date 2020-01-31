@@ -1,0 +1,27 @@
+<mat-form-field class="edit-course__input">
+    <input type="text" matInput
+    #input
+    placeholder="Authors"
+    [(ngModel)]="author"
+    value="author"
+    [matAutocomplete]="auto"
+    (keyup)="search(input.value)"
+    >
+    <mat-error>Authors are <strong>required</strong></mat-error>
+    <div matPrefix>
+        <div class="input_selectedAuthor" *ngFor="let authorObj of authorsList">
+            {{authorObj.fullName}}
+            <span class="input_deleteAuthor" (click)="deleteAuthor(authorObj.id)">⮿</span>
+        </div>
+    </div>
+    <mat-autocomplete #auto="matAutocomplete">
+        <div *ngIf="input.value.length > 2">
+            <mat-option 
+            *ngFor="let authorItem of authorsListSearch | async"
+            (click)="selectAuthor(authorItem)"
+            >
+                {{authorItem.fullName}}
+            </mat-option>
+        </div>
+    </mat-autocomplete>
+</mat-form-field>

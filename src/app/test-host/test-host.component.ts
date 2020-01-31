@@ -15,6 +15,7 @@ export class TestHostComponent {
         duration: 103,
         description: 'lalala',
         topRated: false,
+        authors: []
     };
 
     @ViewChild(CourseItemComponent, { static: false })

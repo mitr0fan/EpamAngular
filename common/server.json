@@ -6,7 +6,15 @@
       "date": 1579464000000,
       "duration": 3840000,
       "description": "The best course ever!!!",
-      "topRated": false
+      "topRated": false,
+      "authors": [
+        {
+          "firstName": "Георгий",
+          "lastName": "Большой",
+          "fullName": "Георгий Большой",
+          "id": 1
+        }
+      ]
     },
     {
       "id": 2,
@@ -14,7 +22,21 @@
       "date": 1578168000000,
       "duration": 2100000,
       "description": "The best course ever!!!!! The best course ever!!!!! The best course ever!!!!! The best course ever!!!!! The best course ever!!!!!",
-      "topRated": true
+      "topRated": true,
+      "authors": [
+        {
+          "firstName": "Георгий",
+          "lastName": "Большой",
+          "fullName": "Георгий Большой",
+          "id": 1
+        },
+        {
+          "firstName": "Василий",
+          "lastName": "Интересный",
+          "fullName": "Василий Интересный",
+          "id": 2
+        }
+      ]
     },
     {
       "id": 3,
@@ -22,7 +44,15 @@
       "date": 1607976000000,
       "duration": 9960000,
       "description": "World",
-      "topRated": false
+      "topRated": false,
+      "authors": [
+        {
+          "firstName": "Георгий",
+          "lastName": "Большой",
+          "fullName": "Георгий Большой",
+          "id": 1
+        }
+      ]
     },
     {
       "id": 4,
@@ -30,7 +60,15 @@
       "date": 1573416000000,
       "duration": 12000000,
       "description": "This course describes how to make a courses page",
-      "topRated": false
+      "topRated": false,
+      "authors": [
+        {
+          "firstName": "Максим",
+          "lastName": "Лучший",
+          "fullName": "Максим Лучший",
+          "id": 3
+        }
+      ]
     },
     {
       "id": 6,
@@ -38,7 +76,15 @@
       "date": 1539547200000,
       "duration": 3300000,
       "description": "Hello",
-      "topRated": false
+      "topRated": false,
+      "authors": [
+        {
+          "firstName": "Максим",
+          "lastName": "Лучший",
+          "fullName": "Максим Лучший",
+          "id": 3
+        }
+      ]
     },
     {
       "id": 7,
@@ -46,7 +92,21 @@
       "date": 1577822400000,
       "duration": 5820000,
       "description": "How to make an app ",
-      "topRated": false
+      "topRated": false,
+      "authors": [
+        {
+          "firstName": "Василий",
+          "lastName": "Интересный",
+          "fullName": "Василий Интересный",
+          "id": 2
+        },
+        {
+          "firstName": "Максим",
+          "lastName": "Лучший",
+          "fullName": "Максим Лучший",
+          "id": 3
+        }
+      ]
     }
   ],
   "users": [
@@ -70,6 +130,44 @@
       "firstName": "Лев",
       "lastName": "Симба",
       "id": 3
+    }
+  ],
+  "authors": [
+    {
+      "firstName": "Георгий",
+      "lastName": "Большой",
+      "fullName": "Георгий Большой",
+      "id": 1
+    },
+    {
+      "firstName": "Василий",
+      "lastName": "Интересный",
+      "fullName": "Василий Интересный",
+      "id": 2
+    },
+    {
+      "firstName": "Максим",
+      "lastName": "Лучший",
+      "fullName": "Максим Лучший",
+      "id": 3
+    },
+    {
+      "firstName": "Георгий",
+      "lastName": "Маленький",
+      "fullName": "Георгий Маленький",
+      "id": 4
+    },
+    {
+      "firstName": "Василий",
+      "lastName": "Неинтересный",
+      "fullName": "Василий Неинтересный",
+      "id": 5
+    },
+    {
+      "firstName": "Максим",
+      "lastName": "Худший",
+      "fullName": "Максим Худший",
+      "id": 6
     }
   ]
 }

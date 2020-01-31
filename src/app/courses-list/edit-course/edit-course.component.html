@@ -28,13 +28,7 @@
         <app-custom-input-duration formControlName="duration"></app-custom-input-duration>
     </div>
     <div class="edit-course__authors">
-        <mat-form-field class="edit-course__input">
-            <input type="text" matInput 
-            placeholder="Authors"
-            formControlName="authors"
-            >
-            <mat-error *ngIf="courseForm.get('authors').hasError('required')">Authors is <strong>required</strong></mat-error>
-        </mat-form-field>
+        <app-custom-input-authors formControlName="authors" (searchEvent)="search($event)" [authorsList]="authors" [authorsListSearch]="authorsFromServer$"></app-custom-input-authors>
     </div>
     <div class="buttons">
         <button class="button edit-course__button_left"

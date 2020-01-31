@@ -4,9 +4,11 @@ import { CoursesService } from 'src/app/courses.service';
 import { DurationPipe } from 'src/app/directives-pipes/duration.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { AuthorsService } from 'src/app/authors.service';
+import { Author } from 'src/app/user';
 
 @Component({
     selector: 'app-edit-course',
@@ -15,6 +17,9 @@ import { DatePipe } from '@angular/common';
 })
 export class EditCourseComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
+    private id: number;
+    public authors: Author[] = [];
+    public authorsFromServer$: Observable<Author[]>;
 
     public courseForm = new FormGroup({
         title: new FormControl('', [Validators.required, Validators.maxLength(40)]),
@@ -29,7 +34,8 @@ export class EditCourseComponent implements OnInit, OnDestroy {
         private durationPipe: DurationPipe,
         private route: ActivatedRoute,
         private router: Router,
-        private datePipe: DatePipe
+        private datePipe: DatePipe,
+        private authorsService: AuthorsService
     ) {}
 
     ngOnInit() {
@@ -48,6 +54,8 @@ export class EditCourseComponent implements OnInit, OnDestroy {
                                         duration: fetchedCourse.duration,
                                         authors: '',
                                     });
+                                    this.id = fetchedCourse.id;
+                                    this.authors = fetchedCourse.authors;
                                 } else {
                                     this.router.navigate(['/error']);
                                 }
@@ -88,8 +96,13 @@ export class EditCourseComponent implements OnInit, OnDestroy {
         //         this.router.navigate(['/courses']);
         //     });
         // }
+        console.log(this.courseForm);
         if (this.courseForm.valid) {
             console.log('edit called');
         }
+    }
+
+    search(value: string) {
+        this.authorsFromServer$ = this.authorsService.getAuthorsList(value);
     }
 }

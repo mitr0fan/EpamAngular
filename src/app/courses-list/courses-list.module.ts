@@ -11,6 +11,8 @@ import { DurationPipe } from '../directives-pipes/duration.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomInputDateComponent } from './custom-input-date/custom-input-date.component';
 import { CustomInputDurationComponent } from './custom-input-duration/custom-input-duration.component';
+import { CustomInputAuthorsComponent } from './custom-input-authors/custom-input-authors.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
     declarations: [
@@ -20,6 +22,7 @@ import { CustomInputDurationComponent } from './custom-input-duration/custom-inp
         EditCourseComponent,
         CustomInputDateComponent,
         CustomInputDurationComponent,
+        CustomInputAuthorsComponent,
     ],
     imports: [
         CommonModule,
@@ -28,6 +31,7 @@ import { CustomInputDurationComponent } from './custom-input-duration/custom-inp
         MatInputModule,
         ReactiveFormsModule,
         FormsModule,
+        MatAutocompleteModule
     ],
     exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],
     entryComponents: [DeleteCoursePopupComponent, EditCourseComponent],
