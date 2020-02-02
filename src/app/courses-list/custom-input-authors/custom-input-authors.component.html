@@ -22,7 +22,7 @@
         <mat-autocomplete #auto="matAutocomplete">
             <div *ngIf="input.value.length > 2">
                 <mat-option 
-                *ngFor="let authorItem of authorsListSearch | async"
+                *ngFor="let authorItem of authorsListSearch$ | async"
                 (click)="selectAuthor(authorItem)"
                 >
                     {{authorItem.fullName}}

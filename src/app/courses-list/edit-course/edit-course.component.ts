@@ -27,7 +27,7 @@ export class EditCourseComponent implements OnInit, OnDestroy {
         date: new FormControl(null, [Validators.required]),
         duration: new FormControl(null, [Validators.required]),
         authors: new FormControl(''),
-        topRated: new FormControl(''),
+        topRated: new FormControl(false),
         id: new FormControl(''),
     });
 
@@ -103,5 +103,9 @@ export class EditCourseComponent implements OnInit, OnDestroy {
 
     search(value: string) {
         this.authorsFromServer$ = this.authorsService.getAuthorsList(value);
+    }
+
+    changeAuthors(authors: Author[]) {
+        this.authors = authors;
     }
 }

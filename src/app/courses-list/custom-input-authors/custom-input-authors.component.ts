@@ -26,13 +26,14 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
   @Output() searchEvent = new EventEmitter();
   private subscription: Subscription;
   @Input() authorsList: Author[];
-  @Input() authorsListSearch: Observable<Author[]>;
+  @Input() authorsListSearch$: Observable<Author[]>;
   public control: FormControl;
   public matcher = {
     isErrorState: () => {
         return this.control.hasError('noAuthors') && this.control.touched;
     }
   };
+  @Output() changeAuthorsEvent = new EventEmitter();
 
   set author(value: string) {
     this.authorValue = value;
@@ -106,6 +107,7 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
   onClick() {
     this.onTouched(null);
     this.onChange('');
+    this.changeAuthorsEvent.emit(this.authorsList);
   }
 
 }

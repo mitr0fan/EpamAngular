@@ -30,7 +30,8 @@
     <div class="edit-course__authors">
         <app-custom-input-authors formControlName="authors"
         (searchEvent)="search($event)" [authorsList]="authors"
-        [authorsListSearch]="authorsFromServer$"
+        [authorsListSearch$]="authorsFromServer$"
+        (changeAuthorsEvent)="changeAuthors($event)"
         ></app-custom-input-authors>
     </div>
     <div class="buttons">
