@@ -1,5 +1,5 @@
 import { Component, forwardRef, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, Validator, ValidationErrors, FormControl } from '@angular/forms';
 import { SearchService } from 'src/app/search.service';
 import { Subscription, Observable } from 'rxjs';
 import { Author } from 'src/app/user';
@@ -13,6 +13,11 @@ import { Author } from 'src/app/user';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CustomInputAuthorsComponent),
       multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => CustomInputAuthorsComponent),
+      multi: true
     }
   ]
 })
@@ -22,6 +27,12 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
   private subscription: Subscription;
   @Input() authorsList: Author[];
   @Input() authorsListSearch: Observable<Author[]>;
+  public control: FormControl;
+  public matcher = {
+    isErrorState: () => {
+        return this.control.hasError('noAuthors') && this.control.touched;
+    }
+  };
 
   set author(value: string) {
     this.authorValue = value;
@@ -32,8 +43,8 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
     return this.authorValue;
   }
 
-  onChange: (_:any) => void = () => {};
-  onTouched: (_:any) => void = () => {};
+  onChange: (_: any) => void = () => {};
+  onTouched: (_: any) => void = () => {};
 
   constructor(private searchService: SearchService) { }
 
@@ -41,6 +52,10 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
     this.subscription = this.searchService.getSearchValue().subscribe(value => {
       this.searchEvent.emit(value);
     });
+
+    setTimeout(() => {
+      this.onChange('');
+    }, 0);
   }
 
   ngOnDestroy() {
@@ -59,12 +74,24 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
     this.onTouched = fn;
   }
 
+  validate(control: FormControl): ValidationErrors | null {
+    this.control = control;
+    if (this.authorsList.length === 0) {
+      return {
+        noAuthors: true
+      };
+    } else {
+      return null;
+    }
+  }
+
   search(value: string) {
     this.searchService.searchValue$.next(value);
   }
 
   selectAuthor(author: Author) {
     this.authorsList.push(author);
+    this.onClick();
   }
 
   deleteAuthor(id: number) {
@@ -73,6 +100,12 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
         return true;
       }
     });
+    this.onClick();
+  }
+
+  onClick() {
+    this.onTouched(null);
+    this.onChange('');
   }
 
 }

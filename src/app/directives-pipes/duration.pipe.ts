@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { differenceInMinutes } from 'date-fns';
-import { differenceInMilliseconds } from 'date-fns';
 
 @Pipe({
     name: 'duration',
@@ -30,7 +29,7 @@ export class DurationPipe implements PipeTransform {
         return `${differenceInMinutes(duration, 0)}`;
     }
 
-    changeDurationFromMinutesToMs(duration: number) {
-        return `${differenceInMilliseconds(duration, 0)}`;
+    changeDurationFromMinutesToMs(duration: string) {
+        return +duration * this.msInMinute;
     }
 }

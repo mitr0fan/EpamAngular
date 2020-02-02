@@ -26,7 +26,9 @@ export class EditCourseComponent implements OnInit, OnDestroy {
         description: new FormControl('', [Validators.required, Validators.maxLength(500)]),
         date: new FormControl(null, [Validators.required]),
         duration: new FormControl(null, [Validators.required]),
-        authors: new FormControl('', [Validators.required]),
+        authors: new FormControl(''),
+        topRated: new FormControl(''),
+        id: new FormControl(''),
     });
 
     constructor(
@@ -53,6 +55,8 @@ export class EditCourseComponent implements OnInit, OnDestroy {
                                         date: this.datePipe.transform(fetchedCourse.date, 'dd.MM.yyyy'),
                                         duration: fetchedCourse.duration,
                                         authors: '',
+                                        topRated: fetchedCourse.topRated,
+                                        id: fetchedCourse.id
                                     });
                                     this.id = fetchedCourse.id;
                                     this.authors = fetchedCourse.authors;
@@ -78,27 +82,22 @@ export class EditCourseComponent implements OnInit, OnDestroy {
     }
 
     edit() {
-        // const newCourse: Course = {
-        //     id: this.course.id,
-        //     title: titleContent,
-        //     date: this.coursesService.dateFromStringToMs(dateContent),
-        //     duration: this.durationPipe.changeDurationFromMinutesToMs(durationContent),
-        //     description: descriptionContent,
-        //     topRated: this.course.topRated,
-        // };
+        this.courseForm.value.date = this.coursesService.dateFromStringToMs(
+            this.courseForm.value.date
+        );
+        this.courseForm.value.duration = this.durationPipe.changeDurationFromMinutesToMs(
+            this.courseForm.value.duration
+        );
+        this.courseForm.value.authors = this.authors;
 
-        // if (!this.course.id) {
-        //     this.coursesService.createCourse(newCourse).subscribe(() => {
-        //         this.router.navigate(['/courses']);
-        //     });
-        // } else {
-        //     this.coursesService.updateItem(newCourse).subscribe(() => {
-        //         this.router.navigate(['/courses']);
-        //     });
-        // }
-        console.log(this.courseForm);
-        if (this.courseForm.valid) {
-            console.log('edit called');
+        if (!this.id) {
+            this.coursesService.createCourse(this.courseForm.value).subscribe(() => {
+                this.router.navigate(['/courses']);
+            });
+        } else {
+            this.coursesService.updateItem(this.courseForm.value).subscribe(() => {
+                this.router.navigate(['/courses']);
+            });
         }
     }
 

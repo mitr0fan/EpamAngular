@@ -10,8 +10,8 @@
       "authors": [
         {
           "firstName": "Георгий",
-          "lastName": "Большой",
-          "fullName": "Георгий Большой",
+          "lastName": "Бодрый",
+          "fullName": "Георгий Бодрый",
           "id": 1
         }
       ]
@@ -26,8 +26,8 @@
       "authors": [
         {
           "firstName": "Георгий",
-          "lastName": "Большой",
-          "fullName": "Георгий Большой",
+          "lastName": "Бодрый",
+          "fullName": "Георгий Бодрый",
           "id": 1
         },
         {
@@ -48,8 +48,8 @@
       "authors": [
         {
           "firstName": "Георгий",
-          "lastName": "Большой",
-          "fullName": "Георгий Большой",
+          "lastName": "Бодрый",
+          "fullName": "Георгий Бодрый",
           "id": 1
         }
       ]
@@ -135,8 +135,8 @@
   "authors": [
     {
       "firstName": "Георгий",
-      "lastName": "Большой",
-      "fullName": "Георгий Большой",
+      "lastName": "Бодрый",
+      "fullName": "Георгий Бодрый",
       "id": 1
     },
     {
@@ -153,8 +153,8 @@
     },
     {
       "firstName": "Георгий",
-      "lastName": "Маленький",
-      "fullName": "Георгий Маленький",
+      "lastName": "Уставший",
+      "fullName": "Георгий Уставший",
       "id": 4
     },
     {

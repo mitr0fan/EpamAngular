@@ -41,8 +41,11 @@ export class CustomInputDurationComponent implements ControlValueAccessor, Valid
 
   constructor(private durationPipe: DurationPipe) { }
 
-  writeValue(duration: number) {
-    this.durationProperty = this.durationPipe.changeDurationFromMsToMinutes(duration);
+  writeValue(duration: string) {
+    if (duration !== null) {
+      this.durationProperty = this.durationPipe.changeDurationFromMsToMinutes(+duration);
+      this.onChange(this.durationProperty);
+    }
   }
 
   registerOnChange(fn) {
@@ -58,21 +61,27 @@ export class CustomInputDurationComponent implements ControlValueAccessor, Valid
   }
 
   validate(control: FormControl): ValidationErrors | null {
-    const value: string = control.value + '';
+    const value: string = control.value;
     this.control = control;
     const regExp = /\d{1,3}/;
-    if (value !== 'null') {
-      if (value.match(regExp)[0] === value && +value <= 600) {
+    const error = {
+      invalidError: true
+    };
+
+    if (value === null) {
+      return error;
+    }
+    if (value === '') {
+      return error;
+    }
+    if (value.match(regExp)) {
+      if (value.match(regExp)[0] === value) {
         return null;
       } else {
-        return {
-          invalidError: true
-        };
+        return error;
       }
     } else {
-      return {
-        invalidError: true
-      };
+      return error;
     }
   }
 

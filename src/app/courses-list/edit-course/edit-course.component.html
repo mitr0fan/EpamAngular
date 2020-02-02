@@ -28,11 +28,15 @@
         <app-custom-input-duration formControlName="duration"></app-custom-input-duration>
     </div>
     <div class="edit-course__authors">
-        <app-custom-input-authors formControlName="authors" (searchEvent)="search($event)" [authorsList]="authors" [authorsListSearch]="authorsFromServer$"></app-custom-input-authors>
+        <app-custom-input-authors formControlName="authors"
+        (searchEvent)="search($event)" [authorsList]="authors"
+        [authorsListSearch]="authorsFromServer$"
+        ></app-custom-input-authors>
     </div>
     <div class="buttons">
         <button class="button edit-course__button_left"
         (click)="edit()"
+        [disabled]="courseForm.invalid"
         >Save</button>
         <button class="button edit-course__button_right" (click)="close()">Cancel</button>
     </div>

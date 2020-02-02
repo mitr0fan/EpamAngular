@@ -1,5 +1,5 @@
 <mat-form-field class="edit-course__input edit-course__input_small">
-    <input type="number" matInput 
+    <input type="text" matInput 
     placeholder="Duration, min"
     value="duration"
     [(ngModel)]="duration"
@@ -7,7 +7,7 @@
     (click)="onClick()"
     required
     >
-    <span matSuffix>{{duration | duration}}</span>
+    <span matSuffix *ngIf="!control.hasError('invalidError')">{{duration | duration}}</span>
     <mat-error *ngIf="control.hasError('required')">Duration is <strong>required</strong></mat-error>
     <mat-error *ngIf="control.hasError('invalidError')">Duration is <strong>not valid</strong></mat-error>
 </mat-form-field>

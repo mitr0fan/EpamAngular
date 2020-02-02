@@ -56,6 +56,9 @@ export class CoursesService {
     }
 
     dateFromStringToMs(dateContent: string) {
+        if (dateContent === null) {
+            return 0;
+        }
         if (+dateContent) {
             return dateContent;
         } else {
