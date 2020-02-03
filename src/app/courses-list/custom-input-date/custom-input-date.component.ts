@@ -1,5 +1,11 @@
 import { Component, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, FormControl, ValidationErrors } from '@angular/forms';
+import {
+    NG_VALUE_ACCESSOR,
+    ControlValueAccessor,
+    NG_VALIDATORS,
+    FormControl,
+    ValidationErrors,
+} from '@angular/forms';
 import { DateValidatorService } from 'src/app/date-validator.service';
 
 @Component({
@@ -25,7 +31,7 @@ export class CustomInputDateComponent implements ControlValueAccessor {
     public matcher = {
         isErrorState: () => {
             return this.control.hasError('invalidDate') && this.control.touched;
-        }
+        },
     };
 
     set date(value) {

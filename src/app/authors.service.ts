@@ -5,18 +5,18 @@ import { Observable } from 'rxjs';
 import { Author } from './user';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class AuthorsService {
-  private authorsUrl = DATA.AUTHORS_SERVER;
+    private authorsUrl = DATA.AUTHORS_SERVER;
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
-  getAuthorsList(searchValue: string): Observable<Author[]> {
-    return this.http.get<Author[]>(this.authorsUrl, {
-      params: {
-        fullName_like: searchValue,
-      }
-    });
-  }
+    getAuthorsList(searchValue: string): Observable<Author[]> {
+        return this.http.get<Author[]>(this.authorsUrl, {
+            params: {
+                fullName_like: searchValue,
+            },
+        });
+    }
 }

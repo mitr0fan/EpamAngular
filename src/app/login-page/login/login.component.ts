@@ -22,12 +22,14 @@ export class LoginComponent {
                 .login(this.loginForm.value)
                 .pipe(
                     switchMap((response) => {
-                        return this.authService.getUserFromServer(this.loginForm.value.email, response.accessToken).pipe(
-                            tap((user) => {
-                                this.authService.addDataToLocalStorage(user[0]);
-                                this.router.navigate(['/courses']);
-                            })
-                        );
+                        return this.authService
+                            .getUserFromServer(this.loginForm.value.email, response.accessToken)
+                            .pipe(
+                                tap((user) => {
+                                    this.authService.addDataToLocalStorage(user[0]);
+                                    this.router.navigate(['/courses']);
+                                })
+                            );
                     })
                 )
                 .subscribe();

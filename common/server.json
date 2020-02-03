@@ -1,10 +1,10 @@
 {
   "courses": [
     {
-      "title": "Video course 1",
-      "description": "The best course ever!!!",
+      "title": "JavaScript",
+      "description": "JavaScript — мультипарадигменный язык программирования. ",
       "date": 1580587200000,
-      "duration": 3840000,
+      "duration": 11160000,
       "authors": [
         {
           "firstName": "Георгий",
@@ -61,8 +61,8 @@
       "id": 3
     },
     {
-      "title": "How to make a courses page",
-      "description": "This course describes how to make a courses page",
+      "title": "Бабочки",
+      "description": "Разнокрылые (лат. Heteroneura) — инфраотряд бабочек, в котором сосредоточено 99 % современных видов. У взрослых насекомых различается жилкование передней и задней пар крыльев. Сестринская группа для разнокрылых — инфраотряд Exoporia, в который входят тонкопряды.",
       "date": 1580500800000,
       "duration": 12000000,
       "authors": [

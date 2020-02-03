@@ -18,7 +18,7 @@ export class AuthorizationService {
         private router: Router
     ) {}
 
-    login(formValue: { email: string, password: string }) {
+    login(formValue: { email: string; password: string }) {
         const url = `${DATA.SERVER}/login`;
         const bodyRequest = formValue;
 

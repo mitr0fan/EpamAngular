@@ -31,7 +31,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         MatInputModule,
         ReactiveFormsModule,
         FormsModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
     ],
     exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],
     entryComponents: [DeleteCoursePopupComponent, EditCourseComponent],

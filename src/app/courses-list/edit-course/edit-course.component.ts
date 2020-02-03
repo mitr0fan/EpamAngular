@@ -51,11 +51,14 @@ export class EditCourseComponent implements OnInit, OnDestroy {
                                     this.courseForm.setValue({
                                         title: fetchedCourse.title,
                                         description: fetchedCourse.description,
-                                        date: this.datePipe.transform(fetchedCourse.date, 'dd.MM.yyyy'),
+                                        date: this.datePipe.transform(
+                                            fetchedCourse.date,
+                                            'dd.MM.yyyy'
+                                        ),
                                         duration: fetchedCourse.duration,
                                         authors: '',
                                         topRated: fetchedCourse.topRated,
-                                        id: fetchedCourse.id
+                                        id: fetchedCourse.id,
                                     });
                                     this.id = fetchedCourse.id;
                                     this.authors = fetchedCourse.authors;
@@ -89,7 +92,7 @@ export class EditCourseComponent implements OnInit, OnDestroy {
                 this.courseForm.value.duration
             );
             this.courseForm.value.authors = this.authors;
-    
+
             if (!this.id) {
                 this.coursesService.createCourse(this.courseForm.value).subscribe(() => {
                     this.router.navigate(['/courses']);
