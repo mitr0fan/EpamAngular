@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-form-field class="edit-course__input">
+    <mat-form-field class="edit-course__input" (click)="onClick()">
         <input type="text" matInput
         #input
         placeholder="Authors"
@@ -7,7 +7,6 @@
         value="author"
         [matAutocomplete]="auto"
         (keyup)="search(input.value)"
-        (click)="onClick()"
         [errorStateMatcher]="matcher"
         >
         <mat-error *ngIf="control.hasError('noAuthors')">
