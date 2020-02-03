@@ -30,7 +30,7 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
   public control: FormControl;
   public matcher = {
     isErrorState: () => {
-        return this.control.hasError('noAuthors') || this.control.hasError('maxAuthors') && this.control.touched;
+        return (this.control.hasError('noAuthors') || this.control.hasError('maxAuthors')) && this.control.touched;
     }
   };
   @Output() changeAuthorsEvent = new EventEmitter();
