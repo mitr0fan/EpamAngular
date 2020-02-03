@@ -18,12 +18,9 @@ export class AuthorizationService {
         private router: Router
     ) {}
 
-    login(emailProperty: string, pass: string) {
+    login(formValue: { email: string, password: string }) {
         const url = `${DATA.SERVER}/login`;
-        const bodyRequest = {
-            email: emailProperty,
-            password: pass,
-        };
+        const bodyRequest = formValue;
 
         return this.http.post<{ accessToken: string }>(url, bodyRequest);
     }

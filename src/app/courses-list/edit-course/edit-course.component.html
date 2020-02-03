@@ -5,8 +5,12 @@
     <div class="edit-course__title">
         <mat-form-field class="edit-course__input">
             <input type="text" matInput placeholder="Title" formControlName="title">
-            <mat-error *ngIf="courseForm.get('title').hasError('required')">Title is <strong>required</strong></mat-error>
-            <mat-error *ngIf="courseForm.get('title').hasError('maxlength')">Max length is <strong>40 signes</strong></mat-error>
+            <mat-error *ngIf="courseForm.get('title').hasError('required')">
+                Title is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="courseForm.get('title').hasError('maxlength')">
+                Max length is <strong>40 signes</strong>
+            </mat-error>
         </mat-form-field>
     </div>
     <div class="edit-course__description">
@@ -17,8 +21,12 @@
             rows="7"
             >
             </textarea>
-            <mat-error *ngIf="courseForm.get('description').hasError('required')">Description is <strong>required</strong></mat-error>
-            <mat-error *ngIf="courseForm.get('description').hasError('maxlength')">Max length is <strong>500 signes</strong></mat-error>
+            <mat-error *ngIf="courseForm.get('description').hasError('required')">
+                Description is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="courseForm.get('description').hasError('maxlength')">
+                Max length is <strong>500 signes</strong>
+            </mat-error>
         </mat-form-field>
     </div>
     <div class="edit-course__date">
@@ -29,13 +37,15 @@
     </div>
     <div class="edit-course__authors">
         <app-custom-input-authors formControlName="authors"
-        (searchEvent)="search($event)" [authorsList]="authors"
+        (searchEvent)="search($event)"
+        [authorsList]="authors"
         [authorsListSearch$]="authorsFromServer$"
         (changeAuthorsEvent)="changeAuthors($event)"
         ></app-custom-input-authors>
     </div>
     <div class="buttons">
-        <button class="button edit-course__button_left"
+        <button
+        [ngClass]="courseForm.valid ? 'button edit-course__button_left' : 'button edit-course__button_left edit-course__button_left_disabled'"
         (click)="edit()"
         [disabled]="courseForm.invalid"
         >Save</button>

@@ -48,3 +48,10 @@
     margin: auto;
     font-size: $font-size-large;
 }
+.edit-course__button_left_disabled {
+    color: black;
+    background-color: $background-color;
+    &:hover {
+        background-color: $background-color;
+    }
+}

@@ -1,5 +1,5 @@
 import { Component, forwardRef, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, Validator, ValidationErrors, FormControl } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, ValidationErrors, FormControl } from '@angular/forms';
 import { SearchService } from 'src/app/search.service';
 import { Subscription, Observable } from 'rxjs';
 import { Author } from 'src/app/user';

@@ -24,4 +24,11 @@
         margin-top: 10px;
         align-self: center;
     }
+    .login__button_disabled {
+        background-color: $background-color;
+        color: black;
+        &:hover {
+            background-color: $background-color;
+        }
+    }
 }

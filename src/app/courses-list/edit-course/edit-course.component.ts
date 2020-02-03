@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Course } from 'src/app/course';
 import { CoursesService } from 'src/app/courses.service';
 import { DurationPipe } from 'src/app/directives-pipes/duration.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -82,22 +81,24 @@ export class EditCourseComponent implements OnInit, OnDestroy {
     }
 
     edit() {
-        this.courseForm.value.date = this.coursesService.dateFromStringToMs(
-            this.courseForm.value.date
-        );
-        this.courseForm.value.duration = this.durationPipe.changeDurationFromMinutesToMs(
-            this.courseForm.value.duration
-        );
-        this.courseForm.value.authors = this.authors;
-
-        if (!this.id) {
-            this.coursesService.createCourse(this.courseForm.value).subscribe(() => {
-                this.router.navigate(['/courses']);
-            });
-        } else {
-            this.coursesService.updateItem(this.courseForm.value).subscribe(() => {
-                this.router.navigate(['/courses']);
-            });
+        if (this.courseForm.valid) {
+            this.courseForm.value.date = this.coursesService.dateFromStringToMs(
+                this.courseForm.value.date
+            );
+            this.courseForm.value.duration = this.durationPipe.changeDurationFromMinutesToMs(
+                this.courseForm.value.duration
+            );
+            this.courseForm.value.authors = this.authors;
+    
+            if (!this.id) {
+                this.coursesService.createCourse(this.courseForm.value).subscribe(() => {
+                    this.router.navigate(['/courses']);
+                });
+            } else {
+                this.coursesService.updateItem(this.courseForm.value).subscribe(() => {
+                    this.router.navigate(['/courses']);
+                });
+            }
         }
     }
 

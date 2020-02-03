@@ -1,12 +1,10 @@
 {
   "courses": [
     {
-      "id": 1,
       "title": "Video course 1",
+      "description": "The best course ever!!!",
       "date": 1579464000000,
       "duration": 3840000,
-      "description": "The best course ever!!!",
-      "topRated": false,
       "authors": [
         {
           "firstName": "Георгий",
@@ -14,15 +12,15 @@
           "fullName": "Георгий Бодрый",
           "id": 1
         }
-      ]
+      ],
+      "topRated": false,
+      "id": 1
     },
     {
-      "id": 2,
       "title": "Video Course 2",
+      "description": "The best course ever!!!!! The best course ever!!!!! The best course ever!!!!! The best course ever!!!!! The best course ever!!!!!",
       "date": 1578168000000,
       "duration": 2100000,
-      "description": "The best course ever!!!!! The best course ever!!!!! The best course ever!!!!! The best course ever!!!!! The best course ever!!!!!",
-      "topRated": true,
       "authors": [
         {
           "firstName": "Георгий",
@@ -36,31 +34,37 @@
           "fullName": "Василий Интересный",
           "id": 2
         }
-      ]
+      ],
+      "topRated": true,
+      "id": 2
     },
     {
-      "id": 3,
       "title": "Hello",
+      "description": "World",
       "date": 1607976000000,
       "duration": 9960000,
-      "description": "World",
-      "topRated": false,
       "authors": [
         {
           "firstName": "Георгий",
           "lastName": "Бодрый",
           "fullName": "Георгий Бодрый",
           "id": 1
+        },
+        {
+          "firstName": "Максим",
+          "lastName": "Лучший",
+          "fullName": "Максим Лучший",
+          "id": 3
         }
-      ]
+      ],
+      "topRated": false,
+      "id": 3
     },
     {
-      "id": 4,
       "title": "How to make a courses page",
+      "description": "This course describes how to make a courses page",
       "date": 1573416000000,
       "duration": 12000000,
-      "description": "This course describes how to make a courses page",
-      "topRated": false,
       "authors": [
         {
           "firstName": "Максим",
@@ -68,31 +72,31 @@
           "fullName": "Максим Лучший",
           "id": 3
         }
-      ]
+      ],
+      "topRated": false,
+      "id": 4
     },
     {
-      "id": 6,
       "title": "World",
+      "description": "Hello",
       "date": 1539547200000,
       "duration": 3300000,
-      "description": "Hello",
-      "topRated": false,
       "authors": [
         {
-          "firstName": "Максим",
-          "lastName": "Лучший",
-          "fullName": "Максим Лучший",
-          "id": 3
+          "firstName": "Василий",
+          "lastName": "Неинтересный",
+          "fullName": "Василий Неинтересный",
+          "id": 5
         }
-      ]
+      ],
+      "topRated": false,
+      "id": 6
     },
     {
-      "id": 7,
       "title": "Angular",
+      "description": "How to make an app ",
       "date": 1577822400000,
       "duration": 5820000,
-      "description": "How to make an app ",
-      "topRated": false,
       "authors": [
         {
           "firstName": "Василий",
@@ -106,7 +110,9 @@
           "fullName": "Максим Лучший",
           "id": 3
         }
-      ]
+      ],
+      "topRated": false,
+      "id": 7
     }
   ],
   "users": [
