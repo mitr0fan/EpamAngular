@@ -13,6 +13,9 @@
         <mat-error *ngIf="control.hasError('noAuthors')">
             There must be <strong>at least one author</strong>
         </mat-error>
+        <mat-error *ngIf="control.hasError('maxAuthors')">
+            Maximum amount of authors <strong>is 2</strong>
+        </mat-error>
         <div matPrefix>
             <div class="input_selectedAuthor" *ngFor="let authorObj of authorsList">
                 {{authorObj.fullName}}

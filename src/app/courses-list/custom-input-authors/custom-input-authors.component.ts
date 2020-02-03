@@ -30,7 +30,7 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
   public control: FormControl;
   public matcher = {
     isErrorState: () => {
-        return this.control.hasError('noAuthors') && this.control.touched;
+        return this.control.hasError('noAuthors') || this.control.hasError('maxAuthors') && this.control.touched;
     }
   };
   @Output() changeAuthorsEvent = new EventEmitter();
@@ -77,6 +77,13 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
 
   validate(control: FormControl): ValidationErrors | null {
     this.control = control;
+
+    if (this.authorsList.length > 2) {
+      return {
+        maxAuthors: true
+      }
+    }
+
     if (this.authorsList.length === 0) {
       return {
         noAuthors: true
@@ -91,7 +98,14 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
   }
 
   selectAuthor(author: Author) {
-    this.authorsList.push(author);
+    const isAuthorAlreadyExist = this.authorsList.find((elem) => {
+      if (elem.id === author.id) {
+        return true;
+      }
+    });
+    if (!isAuthorAlreadyExist) {
+      this.authorsList.push(author);
+    }
     this.onClick();
   }
 
