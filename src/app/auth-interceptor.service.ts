@@ -36,7 +36,7 @@ export class AuthInterceptorService implements HttpInterceptor {
             tap(
                 (res) => {
                     if (res instanceof HttpResponse) {
-                        if (res.url === 'http://localhost:3000/660/users/1') {
+                        if (res.url.includes('http://localhost:3000/660/users')) {
                             this.loadingService.showLoading.next(false);
                         }
                     }

@@ -3,7 +3,7 @@
     {
       "title": "Video course 1",
       "description": "The best course ever!!!",
-      "date": 1579464000000,
+      "date": 1580587200000,
       "duration": 3840000,
       "authors": [
         {
@@ -63,7 +63,7 @@
     {
       "title": "How to make a courses page",
       "description": "This course describes how to make a courses page",
-      "date": 1573416000000,
+      "date": 1580500800000,
       "duration": 12000000,
       "authors": [
         {
@@ -95,7 +95,7 @@
     {
       "title": "Angular",
       "description": "How to make an app ",
-      "date": 1577822400000,
+      "date": 1609444800000,
       "duration": 5820000,
       "authors": [
         {
