@@ -4,7 +4,7 @@
     <div class="course-item__description">{{course.description}} </div>
     <span class="course-item__date">Date: {{course.date | date:"dd.MM.yyyy"}} </span>
     
-    <span class="course-item__duration">Duration: {{course.duration | duration}}</span>
+    <span class="course-item__duration">Duration: {{course.duration + '' | duration}}</span>
     
     <span class="course-item__button course-item__button_edit" (click)="edit(course.id)">
         <span class="course-item__button_content">Edit</span>

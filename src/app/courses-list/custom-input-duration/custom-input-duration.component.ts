@@ -21,7 +21,7 @@ import { DurationPipe } from 'src/app/directives-pipes/duration.pipe';
 })
 export class CustomInputDurationComponent implements ControlValueAccessor, Validator {
   private durationProperty: string;
-  private control: FormControl;
+  public control: FormControl;
   public matcher = {
     isErrorState: () => {
       return this.control.hasError('invalidError') && this.control.touched;
