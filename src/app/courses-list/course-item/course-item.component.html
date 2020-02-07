@@ -2,13 +2,17 @@
     <span class="course-item__title">{{course.title}} </span>
     <div class="course-item__top" *ngIf="course.topRated">★</div>
     <div class="course-item__description">{{course.description}} </div>
-    <span class="course-item__date">Date: {{course.date | date:"dd.MM.yyyy"}} </span>
-    
-    <span class="course-item__duration">Duration: {{course.duration + '' | duration}}</span>
-    
-    <span class="course-item__button course-item__button_edit" (click)="edit(course.id)">
-        <span class="course-item__button_content">Edit</span>
-    </span>
-    <span class="course-item__button course-item__button_delete"
-    (click)="delete(course.id)">Delete</span>
+
+    <div class="course-item__container">
+        <span class="course-item__date">Date: {{course.date | date:"dd.MM.yyyy"}} </span>
+        <span class="course-item__duration">Duration: {{course.duration + '' | duration}}</span>
+        <span class="course-item__button course-item__button_edit" (click)="edit(course.id)">
+            <span class="course-item__button_content">Edit</span>
+        </span>
+        <span class="course-item__button course-item__button_delete"
+        (click)="delete(course.id)"
+        >
+        Delete
+        </span>
+    </div>
 </div>

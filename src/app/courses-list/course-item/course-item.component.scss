@@ -14,14 +14,17 @@
         font-weight: 600;
         font-size: $font-size-large;
         display: inline-block;
+        word-break: break-all;
     }
-    
+    .course-item__container {
+        display: flex;
+        margin-top: 10px;
+        justify-content: space-between;
+    }
     .course-item__date, .course-item__duration {
         @include button();
-        position: absolute;
-        top: 10px;
         height: 21px;
-        width: 150px;
+        width: 175px;
         background-color: $background-color;
         color: black;
         &:hover {
@@ -29,29 +32,16 @@
             cursor: text;
         }
     }
-    .course-item__date {
-        right: 120px;
-        top: 25px;
-    }
     .course-item__button {
         @include button();
-        position: absolute;
-    }
-    .course-item__button_edit {
-        right: 10px;
-        top: 25px;
-    }
-    .course-item__button_delete {
-        right: 10px;
-        top: 65px;
+        width: 175px;
     }
     .course-item__duration {
         @extend .course-item__date;
-        top: 65px;
+        // margin-right: 50px;
     }
     .course-item__description {
         margin-top: 15px;
-        width: 500px;
         word-break: break-word;
     }
     .course-item__top {
