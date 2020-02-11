@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CoursesService } from 'src/app/courses.service';
+import { CoursesService } from 'src/app/services/courses.service';
 import { DurationPipe } from 'src/app/directives-pipes/duration.pipe';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { AuthorsService } from 'src/app/authors.service';
+import { AuthorsService } from 'src/app/services/authors.service';
 import { Author } from 'src/app/user';
 
 @Component({

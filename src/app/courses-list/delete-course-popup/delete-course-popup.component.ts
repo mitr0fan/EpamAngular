@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CoursesService } from 'src/app/courses.service';
+import { CoursesService } from 'src/app/services/courses.service';
 
 @Component({
     selector: 'app-delete-course-popup',

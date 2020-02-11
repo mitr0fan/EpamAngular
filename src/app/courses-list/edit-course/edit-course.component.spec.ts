@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditCourseComponent } from './edit-course.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CoursesService } from 'src/app/courses.service';
+import { CoursesService } from 'src/app/services/courses.service';
 import { DurationPipe } from 'src/app/directives-pipes/duration.pipe';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DirectivesPipesModule } from 'src/app/directives-pipes/directives-pipes.module';

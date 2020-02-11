@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Course } from './course';
+import { Course } from '../course';
 import { HttpClient } from '@angular/common/http';
 import { DATA } from 'common/constants';
 

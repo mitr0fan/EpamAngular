@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthorizationService } from './authorization.service';
-import { fakeUsers } from '../../common/constants';
+import { fakeUsers } from '../../../common/constants';
 import { LocalStorageService } from './local-storage.service';
 
 describe('AuthorizationService', () => {

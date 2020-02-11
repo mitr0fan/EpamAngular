@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DATA } from 'common/constants';
-import { User } from './user';
+import { User } from '../user';
 import { LocalStorageService } from './local-storage.service';
 import { HttpClient } from '@angular/common/http';
 import { of, Subject } from 'rxjs';

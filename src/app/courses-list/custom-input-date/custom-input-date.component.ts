@@ -6,7 +6,7 @@ import {
     FormControl,
     ValidationErrors,
 } from '@angular/forms';
-import { DateValidatorService } from 'src/app/date-validator.service';
+import { DateValidatorService } from 'src/app/services/date-validator.service';
 
 @Component({
     selector: 'app-custom-input-date',

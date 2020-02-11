@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthorizationService } from 'src/app/authorization.service';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 import { Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { FormGroup, FormControl, Validators } from '@angular/forms';

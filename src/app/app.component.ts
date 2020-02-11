@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { trigger, style, animate, transition, query } from '@angular/animations';
-import { LoadingService } from './loading.service';
+import { LoadingService } from './services/loading.service';
 import { debounceTime } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 

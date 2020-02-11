@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
-import { AuthorizationService } from 'src/app/authorization.service';
-import { LocalStorageService } from 'src/app/local-storage.service';
+import { AuthorizationService } from 'src/app/services/authorization.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 describe('HeaderComponent', () => {
     let component: HeaderComponent;

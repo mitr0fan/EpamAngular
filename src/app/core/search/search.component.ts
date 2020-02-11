@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SearchService } from 'src/app/search.service';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
     selector: 'app-search',

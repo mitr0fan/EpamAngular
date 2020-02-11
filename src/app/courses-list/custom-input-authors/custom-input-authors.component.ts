@@ -14,7 +14,7 @@ import {
     ValidationErrors,
     FormControl,
 } from '@angular/forms';
-import { SearchService } from 'src/app/search.service';
+import { SearchService } from 'src/app/services/search.service';
 import { Subscription, Observable } from 'rxjs';
 import { Author } from 'src/app/user';
 

@@ -4,7 +4,7 @@ import { CoursesComponent } from './courses.component';
 import { DirectivesPipesModule } from 'src/app/directives-pipes/directives-pipes.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CoursesService } from 'src/app/courses.service';
+import { CoursesService } from 'src/app/services/courses.service';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { Course } from 'src/app/course';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

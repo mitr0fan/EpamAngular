@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CoursesService } from 'src/app/courses.service';
+import { CoursesService } from 'src/app/services/courses.service';
 import { Course } from 'src/app/course';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteCoursePopupComponent } from '../delete-course-popup/delete-course-popup.component';

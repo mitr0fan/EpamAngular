@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { CoursesService } from './courses.service';
 import { data } from 'common/constants';
-import { Course } from './course';
+import { Course } from '../course';
 
 describe('CoursesService', () => {
     let service: CoursesService;

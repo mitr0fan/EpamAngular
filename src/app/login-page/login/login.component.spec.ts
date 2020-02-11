@@ -4,7 +4,7 @@ import { LoginComponent } from './login.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthorizationService } from 'src/app/authorization.service';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 describe('LoginComponent', () => {
     let component: LoginComponent;
