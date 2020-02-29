@@ -17,7 +17,7 @@
         </mat-error>
         <div matPrefix>
             <div class="input_selectedAuthor" *ngFor="let authorObj of authorsList">
-                {{authorObj.fullName}}
+                <span>{{authorObj.fullName}}</span>
                 <span class="input_deleteAuthor" (click)="deleteAuthor(authorObj.id)">⮿</span>
             </div>
         </div>

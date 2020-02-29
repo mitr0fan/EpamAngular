@@ -1,19 +1,26 @@
 @import '../../../../common/styles-constants.scss';
 .popup {
-    position: relative;
-    .popup__button {
-        @include button();
-        position: absolute;
-        margin-top: 20px;
-    }
-    .popup__button_no {
-        left: 200px;
-    }
-    .popup__button_yes {
-        left: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .popup__buttons {
+        display: flex;
+        .popup__button {
+            @include button();
+            margin: 20px;
+            margin-bottom: 0;
+            @media (max-width: 500px) {
+                margin: 5px;
+                margin-bottom: 0;
+            }
+        }
     }
     .popup__content {
         font-weight: 600;
         font-size: $font-size-large;
+        @media (max-width: 500px) {
+            font-size: $font-size-large-mobile;
+        }
     }
 }

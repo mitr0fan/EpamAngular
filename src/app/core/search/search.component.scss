@@ -6,6 +6,7 @@
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     .search-panel__button {
         @include button();
     }
@@ -16,6 +17,9 @@
         border-radius: 5px;
         outline: none;
         border-bottom: solid 1px $main-color-blue;
+        @media (max-width: 500px) {
+            width: 230px;
+        }
     }
     .search-panel__button_right {
         margin-right: 5px;

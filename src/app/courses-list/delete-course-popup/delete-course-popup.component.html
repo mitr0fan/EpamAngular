@@ -1,5 +1,7 @@
 <div class="popup">
     <p class="popup__content">Do you really want to delete this course?</p>
-    <span class="popup__button popup__button_yes" (click)="removeCourse()">Yes</span>
-    <span class="popup__button popup__button_no" (click)="closePopup()">No</span>
+    <div class="popup__buttons">
+        <span class="popup__button" (click)="removeCourse()">Yes</span>
+        <span class="popup__button" (click)="closePopup()">No</span>
+    </div>
 </div>

@@ -40,7 +40,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
     deleteCourse(id: number) {
         const dialogRef = this.dialog.open(DeleteCoursePopupComponent, {
-            height: '120px',
             data: { idCourse: id },
         });
 

@@ -6,6 +6,10 @@
     background-color: $main-color-blue;
     z-index: 10;
     color: white;
+    @media (max-width: 500px) {
+        height: 80px;
+        width: 100%;
+    }
     .header__content {
         margin: 0 auto;
         height: 100%;
@@ -13,7 +17,9 @@
         position: relative;
         font-size: $font-size-standart;
         display: flex;
-
+        @media (max-width: 500px) {
+            width: 100%;
+        }
     }
     .header__logo {
         align-self: center;
@@ -22,6 +28,9 @@
             weight: 600;
         }
         padding-bottom: 5px;
+        @media (max-width: 500px) {
+            font-size: $font-size-large-mobile;
+        }
     }
     .header__login {
         align-self: center;
@@ -29,11 +38,18 @@
         text-align: end;
         padding-right: 50px;
         padding-bottom: 2px;
+        @media (max-width: 500px) {
+            font-size: $font-size-standart-mobile;
+            padding-right: 10px;
+        }
     }
     .header__button {
         @include button();
         &:hover {
             background-color: $background-color;
+        }
+        @media (max-width: 500px) {
+            font-size: $font-size-standart-mobile;
         }
     }
     .header__button_color-white {

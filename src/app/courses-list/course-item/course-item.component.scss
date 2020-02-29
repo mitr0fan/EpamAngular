@@ -7,6 +7,10 @@
     border-radius: 10px;
     font-size: $font-size-standart;
     min-height: 102px;
+    @media (max-width: 500px) {
+        font-size: $font-size-standart-mobile;
+        padding-bottom: 0;
+    }
     &:hover {
         box-shadow: 0 0 8px;
     }
@@ -15,11 +19,17 @@
         font-size: $font-size-large;
         display: inline-block;
         word-break: break-all;
+        @media (max-width: 500px) {
+            font-size: $font-size-large-mobile;
+        }
     }
     .course-item__container {
         display: flex;
         margin-top: 10px;
         justify-content: space-between;
+        @media (max-width: 500px) {
+            flex-flow: column;
+        }
     }
     .course-item__date, .course-item__duration {
         @include button();
@@ -31,14 +41,21 @@
             background-color: $background-color;
             cursor: text;
         }
+        @media (max-width: 500px) {
+            width: auto;
+            margin-bottom: 10px;
+        }
     }
     .course-item__button {
         @include button();
         width: 175px;
+        @media (max-width: 500px) {
+            width: auto;
+            margin-bottom: 10px;
+        }
     }
     .course-item__duration {
         @extend .course-item__date;
-        // margin-right: 50px;
     }
     .course-item__description {
         margin-top: 15px;
