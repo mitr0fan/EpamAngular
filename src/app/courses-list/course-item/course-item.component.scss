@@ -67,5 +67,8 @@
         display: inline-block;
         position: absolute;
         top: 2px;
+        @media (max-width: 500px) {
+            font-size: 25pt;
+        }
     }
 }
