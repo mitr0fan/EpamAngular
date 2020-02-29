@@ -33,3 +33,10 @@
 .container {
     display: grid;
 }
+.input_author {
+    @media (max-width: 420px) {
+        width: 70px;
+        white-space: normal;
+        overflow: hidden;
+    }
+}
