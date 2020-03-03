@@ -6,6 +6,10 @@
             cursor: pointer;
             background-color: #23486d;
         }
+        @media (max-width: 500px) {
+            font-size: $font-size-standart-mobile;
+            height: 60px;
+        }
     }
     .courses-list__empty-list {
         background-color: $main-color-blue;
@@ -19,7 +23,7 @@
         align-items: center;
         @media (max-width: 500px) {
             font-size: $font-size-standart-mobile;
-            height: 50px;
+            height: 60px;
         }
     }
 }

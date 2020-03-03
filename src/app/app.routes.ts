@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login-page/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CoursesComponent } from './courses-list/courses/courses.component';
-import { EditCourseComponent } from './courses-list/edit-course/edit-course.component';
 import { CanActivateGuardService } from './services/can-activate-guard.service';
 import { LoginGuardService } from './services/login-guard.service';
 import { DATA } from 'common/constants';
@@ -19,21 +17,9 @@ export const appRoutes: Routes = [
     },
     {
         path: routes.coursesRoute,
-        component: CoursesComponent,
+        loadChildren: () => import('./courses-list/courses-list.module').then(m => m.CoursesListModule),
         canActivate: [CanActivateGuardService],
         data: { animation: 'CoursesPage' },
-    },
-    {
-        path: routes.createNewCourseRoute,
-        component: EditCourseComponent,
-        canActivate: [CanActivateGuardService],
-        data: { animation: 'EditPage' },
-    },
-    {
-        path: routes.editCourseRoute,
-        component: EditCourseComponent,
-        canActivate: [CanActivateGuardService],
-        data: { animation: 'EditPage' },
     },
     { path: routes.errorRoute, component: PageNotFoundComponent },
 ];

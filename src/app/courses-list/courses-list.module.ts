@@ -13,6 +13,26 @@ import { CustomInputDateComponent } from './custom-input-date/custom-input-date.
 import { CustomInputDurationComponent } from './custom-input-duration/custom-input-duration.component';
 import { CustomInputAuthorsComponent } from './custom-input-authors/custom-input-authors.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { Routes, RouterModule } from '@angular/router';
+import { DATA } from 'common/constants';
+import { CanActivateGuardService } from '../services/can-activate-guard.service';
+import { MatDialogModule } from '@angular/material/dialog';
+
+const routes: Routes = [
+    {path: '', component: CoursesComponent},
+    {
+        path: DATA.ROUTES.createNewCourseRoute,
+        component: EditCourseComponent,
+        canActivate: [CanActivateGuardService],
+        data: { animation: 'EditPage' },
+    },
+    {
+        path: DATA.ROUTES.editCourseRoute,
+        component: EditCourseComponent,
+        canActivate: [CanActivateGuardService],
+        data: { animation: 'EditPage' },
+    },
+];
 
 @NgModule({
     declarations: [
@@ -32,8 +52,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         ReactiveFormsModule,
         FormsModule,
         MatAutocompleteModule,
+        RouterModule.forChild(routes),
+        MatDialogModule
     ],
-    exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent],
+    exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent, EditCourseComponent],
     entryComponents: [DeleteCoursePopupComponent, EditCourseComponent],
     providers: [DurationPipe, DatePipe],
 })
