@@ -31,7 +31,8 @@
             flex-flow: column;
         }
     }
-    .course-item__date, .course-item__duration {
+    .course-item__date,
+    .course-item__duration {
         @include button();
         height: 21px;
         width: 175px;

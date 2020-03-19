@@ -17,7 +17,8 @@ export const appRoutes: Routes = [
     },
     {
         path: routes.coursesRoute,
-        loadChildren: () => import('./courses-list/courses-list.module').then(m => m.CoursesListModule),
+        loadChildren: () =>
+            import('./courses-list/courses-list.module').then((m) => m.CoursesListModule),
         canActivate: [CanActivateGuardService],
         data: { animation: 'CoursesPage' },
     },

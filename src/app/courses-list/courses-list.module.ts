@@ -19,7 +19,7 @@ import { CanActivateGuardService } from '../services/can-activate-guard.service'
 import { MatDialogModule } from '@angular/material/dialog';
 
 const routes: Routes = [
-    {path: '', component: CoursesComponent},
+    { path: '', component: CoursesComponent },
     {
         path: DATA.ROUTES.createNewCourseRoute,
         component: EditCourseComponent,
@@ -53,9 +53,14 @@ const routes: Routes = [
         FormsModule,
         MatAutocompleteModule,
         RouterModule.forChild(routes),
-        MatDialogModule
+        MatDialogModule,
     ],
-    exports: [CoursesComponent, CourseItemComponent, DeleteCoursePopupComponent, EditCourseComponent],
+    exports: [
+        CoursesComponent,
+        CourseItemComponent,
+        DeleteCoursePopupComponent,
+        EditCourseComponent,
+    ],
     entryComponents: [DeleteCoursePopupComponent, EditCourseComponent],
     providers: [DurationPipe, DatePipe],
 })
