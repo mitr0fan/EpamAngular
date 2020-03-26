@@ -3,15 +3,13 @@ import { DATA } from 'common/constants';
 import { User } from '../user';
 import { LocalStorageService } from './local-storage.service';
 import { HttpClient } from '@angular/common/http';
-import { of, Subject } from 'rxjs';
+import { of } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthorizationService {
-    public userName$ = new Subject<string>();
-
     constructor(
         private localStorageService: LocalStorageService,
         private http: HttpClient,
@@ -27,7 +25,6 @@ export class AuthorizationService {
 
     logout() {
         this.router.navigate(['/login']);
-        this.userName$.next('');
         this.deleteToken();
     }
 

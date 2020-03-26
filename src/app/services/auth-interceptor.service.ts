@@ -13,6 +13,8 @@ import { AuthorizationService } from './authorization.service';
 import { tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoadingService } from './loading.service';
+import { Store } from '@ngrx/store';
+import { LoadUserError, ChangeUserStatus } from 'src/store/actions/users.actions';
 
 @Injectable({
     providedIn: 'root',
@@ -22,7 +24,8 @@ export class AuthInterceptorService implements HttpInterceptor {
         private localStorage: LocalStorageService,
         private auth: AuthorizationService,
         private snackBar: MatSnackBar,
-        private loadingService: LoadingService
+        private loadingService: LoadingService,
+        private store: Store
     ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -50,6 +53,13 @@ export class AuthInterceptorService implements HttpInterceptor {
                         this.auth.logout();
                         errorMessage = `Ошибка: ${error.statusText}.`;
                     }
+                    this.store.dispatch(
+                        new LoadUserError({
+                            error: { errorStatus: true, errorMessage },
+                            user: LoadUserError.user,
+                        })
+                    );
+                    this.store.dispatch(new ChangeUserStatus({ loggedIn: false }));
                     this.snackBar.open(errorMessage, 'Закрыть', {
                         duration: 0,
                     });

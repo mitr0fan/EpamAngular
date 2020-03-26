@@ -13,7 +13,7 @@
     .header__content {
         margin: 0 auto;
         height: 100%;
-        width: 800px;
+        max-width: 800px;
         position: relative;
         font-size: $font-size-standart;
         display: flex;

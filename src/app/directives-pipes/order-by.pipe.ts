@@ -6,14 +6,7 @@ import { Course } from '../course';
 })
 export class OrderByPipe implements PipeTransform {
     transform(value: Course[], ...args: any[]): Course[] {
-        return value.sort((a, b) => {
-            if (a.date > b.date) {
-                return 1;
-            } else if (a.date === b.date) {
-                return 0;
-            } else {
-                return -1;
-            }
-        });
+        const arr = [...value];
+        return arr.sort((a, b) => (a.date > b.date ? 1 : -1));
     }
 }

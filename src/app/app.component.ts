@@ -4,6 +4,8 @@ import { trigger, style, animate, transition, query } from '@angular/animations'
 import { LoadingService } from './services/loading.service';
 import { debounceTime } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { GetUserInfoFromLocalStorage } from 'src/store/actions/users.actions';
 
 @Component({
     selector: 'app-root',
@@ -32,9 +34,15 @@ export class AppComponent implements OnInit, OnDestroy {
     public loadingStatus: boolean;
     private subscribtion: Subscription = new Subscription();
 
-    constructor(private router: Router, public loadingService: LoadingService) {}
+    constructor(
+        private router: Router,
+        public loadingService: LoadingService,
+        public store: Store
+    ) {}
 
     ngOnInit() {
+        this.store.dispatch(new GetUserInfoFromLocalStorage());
+
         const sub1 = this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 if (event.url.includes('courses')) {
@@ -51,6 +59,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
         this.subscribtion.add(sub1);
         this.subscribtion.add(sub2);
+
+        this.store.subscribe((state) => console.log(state));
     }
 
     ngOnDestroy() {

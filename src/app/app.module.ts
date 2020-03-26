@@ -14,6 +14,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../store/index';
+import { EffectsModule } from '@ngrx/effects';
+import { LoginUserEffects } from 'src/store/effects/login-user.effect.service';
+import { CoursesEffect } from 'src/store/effects/courses.effect.service';
 
 @NgModule({
     declarations: [AppComponent, TestHostComponent, PageNotFoundComponent],
@@ -27,6 +32,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         LoginPageModule,
         HttpClientModule,
         MatSnackBarModule,
+        StoreModule.forRoot(reducers),
+        EffectsModule.forRoot([LoginUserEffects, CoursesEffect]),
     ],
     providers: [
         {
