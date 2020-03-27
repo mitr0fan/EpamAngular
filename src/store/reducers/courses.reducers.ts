@@ -7,6 +7,7 @@ export interface CoursesState {
         errorStatus: boolean;
         errorMessage: string;
     };
+    amountCourses: number;
 }
 
 const initialState: CoursesState = {
@@ -15,6 +16,7 @@ const initialState: CoursesState = {
         errorStatus: false,
         errorMessage: '',
     },
+    amountCourses: 2,
 };
 
 export function coursesReducer(
@@ -31,6 +33,11 @@ export function coursesReducer(
             return {
                 ...state,
                 error: { ...action.payload.error },
+            };
+        case CoursesActions.ChangeAmountCourses:
+            return {
+                ...state,
+                amountCourses: action.payload.amount
             };
         default:
             return state;

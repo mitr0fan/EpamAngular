@@ -8,3 +8,8 @@ export const selectCoursesState = createSelector(
     selectCourses,
     (state: Courses.CoursesState) => state.courses
 );
+
+export const selectAmountCourses = createSelector(
+    selectCourses,
+    (state: Courses.CoursesState) => state.amountCourses
+);

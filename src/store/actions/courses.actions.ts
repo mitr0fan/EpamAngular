@@ -6,6 +6,9 @@ export enum CoursesActions {
     GetCoursesSuccess = '[HTTP API] GetCoursesSuccess',
     GetCoursesError = '[HTTP API] GetCoursesError',
     GetCourseData = '[HTTP API] GetCourseData',
+    RemoveCourse = '[HTTP API] RemoveCourse',
+    ChangeAmountCourses = '[Courses Page] ChangeAmountCourses',
+    SearchCourses = '[HTTP API] SearchCourses',
 }
 
 export class GetCourses implements Action {
@@ -32,4 +35,29 @@ export class GetCourseData implements Action {
     constructor(public payload: { course: Course }) {}
 }
 
-export type CoursesActionsTypes = GetCourses | GetCourseData | GetCoursesSuccess | GetCoursesError;
+export class RemoveCourse implements Action {
+    readonly type = CoursesActions.RemoveCourse;
+
+    constructor(public payload: { id: number, amountCourses: number }) {}
+}
+
+export class ChangeAmountCourses implements Action {
+    readonly type = CoursesActions.ChangeAmountCourses;
+
+    constructor(public payload: { amount: number }) {}
+}
+
+export class SearchCourses implements Action {
+    readonly type = CoursesActions.SearchCourses;
+
+    constructor(public payload: {value: string}) {}
+}
+
+export type CoursesActionsTypes =
+| GetCourses
+| GetCourseData
+| GetCoursesSuccess
+| GetCoursesError
+| RemoveCourse
+| ChangeAmountCourses
+| SearchCourses;

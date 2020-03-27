@@ -6,9 +6,12 @@ import {
     GetCoursesSuccess,
     GetCourses,
     GetCoursesError,
+    RemoveCourse,
+    SearchCourses,
+    ChangeAmountCourses,
 } from '../actions/courses.actions';
-import { switchMap, map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { switchMap, map, catchError, distinct, concatMap, reduce, mergeMap } from 'rxjs/operators';
+import { of, zip } from 'rxjs';
 
 @Injectable()
 export class CoursesEffect {
@@ -31,6 +34,39 @@ export class CoursesEffect {
                     )
                 );
             })
+        );
+    });
+
+    removeCourse$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(CoursesActions.RemoveCourse),
+            switchMap((action: RemoveCourse) =>
+                this.coursesService.removeItem(action.payload.id).pipe(
+                    map(() => new GetCourses({amountCourses: action.payload.amountCourses, amountPages: 1}))
+                )
+            )
+        );
+    });
+
+    searchCourses$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(CoursesActions.SearchCourses),
+            switchMap((action: SearchCourses) =>
+                zip(
+                    this.coursesService.searchCoursesByTitle(action.payload.value),
+                    this.coursesService.searchCoursesByDescription(action.payload.value)
+                ).pipe(
+                    concatMap(arr => [].concat(...arr)),
+                    distinct(course => course.id),
+                    reduce((courses, course) => [...courses, course], []),
+                    mergeMap(courses => {
+                        return [
+                            new GetCoursesSuccess({courses}),
+                            new ChangeAmountCourses({amount: courses.length})
+                        ];
+                    })
+                )
+            )
         );
     });
 
