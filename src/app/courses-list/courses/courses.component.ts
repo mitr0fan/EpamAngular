@@ -14,18 +14,15 @@ import { selectCoursesState, selectAmountCourses } from 'src/store/selectors/cou
     styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit, OnDestroy {
-    constructor(
-        private dialog: MatDialog,
-        private router: Router,
-        private store: Store
-    ) {}
+    constructor(private dialog: MatDialog, private router: Router, private store: Store) {}
 
     public courses$: Observable<Course[]>;
     private amountCourses: number;
 
     ngOnInit() {
-        this.store.pipe(select(selectAmountCourses))
-            .subscribe(value => this.amountCourses = value);
+        this.store
+            .pipe(select(selectAmountCourses))
+            .subscribe((value) => (this.amountCourses = value));
 
         this.store.dispatch(
             new GetCourses({
@@ -42,7 +39,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
     }
 
     loadMoreCourses() {
-        this.store.dispatch(new ChangeAmountCourses({amount: this.amountCourses += 2}));
+        this.store.dispatch(new ChangeAmountCourses({ amount: this.amountCourses += 2 }));
 
         this.store.dispatch(
             new GetCourses({
@@ -59,7 +56,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
     }
 
     search(value: string) {
-        this.store.dispatch(new SearchCourses({value}));
+        this.store.dispatch(new SearchCourses({ value }));
     }
 
     createNewCourse() {

@@ -3,7 +3,7 @@
         type="text"
         matInput
         placeholder="Date, dd.MM.yyyy"
-        value="{{ dateFromClass }}"
+        [value]="date"
         [(ngModel)]="date"
         required
         [errorStateMatcher]="matcher"

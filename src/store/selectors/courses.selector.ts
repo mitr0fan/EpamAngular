@@ -13,3 +13,8 @@ export const selectAmountCourses = createSelector(
     selectCourses,
     (state: Courses.CoursesState) => state.amountCourses
 );
+
+export const selectCourseData = createSelector(
+    selectCourses,
+    (state: Courses.CoursesState) => state.selectedCourse
+);

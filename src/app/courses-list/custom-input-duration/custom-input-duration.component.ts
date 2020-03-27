@@ -49,7 +49,7 @@ export class CustomInputDurationComponent implements ControlValueAccessor, Valid
     constructor(private durationPipe: DurationPipe) {}
 
     writeValue(duration: string) {
-        if (duration !== null) {
+        if (duration) {
             this.durationProperty = this.durationPipe.changeDurationFromMsToMinutes(+duration);
             this.onChange(this.durationProperty);
         }
@@ -75,20 +75,19 @@ export class CustomInputDurationComponent implements ControlValueAccessor, Valid
             invalidError: true,
         };
 
-        if (value === null) {
+        if (!value) {
             return error;
         }
-        if (value === '') {
-            return error;
-        }
-        if (value.match(regExp)) {
-            if (value.match(regExp)[0] === value) {
-                return null;
+        if (value.match) {
+            if (value.match(regExp)) {
+                if (value.match(regExp)[0] === value) {
+                    return null;
+                } else {
+                    return error;
+                }
             } else {
                 return error;
             }
-        } else {
-            return error;
         }
     }
 }

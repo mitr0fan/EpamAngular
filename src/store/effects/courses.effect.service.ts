@@ -9,9 +9,13 @@ import {
     RemoveCourse,
     SearchCourses,
     ChangeAmountCourses,
+    GetCourseData,
+    GetCourseDataSuccess,
+    GetCourseDataError,
 } from '../actions/courses.actions';
 import { switchMap, map, catchError, distinct, concatMap, reduce, mergeMap } from 'rxjs/operators';
 import { of, zip } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class CoursesEffect {
@@ -41,9 +45,16 @@ export class CoursesEffect {
         return this.actions$.pipe(
             ofType(CoursesActions.RemoveCourse),
             switchMap((action: RemoveCourse) =>
-                this.coursesService.removeItem(action.payload.id).pipe(
-                    map(() => new GetCourses({amountCourses: action.payload.amountCourses, amountPages: 1}))
-                )
+                this.coursesService
+                    .removeItem(action.payload.id)
+                    .pipe(
+                        map(() =>
+                            new GetCourses({
+                                amountCourses: action.payload.amountCourses,
+                                amountPages: 1,
+                            })
+                        )
+                    )
             )
         );
     });
@@ -56,15 +67,37 @@ export class CoursesEffect {
                     this.coursesService.searchCoursesByTitle(action.payload.value),
                     this.coursesService.searchCoursesByDescription(action.payload.value)
                 ).pipe(
-                    concatMap(arr => [].concat(...arr)),
-                    distinct(course => course.id),
+                    concatMap((arr) => [].concat(...arr)),
+                    distinct((course) => course.id),
                     reduce((courses, course) => [...courses, course], []),
-                    mergeMap(courses => {
+                    mergeMap((courses) => {
                         return [
-                            new GetCoursesSuccess({courses}),
-                            new ChangeAmountCourses({amount: courses.length})
+                            new GetCoursesSuccess({ courses }),
+                            new ChangeAmountCourses({ amount: courses.length }),
                         ];
                     })
+                )
+            )
+        );
+    });
+
+    getCourseData$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(CoursesActions.GetCourseData),
+            switchMap((action: GetCourseData) =>
+                this.coursesService.getItemById(action.payload.id).pipe(
+                    map((course) => new GetCourseDataSuccess({ course: course[0] })),
+                    catchError((error: HttpErrorResponse) =>
+                        of(
+                            new GetCourseDataError({
+                                error: {
+                                    errorMessage: error.message,
+                                    errorStatus: true,
+                                },
+                                course: null,
+                            })
+                        )
+                    )
                 )
             )
         );

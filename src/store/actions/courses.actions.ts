@@ -6,6 +6,8 @@ export enum CoursesActions {
     GetCoursesSuccess = '[HTTP API] GetCoursesSuccess',
     GetCoursesError = '[HTTP API] GetCoursesError',
     GetCourseData = '[HTTP API] GetCourseData',
+    GetCourseDataSuccess = '[HTTP API] GetCourseDataSuccess',
+    GetCourseDataError = '[HTTP API] GetCourseDataError',
     RemoveCourse = '[HTTP API] RemoveCourse',
     ChangeAmountCourses = '[Courses Page] ChangeAmountCourses',
     SearchCourses = '[HTTP API] SearchCourses',
@@ -32,13 +34,30 @@ export class GetCoursesError implements Action {
 export class GetCourseData implements Action {
     readonly type = CoursesActions.GetCourseData;
 
+    constructor(public payload: { id: number }) {}
+}
+
+export class GetCourseDataSuccess implements Action {
+    readonly type = CoursesActions.GetCourseDataSuccess;
+
     constructor(public payload: { course: Course }) {}
+}
+
+export class GetCourseDataError implements Action {
+    readonly type = CoursesActions.GetCourseDataError;
+
+    constructor(
+        public payload: {
+            course: Course;
+            error: { errorMessage: string; errorStatus: boolean };
+        }
+    ) {}
 }
 
 export class RemoveCourse implements Action {
     readonly type = CoursesActions.RemoveCourse;
 
-    constructor(public payload: { id: number, amountCourses: number }) {}
+    constructor(public payload: { id: number; amountCourses: number }) {}
 }
 
 export class ChangeAmountCourses implements Action {
@@ -50,14 +69,16 @@ export class ChangeAmountCourses implements Action {
 export class SearchCourses implements Action {
     readonly type = CoursesActions.SearchCourses;
 
-    constructor(public payload: {value: string}) {}
+    constructor(public payload: { value: string }) {}
 }
 
 export type CoursesActionsTypes =
-| GetCourses
-| GetCourseData
-| GetCoursesSuccess
-| GetCoursesError
-| RemoveCourse
-| ChangeAmountCourses
-| SearchCourses;
+    | GetCourses
+    | GetCourseData
+    | GetCourseDataSuccess
+    | GetCourseDataError
+    | GetCoursesSuccess
+    | GetCoursesError
+    | RemoveCourse
+    | ChangeAmountCourses
+    | SearchCourses;

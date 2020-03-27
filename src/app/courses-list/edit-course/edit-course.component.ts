@@ -8,6 +8,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { AuthorsService } from 'src/app/services/authors.service';
 import { Author } from 'src/app/user';
+import { Store, select } from '@ngrx/store';
+import { GetCourseData } from 'src/store/actions/courses.actions';
+import { Course } from 'src/app/course';
+import { selectCourseData } from 'src/store/selectors/courses.selector';
 
 @Component({
     selector: 'app-edit-course',
@@ -15,7 +19,7 @@ import { Author } from 'src/app/user';
     styleUrls: ['./edit-course.component.scss'],
 })
 export class EditCourseComponent implements OnInit, OnDestroy {
-    private subscription: Subscription;
+    private subscription = new Subscription();
     private id: number;
     public authors: Author[] = [];
     public authorsFromServer$: Observable<Author[]>;
@@ -36,43 +40,69 @@ export class EditCourseComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
         private datePipe: DatePipe,
-        private authorsService: AuthorsService
+        private authorsService: AuthorsService,
+        private store: Store
     ) {}
 
     ngOnInit() {
-        this.subscription = this.route.params
-            .pipe(
-                switchMap((data) => {
-                    if (data.id) {
-                        return this.coursesService.getItemById(data.id).pipe(
-                            tap((course) => {
-                                const fetchedCourse = course[0];
-                                if (fetchedCourse) {
-                                    this.courseForm.setValue({
-                                        title: fetchedCourse.title,
-                                        description: fetchedCourse.description,
-                                        date: this.datePipe.transform(
-                                            fetchedCourse.date,
-                                            'dd.MM.yyyy'
-                                        ),
-                                        duration: fetchedCourse.duration,
-                                        authors: '',
-                                        topRated: fetchedCourse.topRated,
-                                        id: fetchedCourse.id,
-                                    });
-                                    this.id = fetchedCourse.id;
-                                    this.authors = fetchedCourse.authors;
-                                } else {
-                                    this.router.navigate(['/error']);
-                                }
-                            })
-                        );
-                    } else {
-                        return [];
-                    }
-                })
-            )
-            .subscribe();
+        // this.subscription = this.route.params
+        //     .pipe(
+        //         switchMap((data) => {
+        //             if (data.id) {
+        //                 return this.coursesService.getItemById(data.id).pipe(
+        //                     tap((course) => {
+        //                         const fetchedCourse = course[0];
+        //                         if (fetchedCourse) {
+        //                             this.courseForm.setValue({
+        //                                 title: fetchedCourse.title,
+        //                                 description: fetchedCourse.description,
+        //                                 date: this.datePipe.transform(
+        //                                     fetchedCourse.date,
+        //                                     'dd.MM.yyyy'
+        //                                 ),
+        //                                 duration: fetchedCourse.duration,
+        //                                 authors: '',
+        //                                 topRated: fetchedCourse.topRated,
+        //                                 id: fetchedCourse.id,
+        //                             });
+        //                             this.id = fetchedCourse.id;
+        //                             this.authors = fetchedCourse.authors;
+        //                         } else {
+        //                             this.router.navigate(['/error']);
+        //                         }
+        //                     })
+        //                 );
+        //             } else {
+        //                 return [];
+        //             }
+        //         })
+        //     )
+        //     .subscribe();
+        const sub1 = this.route.params.subscribe((data) => {
+            if (data.id) {
+                const id = +data.id;
+                this.store.dispatch(new GetCourseData({ id }));
+            }
+        });
+
+        const sub2 = this.store.pipe(select(selectCourseData)).subscribe((course) => {
+            if (course) {
+                this.courseForm.patchValue({
+                    title: course.title,
+                    description: course.description,
+                    date: this.datePipe.transform(course.date, 'dd.MM.yyyy'),
+                    duration: course.duration,
+                    authors: '',
+                    topRated: course.topRated,
+                    id: course.id,
+                });
+                this.id = course.id;
+                this.authors = course.authors;
+            }
+        });
+
+        this.subscription.add(sub1);
+        this.subscription.add(sub2);
     }
 
     ngOnDestroy() {

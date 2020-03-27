@@ -21,8 +21,9 @@ export class DeleteCoursePopupComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.store.pipe(select(selectAmountCourses))
-        .subscribe(value => this.amountCourses = value);
+        this.store
+            .pipe(select(selectAmountCourses))
+            .subscribe((value) => (this.amountCourses = value));
     }
 
     closePopup() {
@@ -30,10 +31,12 @@ export class DeleteCoursePopupComponent implements OnInit {
     }
 
     removeCourse() {
-        this.store.dispatch(new RemoveCourse({
-            id: this.id.idCourse,
-            amountCourses: this.amountCourses
-        }));
+        this.store.dispatch(
+            new RemoveCourse({
+                id: this.id.idCourse,
+                amountCourses: this.amountCourses,
+            })
+        );
         this.reference.close();
     }
 }

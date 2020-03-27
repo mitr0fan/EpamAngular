@@ -8,6 +8,7 @@ export interface CoursesState {
         errorMessage: string;
     };
     amountCourses: number;
+    selectedCourse: Course;
 }
 
 const initialState: CoursesState = {
@@ -17,6 +18,7 @@ const initialState: CoursesState = {
         errorMessage: '',
     },
     amountCourses: 2,
+    selectedCourse: null,
 };
 
 export function coursesReducer(
@@ -37,7 +39,18 @@ export function coursesReducer(
         case CoursesActions.ChangeAmountCourses:
             return {
                 ...state,
-                amountCourses: action.payload.amount
+                amountCourses: action.payload.amount,
+            };
+        case CoursesActions.GetCourseDataSuccess:
+            return {
+                ...state,
+                selectedCourse: { ...action.payload.course },
+            };
+        case CoursesActions.GetCourseDataError:
+            return {
+                ...state,
+                selectedCourse: { ...action.payload.course },
+                error: { ...action.payload.error },
             };
         default:
             return state;

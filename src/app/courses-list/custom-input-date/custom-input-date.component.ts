@@ -5,6 +5,7 @@ import {
     NG_VALIDATORS,
     FormControl,
     ValidationErrors,
+    Validator,
 } from '@angular/forms';
 import { DateValidatorService } from 'src/app/services/date-validator.service';
 
@@ -25,7 +26,7 @@ import { DateValidatorService } from 'src/app/services/date-validator.service';
         },
     ],
 })
-export class CustomInputDateComponent implements ControlValueAccessor {
+export class CustomInputDateComponent implements ControlValueAccessor, Validator {
     private dateValue;
     public control: FormControl;
     public matcher = {
@@ -39,7 +40,7 @@ export class CustomInputDateComponent implements ControlValueAccessor {
         this.onChange(this.dateValue);
     }
 
-    get dateFromClass() {
+    get date() {
         return this.dateValue;
     }
 

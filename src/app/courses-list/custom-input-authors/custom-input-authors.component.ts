@@ -74,6 +74,10 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
         setTimeout(() => {
             this.onChange('');
         }, 0);
+
+        if (this.authorsList.length > 0) {
+            this.onClick();
+        }
     }
 
     ngOnDestroy() {
