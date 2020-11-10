@@ -4,6 +4,7 @@
 
 export const environment = {
     production: false,
+    server: `http://${document.location.hostname}:3000`,
 };
 
 /*

@@ -19,6 +19,8 @@ import { reducers } from '../store/index';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginUserEffects } from 'src/store/effects/login-user.effect.service';
 import { CoursesEffect } from 'src/store/effects/courses.effect.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
     declarations: [AppComponent, TestHostComponent, PageNotFoundComponent],
@@ -34,6 +36,7 @@ import { CoursesEffect } from 'src/store/effects/courses.effect.service';
         MatSnackBarModule,
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot([LoginUserEffects, CoursesEffect]),
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ],
     providers: [
         {

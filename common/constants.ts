@@ -1,3 +1,5 @@
+import { environment } from 'src/environments/environment';
+
 interface Data {
     ROUTES: any;
     COURSES_SERVER: string;
@@ -20,10 +22,10 @@ export const DATA: Data = {
         redirectToLogin: '/login',
         errorRoute: '**',
     },
-    COURSES_SERVER: `http://${document.location.hostname}:3000/660/courses`,
-    USERS_SERVER: `http://${document.location.hostname}:3000/660/users`,
-    SERVER: `http://${document.location.hostname}:3000`,
-    AUTHORS_SERVER: `http://${document.location.hostname}:3000/660/authors`,
+    COURSES_SERVER: `${environment.server}/660/courses`,
+    USERS_SERVER: `${environment.server}/660/users`,
+    SERVER: environment.server,
+    AUTHORS_SERVER: `${environment.server}/660/authors`,
     LOCAL_STORAGE: {
         userInfo: 'userInfo',
         authToken: 'authToken',
