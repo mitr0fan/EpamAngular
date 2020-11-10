@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { trigger, style, animate, transition, query } from '@angular/animations';
-import { LoadingService } from './services/loading.service';
 import { debounceTime } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { GetUserInfoFromLocalStorage } from 'src/store/actions/users.actions';
+import { selectLoadingStatus } from 'src/store/selectors/users.selector';
 
 @Component({
     selector: 'app-root',
@@ -31,17 +31,19 @@ import { GetUserInfoFromLocalStorage } from 'src/store/actions/users.actions';
 })
 export class AppComponent implements OnInit, OnDestroy {
     public path;
-    public loadingStatus: boolean;
+    public loadingStatus$: Observable<boolean>;
     private subscribtion: Subscription = new Subscription();
 
     constructor(
         private router: Router,
-        public loadingService: LoadingService,
         public store: Store
     ) {}
 
     ngOnInit() {
         this.store.dispatch(new GetUserInfoFromLocalStorage());
+
+        this.loadingStatus$ = this.store.select(selectLoadingStatus)
+            .pipe(debounceTime(100));
 
         const sub1 = this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
@@ -53,14 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
             }
         });
 
-        const sub2 = this.loadingService.showLoading.pipe(debounceTime(50)).subscribe((value) => {
-            this.loadingStatus = value;
-        });
-
         this.subscribtion.add(sub1);
-        this.subscribtion.add(sub2);
-
-        this.store.subscribe((state) => console.log(state));
     }
 
     ngOnDestroy() {

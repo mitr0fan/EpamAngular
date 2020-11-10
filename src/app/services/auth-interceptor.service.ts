@@ -12,9 +12,8 @@ import { DATA } from 'common/constants';
 import { AuthorizationService } from './authorization.service';
 import { tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LoadingService } from './loading.service';
 import { Store } from '@ngrx/store';
-import { LoadUserError, ChangeUserStatus } from 'src/store/actions/users.actions';
+import { LoadUserError, ChangeUserStatus, ChangeLoadingStatus } from 'src/store/actions/users.actions';
 
 @Injectable({
     providedIn: 'root',
@@ -24,7 +23,6 @@ export class AuthInterceptorService implements HttpInterceptor {
         private localStorage: LocalStorageService,
         private auth: AuthorizationService,
         private snackBar: MatSnackBar,
-        private loadingService: LoadingService,
         private store: Store
     ) {}
 
@@ -33,19 +31,13 @@ export class AuthInterceptorService implements HttpInterceptor {
         const authReq = req.clone({
             headers: req.headers.set('Authorization', `Bearer ${tokenFromLocalStorage}`),
         });
-        this.loadingService.showLoading.next(true);
+        this.store.dispatch(new ChangeLoadingStatus({ status: true }));
 
         return next.handle(authReq).pipe(
             tap(
-                (res) => {
-                    if (res instanceof HttpResponse) {
-                        if (res.url.includes('http://localhost:3000/660/users')) {
-                            this.loadingService.showLoading.next(false);
-                        }
-                    }
-                },
+                () => {},
                 (error) => {
-                    this.loadingService.showLoading.next(false);
+                    this.store.dispatch(new ChangeLoadingStatus({ status: false }));
                     let errorMessage: string;
                     if (error.status === 400) {
                         errorMessage = `Ошибка: ${error.error}. Введите данные заново`;
@@ -65,7 +57,7 @@ export class AuthInterceptorService implements HttpInterceptor {
                     });
                 },
                 () => {
-                    this.loadingService.showLoading.next(false);
+                    this.store.dispatch(new ChangeLoadingStatus({ status: false }));
                 }
             )
         );

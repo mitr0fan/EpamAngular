@@ -10,3 +10,8 @@ export const selectUserStatus = createSelector(
     selectUsers,
     (state: Users.State) => state.userLoggedIn
 );
+
+export const selectLoadingStatus = createSelector(
+    selectUsers,
+    (state: Users.State) => state.loadingStatus
+);

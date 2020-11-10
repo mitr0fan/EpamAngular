@@ -1,4 +1,4 @@
-<app-loading-page *ngIf="loadingStatus"></app-loading-page>
+<app-loading-page *ngIf="loadingStatus$ | async"></app-loading-page>
 <app-header></app-header>
 <app-footer></app-footer>
 <div class="courses-content">

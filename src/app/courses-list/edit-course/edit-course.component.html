@@ -42,7 +42,6 @@
             formControlName="authors"
             (searchEvent)="search($event)"
             [authorsList]="authors"
-            [authorsListSearch$]="authorsFromServer$"
             (changeAuthorsEvent)="changeAuthors($event)"
         ></app-custom-input-authors>
     </div>

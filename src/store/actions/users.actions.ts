@@ -8,6 +8,7 @@ export enum UsersActions {
     GetUserInfoFromLocalStorage = '[LocalStorage API] GetUserInfoFromLocalStorage',
     ChangeUserStatus = '[Authorization API] ChangeUserStatus',
     UserLogOff = '[Authorization API] UserLogOff',
+    ChangeLoadingStatus = 'ChangeLoadingStatus',
 }
 
 export class LoadUser implements Action {
@@ -47,10 +48,17 @@ export class UserLogOff implements Action {
     readonly type = UsersActions.UserLogOff;
 }
 
+export class ChangeLoadingStatus implements Action {
+    readonly type = UsersActions.ChangeLoadingStatus;
+
+    constructor(public payload: { status: boolean }) {}
+}
+
 export type LoadUserActions =
     | LoadUser
     | LoadUserSuccess
     | LoadUserError
     | GetUserInfoFromLocalStorage
     | ChangeUserStatus
+    | ChangeLoadingStatus
     | UserLogOff;

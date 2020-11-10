@@ -60,7 +60,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
     }
 
     createNewCourse() {
-        this.router.navigate(['courses/new']);
+        this.router.navigate(['courses/', 'new']);
     }
 
     editCourse(id: number) {

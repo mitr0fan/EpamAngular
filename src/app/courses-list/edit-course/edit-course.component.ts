@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
 import { AuthorsService } from 'src/app/services/authors.service';
 import { Author } from 'src/app/user';
 import { Store, select } from '@ngrx/store';
-import { GetCourseData } from 'src/store/actions/courses.actions';
+import { GetCourseData, GetCourseDataSuccess } from 'src/store/actions/courses.actions';
 import { Course } from 'src/app/course';
 import { selectCourseData } from 'src/store/selectors/courses.selector';
 
@@ -45,39 +45,6 @@ export class EditCourseComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
-        // this.subscription = this.route.params
-        //     .pipe(
-        //         switchMap((data) => {
-        //             if (data.id) {
-        //                 return this.coursesService.getItemById(data.id).pipe(
-        //                     tap((course) => {
-        //                         const fetchedCourse = course[0];
-        //                         if (fetchedCourse) {
-        //                             this.courseForm.setValue({
-        //                                 title: fetchedCourse.title,
-        //                                 description: fetchedCourse.description,
-        //                                 date: this.datePipe.transform(
-        //                                     fetchedCourse.date,
-        //                                     'dd.MM.yyyy'
-        //                                 ),
-        //                                 duration: fetchedCourse.duration,
-        //                                 authors: '',
-        //                                 topRated: fetchedCourse.topRated,
-        //                                 id: fetchedCourse.id,
-        //                             });
-        //                             this.id = fetchedCourse.id;
-        //                             this.authors = fetchedCourse.authors;
-        //                         } else {
-        //                             this.router.navigate(['/error']);
-        //                         }
-        //                     })
-        //                 );
-        //             } else {
-        //                 return [];
-        //             }
-        //         })
-        //     )
-        //     .subscribe();
         const sub1 = this.route.params.subscribe((data) => {
             if (data.id) {
                 const id = +data.id;
@@ -97,7 +64,7 @@ export class EditCourseComponent implements OnInit, OnDestroy {
                     id: course.id,
                 });
                 this.id = course.id;
-                this.authors = course.authors;
+                this.authors = course.authors || [];
             }
         });
 
@@ -107,6 +74,7 @@ export class EditCourseComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
+        this.store.dispatch(new GetCourseDataSuccess({ course: null }));
     }
 
     close() {

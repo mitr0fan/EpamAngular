@@ -5,6 +5,7 @@ export interface State {
     user: CurrentUser;
     loadUserError: UserError;
     userLoggedIn: boolean;
+    loadingStatus: boolean;
 }
 
 const initialState: State = {
@@ -18,6 +19,7 @@ const initialState: State = {
         errorMessage: '',
     },
     userLoggedIn: false,
+    loadingStatus: false,
 };
 
 export function usersReducer(state: State = initialState, action: LoadUserActions): State {
@@ -37,6 +39,11 @@ export function usersReducer(state: State = initialState, action: LoadUserAction
             return {
                 ...state,
                 userLoggedIn: action.payload.loggedIn,
+            };
+        case UsersActions.ChangeLoadingStatus:
+            return {
+                ...state,
+                loadingStatus: action.payload.status,
             };
         default:
             return state;
