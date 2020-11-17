@@ -22,10 +22,10 @@ export const DATA: Data = {
         redirectToLogin: '/login',
         errorRoute: '**',
     },
-    COURSES_SERVER: `${environment.server}/660/courses`,
-    USERS_SERVER: `${environment.server}/660/users`,
+    COURSES_SERVER: `${environment.server}/courses`,
+    USERS_SERVER: `${environment.server}/users`,
     SERVER: environment.server,
-    AUTHORS_SERVER: `${environment.server}/660/authors`,
+    AUTHORS_SERVER: `${environment.server}/authors`,
     LOCAL_STORAGE: {
         userInfo: 'userInfo',
         authToken: 'authToken',

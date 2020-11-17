@@ -2,7 +2,6 @@
 .login {
     margin: 0 auto;
     margin-top: 10px;
-    height: 230px;
     width: 300px;
     background-color: $back-color-white;
     border-radius: 10px;
@@ -14,6 +13,13 @@
         font-weight: 600;
         font-size: $font-size-large;
         align-self: center;
+        padding-bottom: 5px;
+        cursor: pointer;
+
+        &_selected {
+            border-bottom: 1px solid;
+            border-color: $main-color-blue;
+        }
     }
     .login__input {
         margin-top: 10px;

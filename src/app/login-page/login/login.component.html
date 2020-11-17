@@ -1,27 +1,64 @@
-<div class="login" [formGroup]="loginForm">
-    <span class="login__name">Login</span>
-    <mat-form-field class="login__input">
-        <input type="text" matInput placeholder="Email" formControlName="email" />
-        <mat-error *ngIf="loginForm.get('email').hasError('required')"
-            >Email is <strong>required</strong></mat-error
-        >
-        <mat-error *ngIf="loginForm.get('email').hasError('email')"
-            >Email is <strong>not valid</strong></mat-error
-        >
-    </mat-form-field>
-    <mat-form-field class="login__input">
-        <input type="password" matInput placeholder="Password" formControlName="password" />
-        <mat-error *ngIf="loginForm.get('password').hasError('required')"
-            >Password is <strong>required</strong></mat-error
-        >
-        <mat-error *ngIf="loginForm.get('password').hasError('minlength')"
-            >Must be <strong>at least 6 characters</strong></mat-error
-        >
-    </mat-form-field>
-    <button
-        [ngClass]="loginForm.valid ? 'login__button' : 'login__button login__button_disabled'"
-        (click)="login()"
-    >
-        Login
-    </button>
-</div>
+<ng-container [ngSwitch]="activeTab$ | async">
+    <div *ngSwitchCase="LoginTabs.Login" class="login" [formGroup]="loginForm">
+        <div style="display: flex; justify-content: space-evenly;">
+            <span class="login__name login__name_selected" (click)="changeTab(LoginTabs.Login)">Login</span>
+            <span class="login__name" (click)="changeTab(LoginTabs.Register)">Register</span>
+        </div>
+        <mat-form-field class="login__input">
+            <input type="text" matInput placeholder="Email" formControlName="email" />
+            <mat-error *ngIf="loginForm.get('email').hasError('required')"
+                >Email is <strong>required</strong></mat-error
+            >
+            <mat-error *ngIf="loginForm.get('email').hasError('email')"
+                >Email is <strong>not valid</strong></mat-error
+            >
+        </mat-form-field>
+        <mat-form-field class="login__input">
+            <input type="password" matInput placeholder="Password" formControlName="password" />
+            <mat-error *ngIf="loginForm.get('password').hasError('required')"
+                >Password is <strong>required</strong></mat-error
+            >
+            <mat-error *ngIf="loginForm.get('password').hasError('minlength')"
+                >Must be <strong>at least 6 characters</strong></mat-error
+            >
+        </mat-form-field>
+        <button
+            [ngClass]="loginForm.valid ? 'login__button' : 'login__button login__button_disabled'"
+            (click)="login()"
+        > Login </button>
+    </div>
+    <div *ngSwitchCase="LoginTabs.Register" class="login" [formGroup]="registerForm">
+        <div style="display: flex; justify-content: space-evenly;">
+            <span class="login__name" (click)="changeTab(LoginTabs.Login)">Login</span>
+            <span class="login__name login__name_selected" (click)="changeTab(LoginTabs.Register)">Register</span>
+        </div>
+        <mat-form-field class="login__input">
+            <input type="text" matInput placeholder="Email" formControlName="email" />
+            <mat-error *ngIf="loginForm.get('email').hasError('required')"
+                >Email is <strong>required</strong></mat-error
+            >
+            <mat-error *ngIf="loginForm.get('email').hasError('email')"
+                >Email is <strong>not valid</strong></mat-error
+            >
+        </mat-form-field>
+        <mat-form-field class="login__input">
+            <input type="password" matInput placeholder="Password" formControlName="password" />
+            <mat-error *ngIf="loginForm.get('password').hasError('required')"
+                >Password is <strong>required</strong></mat-error
+            >
+            <mat-error *ngIf="loginForm.get('password').hasError('minlength')"
+                >Must be <strong>at least 6 characters</strong></mat-error
+            >
+        </mat-form-field>
+        <mat-form-field class="login__input">
+            <input matInput placeholder="Firstname" formControlName="firstName" />
+        </mat-form-field>
+        <mat-form-field class="login__input">
+            <input matInput placeholder="Lastname" formControlName="lastName" />
+        </mat-form-field>
+        <button
+            [ngClass]="loginForm.valid ? 'login__button' : 'login__button login__button_disabled'"
+            (click)="register()"
+        > Register </button>
+    </div>
+</ng-container>

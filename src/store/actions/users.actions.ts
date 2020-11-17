@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { User } from 'src/app/user';
 import { CurrentUser, Credentials, UserError } from '../models/user.model';
 
 export enum UsersActions {
@@ -9,6 +10,7 @@ export enum UsersActions {
     ChangeUserStatus = '[Authorization API] ChangeUserStatus',
     UserLogOff = '[Authorization API] UserLogOff',
     ChangeLoadingStatus = 'ChangeLoadingStatus',
+    RegisterUser = '[Authorization API] RegisterUser',
 }
 
 export class LoadUser implements Action {
@@ -54,6 +56,12 @@ export class ChangeLoadingStatus implements Action {
     constructor(public payload: { status: boolean }) {}
 }
 
+export class RegisterUser implements Action {
+    readonly type = UsersActions.RegisterUser;
+
+    constructor(public payload: { data: Partial<User> }) {}
+}
+
 export type LoadUserActions =
     | LoadUser
     | LoadUserSuccess
@@ -61,4 +69,5 @@ export type LoadUserActions =
     | GetUserInfoFromLocalStorage
     | ChangeUserStatus
     | ChangeLoadingStatus
+    | RegisterUser
     | UserLogOff;

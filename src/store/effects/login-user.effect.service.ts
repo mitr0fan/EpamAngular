@@ -7,11 +7,14 @@ import {
     LoadUserSuccess,
     LoadUserError,
     ChangeUserStatus,
+    RegisterUser,
 } from '../actions/users.actions';
 import { switchMap, catchError, mergeMap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from 'src/app/user';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { DATA } from 'common/constants';
 
 @Injectable()
 export class LoginUserEffects {
@@ -21,23 +24,20 @@ export class LoginUserEffects {
             switchMap((action: LoadUser) => {
                 const data = action.payload.credentials;
                 return this.authService.login(data).pipe(
-                    switchMap((response) =>
-                        this.authService.getUserFromServer(data.email, response.accessToken).pipe(
-                            mergeMap((user) => {
-                                const changedUser = {
-                                    id: user[0].id,
-                                    firstName: user[0].firstName,
-                                    lastName: user[0].lastName,
-                                };
-                                this.authService.addDataToLocalStorage(user[0]);
-                                this.router.navigate(['/courses']);
-                                return [
-                                    new LoadUserSuccess({ user: changedUser }),
-                                    new ChangeUserStatus({ loggedIn: true }),
-                                ];
-                            })
-                        )
-                    ),
+                    mergeMap((res) => {
+                        this.ls.addToken(DATA.LOCAL_STORAGE.authToken, res.access_token);
+                        const changedUser = {
+                            id: res.user.id,
+                            firstName: res.user.firstName,
+                            lastName: res.user.lastName,
+                        };
+                        this.authService.addDataToLocalStorage(res.user);
+                        this.router.navigate(['/courses']);
+                        return [
+                            new LoadUserSuccess({ user: changedUser }),
+                            new ChangeUserStatus({ loggedIn: true }),
+                        ];
+                    }),
                     catchError((error: HttpErrorResponse) =>
                         mergeMap(() => [
                             new LoadUserError({
@@ -87,9 +87,28 @@ export class LoginUserEffects {
         );
     });
 
+    registerUser$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(UsersActions.RegisterUser),
+            switchMap((action: RegisterUser) => this.authService.register(action.payload.data).pipe(
+                mergeMap(res => {
+                    this.router.navigate(['/courses']);
+                    this.authService.addDataToLocalStorage(res.user);
+                    this.ls.addToken(DATA.LOCAL_STORAGE.authToken, res.access_token);
+
+                    return [
+                    new LoadUserSuccess({ user: res.user }),
+                    new ChangeUserStatus({ loggedIn: true }),
+                    ];
+                })
+            ))
+        );
+    });
+
     constructor(
         private authService: AuthorizationService,
         private actions$: Actions,
-        private router: Router
+        private router: Router,
+        private ls: LocalStorageService,
     ) {}
 }

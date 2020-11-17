@@ -86,7 +86,7 @@ export class CoursesEffect {
             ofType(CoursesActions.GetCourseData),
             switchMap((action: GetCourseData) =>
                 this.coursesService.getItemById(action.payload.id).pipe(
-                    map((course) => new GetCourseDataSuccess({ course: course[0] })),
+                    map((course) => new GetCourseDataSuccess({ course })),
                     catchError((error: HttpErrorResponse) =>
                         of(
                             new GetCourseDataError({

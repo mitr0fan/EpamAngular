@@ -15,8 +15,8 @@ export class CoursesService {
         if (amountCourses && page) {
             return this.http.get<Course[]>(this.coursesUrl, {
                 params: {
-                    _limit: String(amountCourses),
-                    _page: String(page),
+                    limit: String(amountCourses),
+                    offset: String(page),
                 },
             });
         } else {
@@ -29,13 +29,13 @@ export class CoursesService {
     }
 
     getItemById(id: number) {
-        const url = `${this.coursesUrl}?id=${id}`;
-        return this.http.get<Course[]>(url);
+        const url = `${this.coursesUrl}/${id}`;
+        return this.http.get<Course>(url);
     }
 
     updateItem(course: Course) {
         const url = `${this.coursesUrl}/${course.id}`;
-        return this.http.put(url, course);
+        return this.http.patch(url, course);
     }
 
     removeItem(id: number) {

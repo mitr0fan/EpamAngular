@@ -20,7 +20,7 @@ export class AuthorizationService {
         const url = `${DATA.SERVER}/login`;
         const bodyRequest = formValue;
 
-        return this.http.post<{ accessToken: string }>(url, bodyRequest);
+        return this.http.post<{ user: Partial<User>, access_token: string }>(url, bodyRequest);
     }
 
     logout() {
@@ -33,7 +33,7 @@ export class AuthorizationService {
             const user: User = JSON.parse(
                 this.localStorageService.getItem(DATA.LOCAL_STORAGE.userInfo)
             );
-            const url = `${DATA.SERVER}/660/users/${user.id}`;
+            const url = `${DATA.SERVER}/users/${user.id}`;
             return this.http.get(url);
         } else {
             return of(false);
@@ -45,16 +45,17 @@ export class AuthorizationService {
         this.localStorageService.removeToken(DATA.LOCAL_STORAGE.userInfo);
     }
 
-    getUserFromServer(emailProperty: string, token: string) {
-        this.localStorageService.addToken(DATA.LOCAL_STORAGE.authToken, token);
-        return this.http.get<User[]>(`${DATA.USERS_SERVER}?email=${emailProperty}`);
-    }
-
-    addDataToLocalStorage(user: User) {
+    addDataToLocalStorage(user: Partial<User>) {
         const changedUser = {
             userName: `${user.firstName} ${user.lastName}`,
             id: user.id,
         };
         this.localStorageService.addToken(DATA.LOCAL_STORAGE.userInfo, JSON.stringify(changedUser));
+    }
+
+    register(data: Partial<User>) {
+        const url = `${DATA.SERVER}/register`;
+
+        return this.http.post<{user: User, access_token: string}>(url, data);
     }
 }
