@@ -41,8 +41,10 @@
         <app-custom-input-authors
             formControlName="authors"
             (searchEvent)="search($event)"
+            (addAuthorEvent)="addAuthor()"
             [authorsList]="authors"
             (changeAuthorsEvent)="changeAuthors($event)"
+            [authorsListSearch$]="authorsFromServer$"
         ></app-custom-input-authors>
     </div>
     <div class="buttons">

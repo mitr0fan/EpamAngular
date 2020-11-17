@@ -9,6 +9,7 @@
             value="author"
             [matAutocomplete]="auto"
             (keyup)="search(input.value)"
+            (keyup.enter)="addAuthor()"
             [errorStateMatcher]="matcher"
         />
         <mat-error *ngIf="control.hasError('noAuthors')">

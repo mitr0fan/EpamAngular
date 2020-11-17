@@ -38,6 +38,7 @@ import { Author } from 'src/app/user';
 export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlValueAccessor {
     private authorValue: string;
     @Output() searchEvent = new EventEmitter();
+    @Output() addAuthorEvent = new EventEmitter<boolean>();
     private subscription: Subscription;
     @Input() authorsList: Author[];
     @Input() authorsListSearch$: Observable<Author[]>;
@@ -143,5 +144,9 @@ export class CustomInputAuthorsComponent implements OnInit, OnDestroy, ControlVa
         this.onTouched(null);
         this.onChange('');
         this.changeAuthorsEvent.emit(this.authorsList);
+    }
+
+    addAuthor() {
+        this.addAuthorEvent.emit(true);
     }
 }

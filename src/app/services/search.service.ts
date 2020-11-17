@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { debounceTime, filter } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
@@ -13,9 +13,6 @@ export class SearchService {
     getSearchValue() {
         return this.searchValue$.pipe(
             debounceTime(500),
-            filter((value) => {
-                return value.length > 2;
-            })
         );
     }
 }

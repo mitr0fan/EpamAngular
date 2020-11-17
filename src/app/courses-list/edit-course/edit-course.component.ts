@@ -10,8 +10,8 @@ import { AuthorsService } from 'src/app/services/authors.service';
 import { Author } from 'src/app/user';
 import { Store, select } from '@ngrx/store';
 import { GetCourseData, GetCourseDataSuccess } from 'src/store/actions/courses.actions';
-import { Course } from 'src/app/course';
 import { selectCourseData } from 'src/store/selectors/courses.selector';
+import { ChangeLoadingStatus } from 'src/store/actions/users.actions';
 
 @Component({
     selector: 'app-edit-course',
@@ -64,7 +64,9 @@ export class EditCourseComponent implements OnInit, OnDestroy {
                     id: course.id,
                 });
                 this.id = course.id;
-                this.authors = course.authors || [];
+                this.authors = course.authors ?
+                [...course.authors] :
+                [];
             }
         });
 
@@ -109,5 +111,23 @@ export class EditCourseComponent implements OnInit, OnDestroy {
 
     changeAuthors(authors: Author[]) {
         this.authors = authors;
+    }
+
+    addAuthor() {
+        const value = (this.courseForm.get('authors').value as string).split(' ');
+        if (value.length === 2) {
+            const [ firstName, lastName ] = value;
+
+            this.authorsService.addAuthor(firstName, lastName)
+                .pipe(
+                    tap(author => {
+                        this.authors.push(author);
+                        this.courseForm.get('authors').setValue('');
+                    })
+                )
+                .subscribe({
+                    complete: () => this.store.dispatch(new ChangeLoadingStatus({ status: false })),
+                });
+        }
     }
 }

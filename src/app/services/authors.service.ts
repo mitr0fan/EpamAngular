@@ -15,8 +15,16 @@ export class AuthorsService {
     getAuthorsList(searchValue: string): Observable<Author[]> {
         return this.http.get<Author[]>(this.authorsUrl, {
             params: {
-                fullName_like: searchValue,
+                fullName: searchValue,
             },
+        });
+    }
+
+    addAuthor(firstName: string, lastName: string) {
+        return this.http.post<Author>(this.authorsUrl, {
+            firstName,
+            lastName,
+            fullName: `${firstName} ${lastName}`
         });
     }
 }
