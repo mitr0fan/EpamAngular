@@ -12,7 +12,7 @@ export class CoursesService {
     constructor(private http: HttpClient) {}
 
     getList(amountCourses?: number, page?: number) {
-        if (amountCourses && page) {
+        if (amountCourses && (page || page === 0)) {
             return this.http.get<Course[]>(this.coursesUrl, {
                 params: {
                     limit: String(amountCourses),
@@ -44,15 +44,19 @@ export class CoursesService {
     }
 
     searchCoursesByTitle(value: string) {
-        const searchByTitleUrl = `${this.coursesUrl}?title_like=${value}`;
-
-        return this.http.get<Course[]>(searchByTitleUrl);
+        return this.http.get<Course[]>(this.coursesUrl, {
+            params: {
+                title: value
+            }
+        });
     }
 
     searchCoursesByDescription(value: string) {
-        const searchByDescriptionUrl = `${this.coursesUrl}?description_like=${value}`;
-
-        return this.http.get<Course[]>(searchByDescriptionUrl);
+        return this.http.get<Course[]>(this.coursesUrl, {
+            params: {
+                description: value
+            }
+        });
     }
 
     dateFromStringToMs(dateContent: string) {

@@ -27,7 +27,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
         this.store.dispatch(
             new GetCourses({
                 amountCourses: this.amountCourses,
-                amountPages: 1,
+                amountPages: 0,
             })
         );
 
@@ -44,7 +44,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
         this.store.dispatch(
             new GetCourses({
                 amountCourses: this.amountCourses,
-                amountPages: 1,
+                amountPages: 0,
             })
         );
     }
